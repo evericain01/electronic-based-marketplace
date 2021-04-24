@@ -37,7 +37,7 @@ class ProductController extends \App\core\Controller {
         // }
     }
 
-    function add($seller_id) {
+    function add($product_id) {
         if (isset($_POST["action"])) {
             $product = new \App\models\Product();
             $seller = new \App\models\Seller();
@@ -61,7 +61,29 @@ class ProductController extends \App\core\Controller {
         }
     }
 
+    function edit($product_id) {
+        if (isset($_POST["action"])) {
+            $product = new \App\models\Product();
 
+            $product = $product->find($product_id);
+
+            $product->caption = $_POST["caption"];
+            $product->description = $_POST["description"];
+            $product->filename = $_POST["filename"];
+            $product->quantity = $_POST["quantity"];
+            $product->price = $_POST["price"];
+
+            $product->update();
+            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+        } else {
+            $product = new \App\models\Product();
+
+            $product = $product->find($product_id);
+            $seller = $seller->find($product->product_id);
+
+            $this->view('Product/editProduct', $product);
+        }
+    }
 
     // function edit($profile_id) {
     //     $profile = new \App\models\Profile();

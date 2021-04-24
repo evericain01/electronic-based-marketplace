@@ -53,6 +53,22 @@ class SellerController extends \App\core\Controller {
         }
     }
 
+    function editProfile() {
+        if (isset($_POST["action"])) {
+            $seller = new \App\models\Seller();
+            $seller->user_id = $_SESSION['user_id'];
+            $seller->first_name = $_POST["first_name"];
+            $seller->budget = $_POST["brand"];
+            $seller->last_name = $_POST["last_name"];
+            $seller->insert();
+            // header("location:" . BASE . "/Seller/index/$seller->seller_id");
+        } else {
+            $seller = new \App\models\Seller();
+            $seller = $seller->findUserId($_SESSION['user_id']);
+            // $this->view('Seller/createSellerProfile', $seller);
+        }
+    }
+
     // function edit($profile_id) {
     //     $profile = new \App\models\Profile();
     //     $profile = $profile->find($profile_id);
