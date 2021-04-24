@@ -8,7 +8,7 @@ class Invoice extends \App\core\Model {
     public $buyer_id;
     public $product_id;
     public $timestamp;
-    public $days_to_arrive;
+    public $date_of_arrival;
     public $invoice_id;
 
     public function __construct() {
@@ -16,7 +16,8 @@ class Invoice extends \App\core\Model {
     }
 
     public function find($buyer_id, $seller_id, $product_id) {
-        $stmt = self::$connection->prepare("SELECT * FROM invoice WHERE buyer_id = :buyer_id AND seller_id = :seller_id AND product_id = :product_id");
+        $stmt = self::$connection->prepare("SELECT * FROM invoice WHERE buyer_id = :buyer_id AND
+        seller_id = :seller_id AND product_id = :product_id");
         $stmt->execute(['buyer_id' => $buyer_id, 'seller_id' => $seller_id, 'product_id' => $product_id]);
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Invoice");
         return $stmt->fetch();
@@ -46,10 +47,10 @@ class Invoice extends \App\core\Model {
     }
 
     public function insert() {
-        $stmt = self::$connection->prepare("INSERT INTO invoice(buyer_id, seller_id, product_id, days_to_arrive) 
-        VALUES (:buyer_id, :seller_id, :product_id, :days_to_arrive)");
+        $stmt = self::$connection->prepare("INSERT INTO invoice(buyer_id, seller_id, product_id, date_of_arrival) 
+        VALUES (:buyer_id, :seller_id, :product_id, :date_of_arrival)");
         $stmt->execute(['buyer_id' => $this->buyer_id, 'seller_id' =>
-            $this->seller_id, 'product_id' => $this->product_id, 'days_to_arrive' => $this->days_to_arrive]);
+            $this->seller_id, 'product_id' => $this->product_id, 'date_of_arrival' => $this->date_of_arrival]);
     }
 
     public function delete() {

@@ -49,7 +49,7 @@ class SellerController extends \App\core\Controller {
         } else {
             $profile = new \App\models\Seller();
             $profile = $seller->findUserId($_SESSION['user_id']);
-            $this->view('Seller/createSellerProfile', $seller);
+            // $this->view('Seller/createSellerProfile', $seller);
         }
     }
 

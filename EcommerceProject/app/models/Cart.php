@@ -34,11 +34,12 @@ class Cart extends \App\core\Model {
     //     return $stmt->fetch();
     // }
 
-    // public function getAllBuyers() {
-    //     $stmt = self::$connection->query("SELECT * FROM buyer");
-    //     $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Buyer");
-    //     return $stmt->fetchAll();
-    // }
+    public function getAll($buyer_id) {
+        $stmt = self::$connection->query("SELECT * FROM cart WHERE buyer_id=:buyer_id");
+        $stmt->execute(['buyer_id' => $this->buyer_id]);
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
+        return $stmt->fetchAll();
+    }
 
     public function insert() {
         $stmt = self::$connection->prepare("INSERT INTO cart(buyer_id, product_id) 

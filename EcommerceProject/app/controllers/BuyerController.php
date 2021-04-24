@@ -49,7 +49,7 @@ class BuyerController extends \App\core\Controller {
         } else {
             $profile = new \App\models\Buyer();
             $profile = $buyer->findUserId($_SESSION['user_id']);
-            $this->view('Buyer/createBuyerProfile', $buyer);
+            // $this->view('Buyer/createBuyerProfile', $buyer);
         }
     }
 
