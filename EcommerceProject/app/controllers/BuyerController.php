@@ -39,16 +39,16 @@ class BuyerController extends \App\core\Controller {
 
     function createProfile() {
         if (isset($_POST["action"])) {
-            $profile = new \App\models\Buyer();
-            $profile->user_id = $_SESSION['user_id'];
-            $profile->first_name = $_POST["first_name"];
-            $profile->budget = $_POST["budget"];
-            $profile->last_name = $_POST["last_name"];
-            $profile->insert();
+            $buyer = new \App\models\Buyer();
+            $buyer->user_id = $_SESSION['user_id'];
+            $buyer->first_name = $_POST["first_name"];
+            $buyer->budget = $_POST["budget"];
+            $buyer->last_name = $_POST["last_name"];
+            $buyer->insert();
             // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
         } else {
-            $profile = new \App\models\Buyer();
-            $profile = $buyer->findUserId($_SESSION['user_id']);
+            $buyer = new \App\models\Buyer();
+            $buyer = $buyer->findUserId($_SESSION['user_id']);
             // $this->view('Buyer/createBuyerProfile', $buyer);
         }
     }

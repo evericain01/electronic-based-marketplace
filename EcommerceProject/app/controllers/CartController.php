@@ -53,6 +53,36 @@ class CartController extends \App\core\Controller {
         }
     }
 
+    function removeFromCart($product_id) {
+        if (isset($_POST["action"])) {
+            $cart = new \App\models\Cart();
+            $cart = $cart->find($product_id);
+            $cart->delete();
+            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+        } else {
+            $cart = new \App\models\Cart();
+            $buyer = new \App\models\Buyer();
+            $buyer = $buyer->findUserId($_SESSION['user_id']);
+            $cart = $cart->findCart($buyer->buyer_id);
+            // $this->view('Buyer/createBuyerProfile', $buyer);
+        }
+    }
+
+    function checkout($product_id) {
+        if (isset($_POST["action"])) {
+            $cart = new \App\models\Cart();
+            $cart = $cart->find($product_id);
+            $cart->checkout();
+            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+        } else {
+            $cart = new \App\models\Cart();
+            $buyer = new \App\models\Buyer();
+            $buyer = $buyer->findUserId($_SESSION['user_id']);
+            $cart = $cart->findCart($buyer->buyer_id);
+            // $this->view('Buyer/createBuyerProfile', $buyer);
+        }
+    }
+
     // function edit($profile_id) {
     //     $profile = new \App\models\Profile();
     //     $profile = $profile->find($profile_id);

@@ -11,12 +11,19 @@ class Cart extends \App\core\Model {
         parent::__construct();
     }
 
-    // public function find($buyer_id) {
-    //     $stmt = self::$connection->prepare("SELECT * FROM buyer WHERE buyer_id = :buyer_id");
-    //     $stmt->execute(['buyer_id' => $buyer_id]);
-    //     $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Buyer");
-    //     return $stmt->fetch();
-    // }
+    public function find($product_id) {
+        $stmt = self::$connection->prepare("SELECT * FROM buyer WHERE product_id = :productproduct_id_id");
+        $stmt->execute(['product_id' => $product_id]);
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
+        return $stmt->fetch();
+    }
+
+    public function findCart($product_id) {
+        $stmt = self::$connection->prepare("SELECT * FROM buyer WHERE product_id = :productproduct_id_id");
+        $stmt->execute(['product_id' => $product_id]);
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
+        return $stmt->fetch();
+    }
 
     // public function searchForSeller($keyword) {
     //     $stmt = self::$connection->prepare("SELECT * FROM profile WHERE first_name LIKE :first_name "
@@ -56,5 +63,4 @@ class Cart extends \App\core\Model {
     public function checkout() {
         $stmt = self::$connection->query("DELETE from cart");
     }
-
 }
