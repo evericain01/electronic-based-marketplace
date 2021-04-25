@@ -103,6 +103,23 @@ class ProductController extends \App\core\Controller {
         }
     }
 
+    function delete($product_id) {
+        if (isset($_POST["action"])) {
+            $product = new \App\models\Product();
+            $product = $product->find($product_id);
+
+            $product->delete();
+            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+        } else {
+            $product = new \App\models\Product();
+
+            $product = $product->find($product_id);
+            $seller = $seller->find($product->product_id);
+
+            $this->view('Product/editProduct', $product);
+        }
+    }
+
     // function edit($profile_id) {
     //     $profile = new \App\models\Profile();
     //     $profile = $profile->find($profile_id);
