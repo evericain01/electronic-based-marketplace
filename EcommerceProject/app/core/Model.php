@@ -17,7 +17,6 @@ class Model {
         //set what happens when ther are errors
         self::$connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_SILENT);
     }
-
 }
 
 ?>

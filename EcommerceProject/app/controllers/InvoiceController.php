@@ -61,7 +61,9 @@ class InvoiceController extends \App\core\Controller {
         }
     }
 
-
+    function checkStatus($invoice_id) {
+        
+    }
 
     // function edit($profile_id) {
     //     $profile = new \App\models\Profile();
