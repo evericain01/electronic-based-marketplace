@@ -39,7 +39,6 @@ class ProductController extends \App\core\Controller {
 
     function add($product_id) {
         if (isset($_POST["action"])) {
-            if (isset($_POST['action'])) {
                 if (isset($_FILES['myImage'])) {
                     $imageProperties = getimagesize($_FILES['myImage']['tmp_name']);
                     $allowedTypes = ['image/gif', 'image/jpeg', 'image/png'];
@@ -73,7 +72,6 @@ class ProductController extends \App\core\Controller {
                         // echo "<a href='" . BASE . "/Picture/add'>&#8592 Go Back to Upload</a>";
                     }
                 }
-            }
         } else {
             // $product = new \App\models\Product();
             // $product = $product->findUserId($_SESSION['user_id']);
