@@ -5,36 +5,35 @@ namespace App\controllers;
 class InvoiceController extends \App\core\Controller {
 
     function index() {
-        // if (isset($_POST["action"])) {
-        //     $keyword = $_POST["keyword"];
-        //     $profiles = new \App\models\Profile();
-        //     $profiles = $profiles->searchForUser($keyword);
-        //     if ($keyword == "") {
-        //         echo "INVALID: Please input a first, middle or last name.<br><br>";
-        //         echo "<a href='" . BASE . "/Profile/index/'>&#8592 Go back</a>";
-        //     } else {
-        //         $this->view('Profile/listOfProfiles', ['keyword' => $keyword, 'profiles' => $profiles]);
-        //     }
-        // } else {
-        //     $currentProfile = new \App\models\Profile();
-        //     $currentProfile = $currentProfile->findUserId($_SESSION['user_id']);
+        function index() {
+            if (isset($_POST["action"])) {
+                // $keyword = $_POST["keyword"];
+                // $profiles = new \App\models\Profile();
+                // $profiles = $profiles->searchForUser($keyword);
+                // if ($keyword == "") {
+                //     echo "INVALID: Please input a first, middle or last name.<br><br>";
+                //     echo "<a href='" . BASE . "/Profile/index/'>&#8592 Go back</a>";
+                // } else {
+                //     $this->view('Profile/listOfProfiles', ['keyword' => $keyword, 'profiles' => $profiles]);
+                // }
+            } else {
+                $buyer = new \App\models\Buyer();
+                $buyer = $buyer->findUserId($_SESSION['user_id']);
 
-        //     $otherUserProfile = new \App\models\Profile();
-        //     $otherUserProfile = $otherUserProfile->getAllProfiles();
+                $invoices = new \App\models\Invoice();
+                $invoices = $invoices->getAllInvoiceOfBuyer($buyer->buyer_id);
 
-        //     $messages = new \App\models\Message();
-        //     $messages = $messages->getAllMessages($currentProfile->profile_id);
+                $sellers = new \App\models\Seller();
+                $sellers = $sellers->getAllSellers();
 
-        //     $pictures = new \App\models\Picture();
-        //     $pictures = $pictures->getAllPictures($currentProfile->profile_id);
-
-        //     $picture_likes = new \App\models\PictureLike();
-        //     $picture_likes = $picture_likes->findAllLikes();
-
-        //     $this->view('Profile/currentWall', ['messages' => $messages, 'profile' =>
-        //         $currentProfile, 'otherProfile' => $otherUserProfile, 'pictures' =>
-        //         $pictures, 'picture_likes' => $picture_likes]);
-        // }
+                $products = new \App\models\Product();
+                $products = $products->getAllProducts();
+    
+                $this->view('Buyer/buyerMainPage', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
+                'invoices' => $invoices]);
+            }
+        }
+    
     }
 
     function add($product_id) {

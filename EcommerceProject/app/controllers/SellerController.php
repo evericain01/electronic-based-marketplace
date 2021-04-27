@@ -19,7 +19,7 @@ class SellerController extends \App\core\Controller {
             $products = new \App\models\Product();
             $products = $products->getAllProducts();
 
-            $seller = new \App\models\Buyer();
+            $seller = new \App\models\Seller();
             $seller = $seller->findUserId($_SESSION['user_id']);
 
             $this->view('Seller/sellerMainPage', ['products' => $products, 'seller' => $seller]);
