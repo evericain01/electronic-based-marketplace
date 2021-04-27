@@ -3,6 +3,13 @@
 namespace App\controllers;
 
 class InvoiceController extends \App\core\Controller {
+    function dateHelper() {
+        date_default_timezone_set('Montreal/Canada');
+        $diff1Week = new DateInterval('P1W');
+        $current = new DateTime('d-m-y h:i:s');
+        $date_of_arrival = $current.add($diff1Week);
+        return $date_of_arrival;
+    }
 
     function index() {
         function index() {
@@ -50,6 +57,7 @@ class InvoiceController extends \App\core\Controller {
             $invoice->buyer_id = $buyer->buyer_id;
             $invoice->seller_id = $seller->seller_id;
             $invoice->product_id = $product->product_id;
+            $invoice->date_of_arrival = dateHelper();
 
             $invoice->insert();
             // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
