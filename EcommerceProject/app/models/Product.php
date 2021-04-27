@@ -39,11 +39,11 @@ class Product extends \App\core\Model {
         return $stmt->fetch();
     }
 
-    // public function getAllBuyers() {
-    //     $stmt = self::$connection->query("SELECT * FROM buyer");
-    //     $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Buyer");
-    //     return $stmt->fetchAll();
-    // }
+    public function getAllProducts() {
+        $stmt = self::$connection->query("SELECT * FROM products");
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Product");
+        return $stmt->fetchAll();
+    }
 
     public function insert() {
         $stmt = self::$connection->prepare("INSERT INTO product(seller_id, caption, filename, description, quantity, price) 
