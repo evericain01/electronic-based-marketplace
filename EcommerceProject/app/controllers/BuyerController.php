@@ -34,11 +34,11 @@ class BuyerController extends \App\core\Controller {
             $buyer->budget = $_POST["budget"];
             $buyer->last_name = $_POST["last_name"];
             $buyer->insert();
-            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+            header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
         } else {
             $buyer = new \App\models\Buyer();
             $buyer = $buyer->findUserId($_SESSION['user_id']);
-            // $this->view('Buyer/createBuyerProfile', $buyer);
+            $this->view('Buyer/createBuyerProfile', $buyer);
         }
     }
 
@@ -50,11 +50,11 @@ class BuyerController extends \App\core\Controller {
             $buyer->budget = $_POST["budget"];
             $buyer->last_name = $_POST["last_name"];
             $buyer->insert();
-            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+            header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
         } else {
             $buyer = new \App\models\Buyer();
             $buyer = $buyer->findUserId($_SESSION['user_id']);
-            // $this->view('Buyer/createBuyerProfile', $buyer);
+            $this->view('Buyer/editProfile', $buyer);
         }
     }
 

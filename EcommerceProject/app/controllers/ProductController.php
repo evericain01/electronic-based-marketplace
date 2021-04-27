@@ -63,13 +63,13 @@ class ProductController extends \App\core\Controller {
                             $product->price = $_POST["price"];
 
                             $product->insert();
-                            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");                            
+                            header("location:" . BASE . "/Seller/index/$buyer->buyer_id");                            
                         } else {
                             echo 'error';
                         }
                     } else {
                         echo "INVALID: Please input an image of type '.gif', '.jpeg' or '.png'.<br><br>";
-                        // echo "<a href='" . BASE . "/Picture/add'>&#8592 Go Back to Upload</a>";
+                        // echo "<a href='" . BASE . "/Seller/add'>&#8592 Go Back to Upload</a>";
                     }
                 }
         } else {
@@ -92,7 +92,7 @@ class ProductController extends \App\core\Controller {
             $product->price = $_POST["price"];
 
             $product->update();
-            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+            header("location:" . BASE . "/Seller/index/$seller->seller_id");
         } else {
             $product = new \App\models\Product();
 
@@ -109,62 +109,16 @@ class ProductController extends \App\core\Controller {
             $product = $product->find($product_id);
 
             $product->delete();
-            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+            header("location:" . BASE . "/Seller/index/$seller->seller_id");
         } else {
             $product = new \App\models\Product();
 
             $product = $product->find($product_id);
             $seller = $seller->find($product->product_id);
 
-            $this->view('Product/editProduct', $product);
+            // $this->view('Product/editProduct', $product);
         }
     }
-
-    // function edit($profile_id) {
-    //     $profile = new \App\models\Profile();
-    //     $profile = $profile->find($profile_id);
-    //     $user_id = $profile->user_id;
-
-    //     if (isset($_POST["action"])) {
-    //         $profile->profile_id = $profile_id;
-    //         $profile->user_id = $user_id;
-    //         $profile->first_name = $_POST["first_name"];
-    //         $profile->middle_name = $_POST["middle_name"];
-    //         $profile->last_name = $_POST["last_name"];
-
-    //         $profile->update();
-    //         header("location:" . BASE . "/Profile/index/$profile->profile_id");
-    //     } else {
-    //         $profile = new \App\models\Profile();
-    //         $profile = $profile->find($profile_id);
-
-    //         $user = new \App\models\User();
-    //         $user = $user->find($_SESSION['username']);
-    //         $this->view('Profile/editProfile', ['profile' => $profile, 'user' => $user]);
-    //     }
-    // }
-
-    // function otherProfile($profile_id) {
-    //     $friendProfile = new \App\models\Profile();
-    //     $friendProfile = $friendProfile->find($profile_id);
-
-    //     $otherUserProfile = new \App\models\Profile();
-    //     $otherUserProfile = $otherUserProfile->getAllProfiles();
-
-    //     $messages = new \App\models\Message();
-    //     $messages = $messages->getAllPublicMessages($friendProfile->profile_id);
-
-    //     $otherPictures = new \App\models\Picture();
-    //     $otherPictures = $otherPictures->getAllPictures($friendProfile->profile_id);
-
-    //     $picture_likes = new \App\models\PictureLike();
-    //     $picture_likes = $picture_likes->findAllLikes();
-
-    //     $this->view('Profile/otherWall', ['messages' => $messages, 'friendProfile' =>
-    //         $friendProfile, 'otherProfile' => $otherUserProfile, 'otherPictures' =>
-    //         $otherPictures, 'picture_likes' => $picture_likes]);
-    // }
-
 }
 
 ?>

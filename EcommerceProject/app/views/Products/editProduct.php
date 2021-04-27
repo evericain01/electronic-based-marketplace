@@ -11,6 +11,6 @@
             <label>Price: <input type="number" step=".01" name="price" value="<?= $data->price ?>"/></label><br />
             <input type="submit" name="action" />
         </form>
-        <!-- <a href="<?= BASE ?>/Profile/index">Cancel</a> -->
+        <!-- <a href="<?= BASE ?>/Seller/index">Cancel</a> -->
     </body>
 </html>
