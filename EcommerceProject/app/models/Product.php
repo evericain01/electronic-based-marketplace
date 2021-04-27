@@ -32,7 +32,7 @@ class Product extends \App\core\Model {
     //     return $stmt->fetchAll();
     // }
 
-    public function fineSellerProducts($seller_id) {
+    public function findSellerProducts($seller_id) {
         $stmt = self::$connection->prepare("SELECT * FROM product WHERE seller_id = :seller_id");
         $stmt->execute(['seller_id' => $seller_id]);
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Seller");
