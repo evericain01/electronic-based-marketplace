@@ -7,7 +7,7 @@
             <label>Search for product: <input type="text" name="keyword"/></label><br />
         </form>
         <?php
-        echo "<br><h2>Welcome to your wall, " . $data['buyer']->first_name .
+        echo "<br><h2>Welcome to the Market, " . $data['buyer']->first_name .
         " " . $data['buyer']->last_name . "! </h2><br><br>";
         foreach ($data['products'] as $product) {
             echo "<label>$product->caption</label>";

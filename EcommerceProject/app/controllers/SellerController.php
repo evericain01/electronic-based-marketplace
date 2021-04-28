@@ -23,21 +23,23 @@ class SellerController extends \App\core\Controller {
             $seller = $seller->findUserId($_SESSION['user_id']);
 
             $this->view('Seller/sellerMainPage', ['products' => $products, 'seller' => $seller]);
+            
+            var_dump($_SESSION['user_id']);
         }
     }
 
     function createProfile() {
         if (isset($_POST["action"])) {
-            $profile = new \App\models\Seller();
-            $profile->user_id = $_SESSION['user_id'];
-            $profile->first_name = $_POST["first_name"];
-            $profile->brand_name = $_POST["brand_name"];
-            $profile->last_name = $_POST["last_name"];
-            $profile->insert();
+            $seller = new \App\models\Seller();
+            $seller->user_id = $_SESSION['user_id'];
+            $seller->first_name = $_POST["first_name"];
+            $seller->brand_name = $_POST["brand_name"];
+            $seller->last_name = $_POST["last_name"];
+            $seller->insert();
             header("location:" . BASE . "/Seller/index/$seller->seller_id");
         } else {
-            $profile = new \App\models\Seller();
-            $profile = $seller->findUserId($_SESSION['user_id']);
+            $seller = new \App\models\Seller();
+            $seller = $seller->findUserId($_SESSION['user_id']);
             $this->view('Seller/createSellerProfile', $seller);
         }
     }

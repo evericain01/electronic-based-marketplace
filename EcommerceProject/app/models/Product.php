@@ -47,7 +47,7 @@ class Product extends \App\core\Model {
     }
 
     public function getAllProducts() {
-        $stmt = self::$connection->query("SELECT * FROM products");
+        $stmt = self::$connection->query("SELECT * FROM product");
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Product");
         return $stmt->fetchAll();
     }
