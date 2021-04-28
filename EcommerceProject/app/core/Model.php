@@ -8,7 +8,7 @@ class Model {
 
     public function __construct() {
         $host = "localhost";
-        $DBName = "messagingdatabase";
+        $DBName = "marketplace_db";
         $username = "root";
         $password = "";
 

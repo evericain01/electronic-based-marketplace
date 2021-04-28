@@ -21,7 +21,7 @@ class DefaultController extends \App\core\Controller {
                     return;
                 }
                 //log in automatically after registration
-                $_SESSION['user_id'] = $user->user_id;
+                $_SESSION['user_id'] = $user->user_id;            
                 $_SESSION['username'] = $user->username;
 
                 if (isset($_POST['twofasetup'])) {
@@ -112,7 +112,7 @@ class DefaultController extends \App\core\Controller {
                 if ($user->secret_key == null) {
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['username'] = $user->username;
-                    header('location:' . BASE . '/Profile/currentWall');
+                    header('location:' . BASE . '/Seller/sellerMainPage');
                 } else {
                     $_SESSION['temp_user_id'] = $user->user_id;
                     $_SESSION['temp_username'] = $user->username;

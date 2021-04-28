@@ -23,9 +23,9 @@ class Seller extends \App\core\Model {
 
 
     public function findUserId($user_id) {
-        $stmt = self::$connection->prepare("SELECT * FROM profile WHERE user_id = :user_id");
+        $stmt = self::$connection->prepare("SELECT * FROM seller WHERE user_id = :user_id");
         $stmt->execute(['user_id' => $user_id]);
-        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Profile");
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Seller");
         return $stmt->fetch();
     }
 

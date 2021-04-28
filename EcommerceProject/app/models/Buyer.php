@@ -35,10 +35,11 @@ class Buyer extends \App\core\Model {
     }
 
     public function insert() {
-        $stmt = self::$connection->prepare("INSERT INTO profile(user_id, first_name, last_name, budget) 
+        $stmt = self::$connection->prepare("INSERT INTO buyer(user_id, first_name, last_name, budget) 
         VALUES (:user_id, :first_name, :last_name, :budget)");
         $stmt->execute(['user_id' => $this->user_id, 'first_name' =>
             $this->first_name, 'last_name' => $this->last_name, 'budget' => $this->budget]);
+        
     }
 
     public function delete() {

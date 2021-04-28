@@ -4,38 +4,37 @@ namespace App\controllers;
 
 class ProductController extends \App\core\Controller {
 
-    function add($product_id) {
+    function add($seller_id) {
         if (isset($_POST["action"])) {
-                if (isset($_FILES['myImage'])) {
-                    $imageProperties = getimagesize($_FILES['myImage']['tmp_name']);
-                    $allowedTypes = ['image/gif', 'image/jpeg', 'image/png'];
-                    if ($imageProperties !== false && in_array($imageProperties['mime'], $allowedTypes)) {
-                        $extension = ['image/gif' => 'gif', 'image/jpeg' => 'jpg', 'image/png' => 'png'];
-                        $extension = $extension[$imageProperties['mime']];
-                        $target_folder = 'uploads/';
-    
-                        $targetFile = uniqid() . ".$extension";
-                        if (move_uploaded_file($_FILES['myImage']['tmp_name'], $target_folder . $targetFile)) {
-                            $product = new \App\models\Product();
-                            $seller = new \App\models\Seller();
-                                
-                            $product->seller_id = $seller->seller_id;
-                            $product->caption = $_POST["caption"];
-                            $product->description = $_POST["description"];
-                            $product->filename = $targetFile;
-                            $product->quantity = $_POST["quantity"];
-                            $product->price = $_POST["price"];
+            if (isset($_FILES['myImage'])) {
+                $imageProperties = getimagesize($_FILES['myImage']['tmp_name']);
+                $allowedTypes = ['image/gif', 'image/jpeg', 'image/png'];
+                if ($imageProperties !== false && in_array($imageProperties['mime'], $allowedTypes)) {
+                    $extension = ['image/gif' => 'gif', 'image/jpeg' => 'jpg', 'image/png' => 'png'];
+                    $extension = $extension[$imageProperties['mime']];
+                    $target_folder = 'uploads/';
 
-                            $product->insert();
-                            header("location:" . BASE . "/Seller/index/$buyer->buyer_id");                            
-                        } else {
-                            echo 'error';
-                        }
+                    $targetFile = uniqid() . ".$extension";
+                    if (move_uploaded_file($_FILES['myImage']['tmp_name'], $target_folder . $targetFile)) {
+                        $product = new \App\models\Product();
+                        $product->filename = $targetFile;
+                        $product->caption = $_POST["caption"];
+                        $product->description = $_POST["description"];
+                        $product->quantity = $_POST["quantity"];
+                        $product->price = $_POST["price"];
+
+                        $product->seller_id = $seller_id;
+
+                        $product->insert();
+                        header("location:" . BASE . "/Seller/index");
                     } else {
-                        echo "INVALID: Please input an image of type '.gif', '.jpeg' or '.png'.<br><br>";
-                        // echo "<a href='" . BASE . "/Seller/add'>&#8592 Go Back to Upload</a>";
+                        echo 'error';
                     }
+                } else {
+                    echo "INVALID: Please input an image of type '.gif', '.jpeg' or '.png'.<br><br>";
+                    // echo "<a href='" . BASE . "/Seller/add'>&#8592 Go Back to Upload</a>";
                 }
+            }
         } else {
             $seller = new \App\models\Seller();
             $seller = $seller->findUserId($_SESSION['user_id']);
@@ -43,7 +42,7 @@ class ProductController extends \App\core\Controller {
             $products = new \App\models\Product();
             $products = $products->getAllProducts();
 
-            $this->view('Seller/sellerMainPage', ['products' => $products, 'seller' => $seller]);
+            $this->view('Product/add', ['products' => $products, 'seller' => $seller]);
         }
     }
 
@@ -87,6 +86,7 @@ class ProductController extends \App\core\Controller {
             // $this->view('Product/editProduct', $product);
         }
     }
+
 }
 
 ?>

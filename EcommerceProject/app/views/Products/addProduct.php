@@ -1,9 +1,9 @@
 <html>
-    <head><title>Upload an image file</title>
+    <head><title>Add Product</title>
     </head>
     <body>
 
-        <h4>Uploading an Picture</h4>
+        <h4>Add a Product</h4>
         <form action="" method="post" enctype="multipart/form-data">
             <label>Caption: <input type="text" name="caption" /></label><br />
             <label>Caption: <input type="text" name="description" /></label><br />
@@ -12,6 +12,6 @@
             <label>Select an image file to upload: <input type= "file" name="myImage" /></label><br>
             <input type="submit" name="action" />
         </form>
-        <!-- <a href="<?= BASE ?>/Profile/index">Cancel</a> -->
+         <a href="<?= BASE ?>/Product/add">Add Product</a> &ndash;
     </body>
 </html>

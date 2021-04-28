@@ -5,8 +5,8 @@
     <body>
             <label>Create Profile</label><br />
 
-            <a href="<?= BASE ?>/Buyer/createProfile">Register Here!</a>
-            <a href="<?= BASE ?>/Seller/createProfile">Register Here!</a>
+            <a href="<?= BASE ?>/Buyer/createProfile">Buyer</a>
+            <a href="<?= BASE ?>/Seller/createProfile">Seller</a>
 
     </body>
 </html>
