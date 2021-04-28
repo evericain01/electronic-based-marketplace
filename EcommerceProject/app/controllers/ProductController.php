@@ -18,10 +18,7 @@ class ProductController extends \App\core\Controller {
                         if (move_uploaded_file($_FILES['myImage']['tmp_name'], $target_folder . $targetFile)) {
                             $product = new \App\models\Product();
                             $seller = new \App\models\Seller();
-                
-                            $product = $product->find($product_id);
-                            $seller = $seller->find($product->product_id);
-                
+                                
                             $product->seller_id = $seller->seller_id;
                             $product->caption = $_POST["caption"];
                             $product->description = $_POST["description"];
@@ -42,7 +39,11 @@ class ProductController extends \App\core\Controller {
         } else {
             $seller = new \App\models\Seller();
             $seller = $seller->findUserId($_SESSION['user_id']);
-            $this->view('Seller/sellerMainPage', $seller);
+
+            $products = new \App\models\Product();
+            $products = $products->getAllProducts();
+
+            $this->view('Seller/sellerMainPage', ['products' => $products, 'seller' => $seller]);
         }
     }
 

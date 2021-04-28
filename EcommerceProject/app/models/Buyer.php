@@ -21,15 +21,6 @@ class Buyer extends \App\core\Model {
         return $stmt->fetch();
     }
 
-    // public function searchForSeller($keyword) {
-    //     $stmt = self::$connection->prepare("SELECT * FROM profile WHERE first_name LIKE :first_name "
-    //             . "OR last_name LIKE :last_name OR middle_name LIKE :middle_name");
-    //     $keyword = "%$keyword%";
-    //     $stmt->execute(['first_name' => $keyword, 'last_name' => $keyword, 'middle_name' => $keyword]);
-    //     $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Profile");
-    //     return $stmt->fetchAll();
-    // }
-
     public function findUserId($user_id) {
         $stmt = self::$connection->prepare("SELECT * FROM buyer WHERE user_id = :user_id");
         $stmt->execute(['user_id' => $user_id]);

@@ -34,5 +34,4 @@ class User extends \App\core\Model {
         $stmt = self::$connection->prepare("UPDATE user SET password_hash = :password_hash WHERE username = :username");
         $stmt->execute(['password_hash' => $this->password_hash, 'username' => $this->username]);
     }
-
 }
