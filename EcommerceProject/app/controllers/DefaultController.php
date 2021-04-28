@@ -112,7 +112,7 @@ class DefaultController extends \App\core\Controller {
                 if ($user->secret_key == null) {
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['username'] = $user->username;
-                    header('location:' . BASE . '/Seller/sellerMainPage');
+                    header('location:' . BASE . '/Default/chooseLogin');
                 } else {
                     $_SESSION['temp_user_id'] = $user->user_id;
                     $_SESSION['temp_username'] = $user->username;
