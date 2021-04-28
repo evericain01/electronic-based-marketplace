@@ -6,15 +6,15 @@ class SellerController extends \App\core\Controller {
 
     function index() {
         if (isset($_POST["action"])) {
-            // $keyword = $_POST["keyword"];
-            // $profiles = new \App\models\Profile();
-            // $profiles = $profiles->searchForUser($keyword);
-            // if ($keyword == "") {
-            //     echo "INVALID: Please input a first, middle or last name.<br><br>";
-            //     echo "<a href='" . BASE . "/Profile/index/'>&#8592 Go back</a>";
-            // } else {
-            //     $this->view('Profile/listOfProfiles', ['keyword' => $keyword, 'profiles' => $profiles]);
-            // }
+            $keyword = $_POST["keyword"];
+            $products = new \App\models\Product();
+            // $products = $products->searchForProducts($keyword);
+            if ($keyword == "") {
+                echo "INVALID: Please input a first, middle or last name.<br><br>";
+                echo "<a href='" . BASE . "/Profile/index/'>&#8592 Go back</a>";
+            } else {
+                $this->view('Seller/searchProducts', ['keyword' => $keyword, 'products' => $products]);
+            }
         } else {
             $products = new \App\models\Product();
             $products = $products->getAllProducts();

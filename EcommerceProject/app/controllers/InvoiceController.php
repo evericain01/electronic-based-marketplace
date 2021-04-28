@@ -13,7 +13,7 @@ class InvoiceController extends \App\core\Controller {
 
     function index() {
         function index() {
-            if (isset($_POST["action"])) {
+            // if (isset($_POST["action"])) {
                 // $keyword = $_POST["keyword"];
                 // $profiles = new \App\models\Profile();
                 // $profiles = $profiles->searchForUser($keyword);
@@ -23,7 +23,7 @@ class InvoiceController extends \App\core\Controller {
                 // } else {
                 //     $this->view('Profile/listOfProfiles', ['keyword' => $keyword, 'profiles' => $profiles]);
                 // }
-            } else {
+            // } else {
                 $buyer = new \App\models\Buyer();
                 $buyer = $buyer->findUserId($_SESSION['user_id']);
 
@@ -38,7 +38,7 @@ class InvoiceController extends \App\core\Controller {
     
                 $this->view('Buyer/buyerMainPage', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
                 'invoices' => $invoices]);
-            }
+            // }
         }
     
     }
@@ -62,9 +62,9 @@ class InvoiceController extends \App\core\Controller {
             $invoice->insert();
             // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
         } else {
-            // $invoice = new \App\models\Invoice();
-            // $invoice = $invoice->findUserId($_SESSION['user_id']);
-            // $this->view('Buyer/createBuyerProfile', $buyer);
+            $invoice = new \App\models\Invoice();
+            $invoice = $invoice->findUserId($_SESSION['user_id']);
+            $this->view('Buyer/createBuyerProfile', $buyer);
         }
     }
 

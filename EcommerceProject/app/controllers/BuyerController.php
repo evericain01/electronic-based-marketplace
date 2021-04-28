@@ -7,13 +7,13 @@ class BuyerController extends \App\core\Controller {
     function index() {
         if (isset($_POST["action"])) {
             $keyword = $_POST["keyword"];
-            $product = new \App\models\Product();
-            $product = $product->searchForUser($keyword);
+            $products = new \App\models\Product();
+            // $product = $product->searchForProducts($keyword);
             if ($keyword == "") {
                 echo "INVALID: no products found.<br><br>";
                 echo "<a href='" . BASE . "/Buyer/index/'>&#8592 Go back</a>";
             } else {
-                $this->view('Buyer/buyerSearch', $product);
+                $this->view('Buyer/buyerSearch', ['keyword' => $keyword, 'products' => $products]);
             }
         } else {
             $products = new \App\models\Product();
