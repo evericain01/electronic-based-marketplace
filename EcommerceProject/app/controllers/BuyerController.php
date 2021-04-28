@@ -23,7 +23,6 @@ class BuyerController extends \App\core\Controller {
             $buyer = $buyer->findUserId($_SESSION['user_id']);
 
             $this->view('Buyer/buyerMainPage', ['products' => $products, 'buyer' => $buyer]);
-            
         }
     }
 
