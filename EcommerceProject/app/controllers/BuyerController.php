@@ -8,7 +8,7 @@ class BuyerController extends \App\core\Controller {
         if (isset($_POST["action"])) {
             $keyword = $_POST["keyword"];
             $products = new \App\models\Product();
-            // $product = $product->searchForProducts($keyword);
+            $product = $product->searchProducts($keyword);
             if ($keyword == "") {
                 echo "INVALID: no products found.<br><br>";
                 echo "<a href='" . BASE . "/Buyer/index/'>&#8592 Go back</a>";

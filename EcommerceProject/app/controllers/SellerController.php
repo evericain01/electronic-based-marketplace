@@ -8,10 +8,10 @@ class SellerController extends \App\core\Controller {
         if (isset($_POST["action"])) {
             $keyword = $_POST["keyword"];
             $products = new \App\models\Product();
-            // $products = $products->searchForProducts($keyword);
+            $products = $products->searchProducts($keyword);
             if ($keyword == "") {
                 echo "INVALID: Please input a first, middle or last name.<br><br>";
-                echo "<a href='" . BASE . "/Profile/index/'>&#8592 Go back</a>";
+                echo "<a href='" . BASE . "/Seller/index/'>&#8592 Go back</a>";
             } else {
                 $this->view('Seller/searchProducts', ['keyword' => $keyword, 'products' => $products]);
             }

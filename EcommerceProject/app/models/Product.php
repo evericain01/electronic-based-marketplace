@@ -39,6 +39,13 @@ class Product extends \App\core\Model {
         return $stmt->fetch();
     }
 
+    public function searchProducts($caption) {
+        $stmt = self::$connection->prepare("SELECT * FROM product WHERE caption = :caption");
+        $stmt->execute(['caption' => $caption]);
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Product");
+        return $stmt->fetch();
+    }
+
     public function getAllProducts() {
         $stmt = self::$connection->query("SELECT * FROM products");
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Product");
