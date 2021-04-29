@@ -66,10 +66,10 @@ class Product extends \App\core\Model {
     }
 
     public function update() {
-        $stmt = self::$connection->prepare("UPDATE profile SET seller_id=:seller_id, caption=:caption,
-        filename=:filename, description=:description, quantity=:quantity, price=:price WHERE product_id=:product_id");
-        $stmt->execute(['seller_id' => $this->seller_id, 'caption' => $this->caption, 'description' => $this->description, 'quantity' => $this->quantity,
-        'price' => $this->price, 'product_id' => $this->product_id]);
+        $stmt = self::$connection->prepare("UPDATE product SET seller_id=:seller_id, caption=:caption, description=:description, quantity=:quantity, price=:price WHERE product_id=:product_id");
+        $stmt->execute(['seller_id' => $this->seller_id, 'caption' => $this->caption, 
+            'description' => $this->description, 'quantity' => $this->quantity,'price' => $this->price, 'product_id' 
+            => $this->product_id]);
     }
 
 }

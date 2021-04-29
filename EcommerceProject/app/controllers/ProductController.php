@@ -17,17 +17,17 @@ class ProductController extends \App\core\Controller {
                     $targetFile = uniqid() . ".$extension";
                     if (move_uploaded_file($_FILES['myImage']['tmp_name'], $target_folder . $targetFile)) {
                         $product = new \App\models\Product();
-                        
+
                         $seller = new \App\models\Seller();
                         $seller = $seller->findUserId($_SESSION['user_id']);
-                             
+
                         $product->seller_id = $seller->seller_id;
                         $product->caption = $_POST["caption"];
                         $product->filename = $targetFile;
                         $product->description = $_POST["description"];
                         $product->quantity = $_POST["quantity"];
                         $product->price = $_POST["price"];
-                        
+
                         $product->insert();
                         header("location:" . BASE . '/Seller/index');
                     } else {
@@ -42,19 +42,16 @@ class ProductController extends \App\core\Controller {
             $seller = new \App\models\Seller();
             $seller = $seller->findUserId($_SESSION['user_id']);
 
-            $products = new \App\models\Product();
-            $products = $products->getAllProducts();
+            $product = new \App\models\Product();
 
-            $this->view('Product/addProduct', ['products' => $products, 'seller' => $seller]);
+            $this->view('Product/addProduct', ['product' => $product, 'seller' => $seller]);
         }
     }
 
     function edit($product_id) {
+        $product = new \App\models\Product();
+        $product = $product->find($product_id);
         if (isset($_POST["action"])) {
-            $product = new \App\models\Product();
-
-            $product = $product->find($product_id);
-
             $product->caption = $_POST["caption"];
             $product->description = $_POST["description"];
             $product->filename = $_POST["filename"];
@@ -62,34 +59,22 @@ class ProductController extends \App\core\Controller {
             $product->price = $_POST["price"];
 
             $product->update();
-            header("location:" . BASE . "/Seller/index/$seller->seller_id");
+            header("location:" . BASE . "/Seller/index");
         } else {
-            $product = new \App\models\Product();
-
-            $product = $product->find($product_id);
-            $seller = $seller->find($product->product_id);
-
             $this->view('Product/editProduct', $product);
         }
     }
 
     function delete($product_id) {
-        if (isset($_POST["action"])) {
-            $product = new \App\models\Product();
-            $product = $product->find($product_id);
+        $product = new \App\models\Product();
+        $product = $product->find($product_id);
 
-            $product->delete();
-            header("location:" . BASE . "/Seller/index/$seller->seller_id");
-        } else {
-            $product = new \App\models\Product();
+        $path = getcwd() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $picture->filename;
+        unlink($path);
+        $product->delete();
 
-            $product = $product->find($product_id);
-            $seller = $seller->find($product->product_id);
-
-            // $this->view('Product/editProduct', $product);
-        }
+        header("location:" . BASE . "/Seller/index");
     }
-
 }
 
 ?>
