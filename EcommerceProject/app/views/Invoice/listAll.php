@@ -19,6 +19,13 @@
             }
             echo "<label>$invoice->timestamp</label>";
             echo "<label>$invoice->date_of_arrival</label>";
+
+            if ($invoice->timestamp >= $invoice->date_of_arrival) {
+                echo "<label>Status: Package was sent at $invoice->date_of_arrival</label>";
+            }
+            else {
+                $status = "Not yet delivered";
+            }
             }
         }
         ?>
