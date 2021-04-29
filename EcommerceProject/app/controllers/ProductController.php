@@ -4,7 +4,7 @@ namespace App\controllers;
 
 class ProductController extends \App\core\Controller {
 
-    function add($seller_id) {
+    function add() {
         if (isset($_POST["action"])) {
             if (isset($_FILES['myImage'])) {
                 $imageProperties = getimagesize($_FILES['myImage']['tmp_name']);
@@ -17,16 +17,19 @@ class ProductController extends \App\core\Controller {
                     $targetFile = uniqid() . ".$extension";
                     if (move_uploaded_file($_FILES['myImage']['tmp_name'], $target_folder . $targetFile)) {
                         $product = new \App\models\Product();
-                        $product->filename = $targetFile;
+                        
+                        $seller = new \App\models\Seller();
+                        $seller = $seller->findUserId($_SESSION['user_id']);
+                             
+                        $product->seller_id = $seller->seller_id;
                         $product->caption = $_POST["caption"];
+                        $product->filename = $targetFile;
                         $product->description = $_POST["description"];
                         $product->quantity = $_POST["quantity"];
                         $product->price = $_POST["price"];
-
-                        $product->seller_id = $seller_id;
-
+                        
                         $product->insert();
-                        header("location:" . BASE . "/Seller/index");
+                        header("location:" . BASE . '/Seller/index');
                     } else {
                         echo 'error';
                     }
@@ -42,7 +45,7 @@ class ProductController extends \App\core\Controller {
             $products = new \App\models\Product();
             $products = $products->getAllProducts();
 
-            $this->view('Product/add', ['products' => $products, 'seller' => $seller]);
+            $this->view('Product/addProduct', ['products' => $products, 'seller' => $seller]);
         }
     }
 

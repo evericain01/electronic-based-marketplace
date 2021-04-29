@@ -21,13 +21,13 @@ class DefaultController extends \App\core\Controller {
                     return;
                 }
                 //log in automatically after registration
-                $_SESSION['user_id'] = $user->user_id;            
+                $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['username'] = $user->username;
 
                 if (isset($_POST['twofasetup'])) {
                     header('location:' . BASE . '/Default/twofasetup');
                 } else
-                    // header('location:' . BASE . '/Default/chooseProfile');
+                // header('location:' . BASE . '/Default/chooseProfile');
                     $this->view('Default/chooseProfile');
             } else
                 header('location:' . BASE . '/Default/register?error=Passwords do not match!'); //reload
@@ -59,7 +59,7 @@ class DefaultController extends \App\core\Controller {
         }
     }
 
-    function editPassword() {
+    function editBuyerPassword() {
         $user = new \App\models\User();
         $user = $user->find($_SESSION['username']);
 
@@ -71,28 +71,56 @@ class DefaultController extends \App\core\Controller {
                         $user->password_hash = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
                         $user->update($_SESSION['username']);
                         echo "Password Successfully Changed!<br><br>";
-                        echo "<a href = '" . BASE . "/Profile/index' >&#8592 Go Back to Wall</a>";
+                        echo "<a href = '" . BASE . "/Buyer/index' >&#8592 Go Back to Home Page</a>";
                     } else {
                         echo "Password does not match.<br><br>";
-                        echo "<a href = '" . BASE . "/Default/editPassword' >&#8592 Go Back to Change Password</a>";
+                        echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 Go Back to Change Password</a>";
                     }
                 } else {
                     echo "Invalid old password.<br><br>";
-                    echo "<a href = '" . BASE . "/Default/editPassword' >&#8592 Go Back to Change Password</a>";
+                    echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 Go Back to Change Password</a>";
                 }
             } else {
                 echo "Input a new password.<br><br>";
-                echo "<a href = '" . BASE . "/Default/editPassword' >&#8592 Go Back to Change Password</a>";
+                echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 Go Back to Change Password</a>";
             }
         } else {
-            $this->view('Profile/changePassword');
+            $this->view('Buyer/changeBuyerPassword');
+        }
+    }
+
+    function editSellerPassword() {
+        $user = new \App\models\User();
+        $user = $user->find($_SESSION['username']);
+
+        if (isset($_POST["action"])) {
+            if ($_POST["oldPassword"] != "") {
+                if (password_verify($_POST['oldPassword'], $user->password_hash)) {
+
+                    if ($_POST['newPassword'] == $_POST['reTypePassword']) {
+                        $user->password_hash = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
+                        $user->update($_SESSION['username']);
+                        echo "Password Successfully Changed!<br><br>";
+                        echo "<a href = '" . BASE . "/Seller/index' >&#8592 Go Back to Home Page</a>";
+                    } else {
+                        echo "Password does not match.<br><br>";
+                        echo "<a href = '" . BASE . "/Default/editSellerPassword' >&#8592 Go Back to Change Password</a>";
+                    }
+                } else {
+                    echo "Invalid old password.<br><br>";
+                    echo "<a href = '" . BASE . "/Default/editSellerPassword' >&#8592 Go Back to Change Password</a>";
+                }
+            } else {
+                echo "Input a new password.<br><br>";
+                echo "<a href = '" . BASE . "/Default/editSellerPassword' >&#8592 Go Back to Change Password</a>";
+            }
+        } else {
+            $this->view('Seller/changeSellerPassword');
         }
     }
 
     // Use: /Default/makeQRCode?data=protocol://address
     function makeQRCode() {
-
-
         $data = $_GET['data'];
         \QRcode::png($data);
     }
@@ -107,12 +135,13 @@ class DefaultController extends \App\core\Controller {
 
             if ($user != null &&
                     password_verify($_POST['password'], $user->password_hash)) {
-                //log in the user.....
+                //log in the user.....D
                 //remember that user is logged in....
                 if ($user->secret_key == null) {
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['username'] = $user->username;
-                    header('location:' . BASE . '/Default/chooseLogin');
+                    $this->view('Default/chooseLogin');
+//                    header('location:' . BASE . '/Default/chooseLogin');
                 } else {
                     $_SESSION['temp_user_id'] = $user->user_id;
                     $_SESSION['temp_username'] = $user->username;
@@ -135,14 +164,13 @@ class DefaultController extends \App\core\Controller {
                 $_SESSION['user_id'] = $_SESSION['temp_user_id'];
                 $_SESSION['username'] = $_SESSION['temp_username'];
                 $_SESSION['temp_secret_key'] = '';
-                header('location:' . BASE . '/Profile/currentWall');
+                header('location:' . BASE . '/Default/chooseLogin');
             } else {
                 session_destroy();
-                header('location:' . BASE . '/Default/login?error=Username/password mismatch!'); //reload
+                header('location:' . BASE . '/Default/login?error=Username/password mismatch!');
             }
         } else {
-            $this->view
-                    ('Login/validateLogin');
+            $this->view('Login/validateLogin');
         }
     }
 

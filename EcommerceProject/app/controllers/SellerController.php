@@ -23,8 +23,6 @@ class SellerController extends \App\core\Controller {
             $seller = $seller->findUserId($_SESSION['user_id']);
 
             $this->view('Seller/sellerMainPage', ['products' => $products, 'seller' => $seller]);
-            
-            var_dump($_SESSION['user_id']);
         }
     }
 

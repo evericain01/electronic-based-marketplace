@@ -56,7 +56,8 @@ class Product extends \App\core\Model {
         $stmt = self::$connection->prepare("INSERT INTO product(seller_id, caption, filename, description, quantity, price) 
         VALUES (:seller_id, :caption, :filename, :description, :quantity, :price)");
         $stmt->execute(['seller_id' => $this->seller_id, 'caption' =>
-            $this->caption, 'description' => $this->description, 'quantity' => $this->quantity, 'price' => $this->price]);
+            $this->caption, 'filename' => $this->filename, 'description' => $this->description,
+            'quantity' => $this->quantity, 'price' => $this->price]);
     }
 
     public function delete() {
