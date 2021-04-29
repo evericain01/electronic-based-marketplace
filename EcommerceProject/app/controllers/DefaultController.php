@@ -126,17 +126,12 @@ class DefaultController extends \App\core\Controller {
     }
 
     function login() {
-        //2 cases: with or without 2-FA
         if (isset($_POST['action'])) {
             $user = new \App\models\User();
             $user = $user->find(
-                    $_POST['username']);
-            //if the password matches the password_hash
+            $_POST['username']);
 
-            if ($user != null &&
-                    password_verify($_POST['password'], $user->password_hash)) {
-                //log in the user.....D
-                //remember that user is logged in....
+            if ($user != null && password_verify($_POST['password'], $user->password_hash)) {
                 if ($user->secret_key == null) {
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['username'] = $user->username;
@@ -150,7 +145,7 @@ class DefaultController extends \App\core\Controller {
                     header('location:' . BASE . '/Default/validateLogin');
                 }
             } else
-                header('location:' . BASE . '/Default/login?error=Username/password mismatch!'); //reload
+                header('location:' . BASE . '/Default/login?error=Username/password mismatch!');
         } else {
             $this->view('Login/login');
         }
@@ -158,7 +153,7 @@ class DefaultController extends \App\core\Controller {
 
     function validateLogin() {
         if (isset(
-                        $_POST['action'])) {//the user is submitting the code
+         $_POST['action'])) {
             $currentcode = $_POST['currentCode'];
             if (\App\core\TokenAuth::verify($_SESSION['temp_secret_key'], $currentcode)) {
                 $_SESSION['user_id'] = $_SESSION['temp_user_id'];

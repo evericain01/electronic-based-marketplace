@@ -42,21 +42,22 @@ class BuyerController extends \App\core\Controller {
         }
     }
 
-    function editProfile() {
+    function updateBudget() {
         if (isset($_POST["action"])) {
             $buyer = new \App\models\Buyer();
-            $buyer->user_id = $_SESSION['user_id'];
-            $buyer->first_name = $_POST["first_name"];
+            $buyer = $buyer->findUserId($_SESSION['user_id']);
+            $buyer->first_name = $buyer->first_name;
             $buyer->budget = $_POST["budget"];
-            $buyer->last_name = $_POST["last_name"];
-            $buyer->insert();
+            $buyer->last_name = $buyer->last_name;
+            $buyer->update();
             header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
         } else {
             $buyer = new \App\models\Buyer();
             $buyer = $buyer->findUserId($_SESSION['user_id']);
-            $this->view('Buyer/editProfile', $buyer);
+            $this->view('Buyer/modifyBudget', $buyer);
         }
     }
+
 }
 
 ?>
