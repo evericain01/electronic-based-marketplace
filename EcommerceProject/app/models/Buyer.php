@@ -48,7 +48,7 @@ class Buyer extends \App\core\Model {
     }
 
     public function update() {
-        $stmt = self::$connection->prepare("UPDATE profile SET first_name=:first_name, last_name=:last_name,
+        $stmt = self::$connection->prepare("UPDATE buyer SET first_name=:first_name, last_name=:last_name,
         budget=:budget WHERE buyer_id=:buyer_id");
         $stmt->execute(['first_name' => $this->first_name, 'last_name' => $this->last_name,
             'budget' => $this->budget, 'buyer_id' => $this->buyer_id]);

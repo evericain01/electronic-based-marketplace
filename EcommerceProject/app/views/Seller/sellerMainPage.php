@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Wall</title>
+        <title>Seller Main Page</title>
     </head>
     <body>
         <style>
@@ -13,7 +13,7 @@
         echo "<h2>Welcome, " . $data['seller']->first_name .
         " " . $data['seller']->last_name . "! <h3>(<u>Company Name: " . $data['seller']->brand_name . "</u></h3>)</h2>$tabRepeat";
 
-echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> Logout</a>";
+        echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> Logout</a>";
         echo "<a href='" . BASE . "/Default/editSellerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
         
         $seller_id = $data['seller']->seller_id;

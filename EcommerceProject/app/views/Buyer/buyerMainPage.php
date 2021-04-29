@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Wall</title>
+        <title>Buyer Main Page</title>
     </head>
     <body>
         <style>
@@ -14,8 +14,11 @@
         echo "<h2>Welcome to the Market, " . $data['buyer']->first_name .
         " " . $data['buyer']->last_name . "! </h2>$tabRepeat";
 
-        echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> Logout</a>";
+        echo "<a href='" . BASE . "/Default/logout' style='display:inline; float:right;'> Logout</a>";
         echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
+        echo "<b>Wallet:</b> " . "$" . $data['buyer']->budget;
+        echo "<br><a href='" . BASE . "/Buyer/updateBudget' style='font-size: 13px;'>[EDIT WALLET] </a>";
+        echo "<br><br>";
 
         echo "<form method='post' action=''>";
         echo "<label>Search for a product: <input type='text' name='keyword'/> </label>";
@@ -23,7 +26,6 @@
         echo "</form>";
         
         echo "<h3>Viewing all products available:</h3><br><br>";
-
 
         foreach ($data['products'] as $product) {
                 echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
