@@ -28,12 +28,17 @@
         echo "<h3>Viewing all products available:</h3><br><br>";
 
         foreach ($data['products'] as $product) {
-                echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
-                echo "<label><b>$product->caption</b></label> ";
-                echo "<label>(<i>$product->description</i>)</label><br>";
-                echo "<label>$$product->price CAD</label><br>";
-                echo "<label>[STOCK: $product->quantity]</label><br>";
-                echo "<a href='" . BASE . "/Cart/addToCart/$product->product_id'>ADD TO CART</a><br><br><br><br>";
+            foreach ($data['sellers'] as $sellers) {
+                if ($product->seller_id == $product->seller_id) {
+                    echo "<label><b>$seller->brand</b></label> ";
+                    echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
+                    echo "<label><b>$product->caption</b></label> ";
+                    echo "<label>(<i>$product->description</i>)</label><br>";
+                    echo "<label>$$product->price CAD</label><br>";
+                    echo "<label>[STOCK: $product->quantity]</label><br>";
+                    echo "<a href='" . BASE . "/Cart/addToCart/$product->product_id'>ADD TO CART</a><br><br><br><br>";
+                }
+            }
         }
         ?>
     </body>
