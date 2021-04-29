@@ -3,10 +3,12 @@
         <title>Choosing the type of profile</title>
     </head>
     <body>
-        <label>Create Profile</label><br />
+        <label>Create Profile Type:</label><br /> <br />
 
-        <a href="<?= BASE ?>/Buyer/createProfile">Buyer</a>
-        <a href="<?= BASE ?>/Seller/createProfile">Seller</a>
+        Create a buyer profile:
+        <a href="<?= BASE ?>/Buyer/createProfile">Become a Buyer</a> <br />
+        Create a seller profile:
+        <a href="<?= BASE ?>/Seller/createProfile">Become a Seller</a>
 
     </body>
 </html>

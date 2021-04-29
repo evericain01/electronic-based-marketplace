@@ -3,22 +3,35 @@
         <title>Wall</title>
     </head>
     <body>
-        <form method="post" action="">
-            <label>Search for product: <input type="text" name="keyword"/></label><br />
-        </form>
+        <style>
+            h2, h3{ 
+                display: inline;
+            }
+        </style>
+
         <?php
         $tabRepeat = str_repeat("&emsp;", 8);
-        echo "<br><h2>Welcome to the Market, " . $data['buyer']->first_name .
-        " " . $data['buyer']->last_name . "! </h2><br><br>$tabRepeat";
+        echo "<h2>Welcome to the Market, " . $data['buyer']->first_name .
+        " " . $data['buyer']->last_name . "! </h2>$tabRepeat";
+
+        echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> Logout</a>";
+        echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
+
+        echo "<form method='post' action=''>";
+        echo "<label>Search for a product: <input type='text' name='keyword'/> </label>";
+        echo "<input type='submit' name='action' value='Search!'/><br><br><br>";
+        echo "</form>";
         
-        echo "<a href='" . BASE . "/Default/editBuyerPassword'>Change Password </a>&#124;";
-        
-        echo "<a href='" . BASE . "/Default/logout'> Logout</a><br><br>";
-        
+        echo "<h3>Viewing all products available:</h3><br><br>";
+
+
         foreach ($data['products'] as $product) {
-            echo "<label>$product->caption</label>";
-            echo "<label>$product->description</label>";
-            echo "<label>$product->price</label>";
+                echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
+                echo "<label><b>$product->caption</b></label> ";
+                echo "<label>(<i>$product->description</i>)</label><br>";
+                echo "<label>$$product->price CAD</label><br>";
+                echo "<label>[STOCK: $product->quantity]</label><br>";
+                echo "<a href='" . BASE . "/Cart/addToCart/$product->product_id'>ADD TO CART</a><br><br><br><br>";
         }
         ?>
     </body>

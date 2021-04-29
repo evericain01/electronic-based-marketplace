@@ -13,8 +13,8 @@
         echo "<h2>Welcome, " . $data['seller']->first_name .
         " " . $data['seller']->last_name . "! <h3>(<u>Company Name: " . $data['seller']->brand_name . "</u></h3>)</h2>$tabRepeat";
 
-        echo "<a href='" . BASE . "/Default/editSellerPassword'>Change Password </a>&#124;";
-        echo "<a href='" . BASE . "/Default/logout'> Logout</a><br>";
+echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> Logout</a>";
+        echo "<a href='" . BASE . "/Default/editSellerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
         
         $seller_id = $data['seller']->seller_id;
         echo "<br><a href='" . BASE . "/Product/add/$seller_id'>ADD A PRODUCT</a><br><br>";
@@ -23,7 +23,7 @@
     
         foreach ($data['products'] as $product) {
             if ($product->seller_id == $data['seller']->seller_id) {
-                echo "<img src='" . BASE . "/uploads/$product->filename' width='300' height='200'/><br><br>";
+                echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
                 echo "<label><b>$product->caption</b></label> ";
                 echo "<label>(<i>$product->description</i>)</label><br>";
                 echo "<label>$$product->price CAD</label><br>";
