@@ -30,7 +30,7 @@
         foreach ($data['products'] as $product) {
             foreach ($data['sellers'] as $sellers) {
                 if ($product->seller_id == $product->seller_id) {
-                    echo "<label><b>$seller->brand</b></label> ";
+                    echo "<label><b>$sellers->brand_name</b></label> ";
                     echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
                     echo "<label><b>$product->caption</b></label> ";
                     echo "<label>(<i>$product->description</i>)</label><br>";
