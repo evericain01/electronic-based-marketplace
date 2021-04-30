@@ -16,10 +16,11 @@
                         echo "<label>($product->description)</label><br>";
                         echo "<label>$$product->price CAD</label><br>";
                         echo "<label>[STOCK: $product->quantity]</label><br>";
-                        echo "<a href='" . BASE . "/Cart/addToCart/$product->product_id'>ADD TO CART</a><br><br><br><br>";
                     }
                 }
             }
+            $buyer_id = $data['buyer']->buyer_id;
+            echo "<a href='" . BASE . "/Cart/checkout/$buyer_id'>CHECKOUT</a><br><br><br><br>";
             ?>
     </body>
 </html>

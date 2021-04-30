@@ -20,9 +20,8 @@ class Cart extends \App\core\Model {
 
     public function insert() {
         $stmt = self::$connection->prepare("INSERT INTO cart(buyer_id, product_id) 
-        VALUES (:buyer_id, product_id)");
-        $stmt->execute(['buyer_id' => $this->buyer_id, 'product_id' =>
-            $this->product_id]);
+        VALUES (:buyer_id, :product_id)");
+        $stmt->execute(['buyer_id' => $this->buyer_id, 'product_id' =>$this->product_id]);
     }
 
     public function delete() {

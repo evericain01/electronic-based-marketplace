@@ -10,6 +10,7 @@
         </style>
 
         <?php
+       
         $tabRepeat = str_repeat("&emsp;", 8);
         echo "<h2>Welcome to the Market, " . $data['buyer']->first_name .
         " " . $data['buyer']->last_name . "! </h2>$tabRepeat";
@@ -18,7 +19,7 @@
         echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
         echo "<b>Wallet:</b> " . "$" . $data['buyer']->budget;
         echo " <a href='" . BASE . "/Buyer/updateBudget' style='font-size: 13px;'>[EDIT WALLET] </a>";
-        echo " <a href='" . BASE . "/Buyer/viewOrders' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
+        echo " <a href='" . BASE . "/Invoice/index' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
         echo " <a href='" . BASE . "/Cart/index' style='font-size: 20px; display:inline; float:right;'>View Your Cart &#124;</a><br>";
         echo "<br><br>";
 
@@ -29,6 +30,7 @@
         
         echo "<h3>Viewing all products available:</h3><br><br>";
 
+        
         foreach ($data['products'] as $product) {
             foreach ($data['sellers'] as $sellers) {
                 if ($product->seller_id == $product->seller_id) {
