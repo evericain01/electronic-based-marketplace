@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Wall</title>
+        <title>Invoice</title>
     </head>
     <body>
         <form method="post" action="">

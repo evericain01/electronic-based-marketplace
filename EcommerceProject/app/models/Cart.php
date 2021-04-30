@@ -11,39 +11,9 @@ class Cart extends \App\core\Model {
         parent::__construct();
     }
 
-    public function find($product_id) {
-        $stmt = self::$connection->prepare("SELECT * FROM buyer WHERE product_id = :productproduct_id_id");
-        $stmt->execute(['product_id' => $product_id]);
-        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
-        return $stmt->fetch();
-    }
-
-    public function findCart($product_id) {
-        $stmt = self::$connection->prepare("SELECT * FROM buyer WHERE product_id = :productproduct_id_id");
-        $stmt->execute(['product_id' => $product_id]);
-        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
-        return $stmt->fetch();
-    }
-
-    // public function searchForSeller($keyword) {
-    //     $stmt = self::$connection->prepare("SELECT * FROM profile WHERE first_name LIKE :first_name "
-    //             . "OR last_name LIKE :last_name OR middle_name LIKE :middle_name");
-    //     $keyword = "%$keyword%";
-    //     $stmt->execute(['first_name' => $keyword, 'last_name' => $keyword, 'middle_name' => $keyword]);
-    //     $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Profile");
-    //     return $stmt->fetchAll();
-    // }
-
-    // public function findUserId($user_id) {
-    //     $stmt = self::$connection->prepare("SELECT * FROM buyer WHERE user_id = :user_id");
-    //     $stmt->execute(['user_id' => $user_id]);
-    //     $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Buyer");
-    //     return $stmt->fetch();
-    // }
-
-    public function getAll($buyer_id) {
-        $stmt = self::$connection->query("SELECT * FROM cart WHERE buyer_id=:buyer_id");
-        $stmt->execute(['buyer_id' => $this->buyer_id]);
+    public function getAllCartProducts($buyer_id) {
+        $stmt = self::$connection->prepare("SELECT * FROM cart WHERE buyer_id = :buyer_id");
+        $stmt->execute(['buyer_id' => $buyer_id]);
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
         return $stmt->fetchAll();
     }
@@ -60,7 +30,9 @@ class Cart extends \App\core\Model {
         $stmt->execute(['product_id' => $this->product_id]);
     }
 
-    public function checkout() {
-        $stmt = self::$connection->query("DELETE from cart");
+   public function checkout($buyer_id) {
+        $stmt = self::$connection->prepare("DELETE from cart WHERE buyer_id = :buyer_id");
+        $stmt->execute(['buyer_id' => $this->buyer_id]);
     }
+
 }

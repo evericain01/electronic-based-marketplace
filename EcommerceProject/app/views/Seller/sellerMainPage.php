@@ -11,9 +11,9 @@
         <?php
         $tabRepeat = str_repeat("&emsp;", 8);
         echo "<h2>Welcome, " . $data['seller']->first_name .
-        " " . $data['seller']->last_name . "! <h3>(<u>Company Name: " . $data['seller']->brand_name . "</u></h3>)</h2>$tabRepeat";
+        " " . $data['seller']->last_name . "! <h3>(<i><u>Company Name: " . $data['seller']->brand_name . "</u></i></h3>)</h2>$tabRepeat";
 
-        echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> Logout</a>";
+        echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> &#124; Logout</a>";
         echo "<a href='" . BASE . "/Default/editSellerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
         
         $seller_id = $data['seller']->seller_id;
@@ -25,11 +25,11 @@
             if ($product->seller_id == $data['seller']->seller_id) {
                 echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
                 echo "<label><b>$product->caption</b></label> ";
-                echo "<label>(<i>$product->description</i>)</label><br>";
+                echo "<label>($product->description)</label><br>";
                 echo "<label>$$product->price CAD</label><br>";
                 echo "<label>[STOCK: $product->quantity]</label><br>";
                 echo "<a href='" . BASE . "/Product/edit/$product->product_id'>EDIT</a> &#124 ";
-                echo "<a href='" . BASE . "/Product/delete/$product->product_id'>DELETE</a><br><br><br><br>";
+                echo "<a href='" . BASE . "/Product/delete/$product->product_id'>REMOVE</a><br><br><br><br>";
             }
         }
         ?>

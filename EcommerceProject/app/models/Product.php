@@ -47,8 +47,17 @@ class Product extends \App\core\Model {
         return $stmt->fetchAll();
     }
 
+    
+    
     public function getAllProducts() {
         $stmt = self::$connection->query("SELECT * FROM product");
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Product");
+        return $stmt->fetchAll();
+    }
+    
+    public function getAllProductsWithId($buyer_id) {
+        $stmt = self::$connection->prepare("SELECT * FROM cart WHERE buyer_id = :buyer_id");
+        $stmt->execute(['buyer_id' => $buyer_id]);
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Product");
         return $stmt->fetchAll();
     }

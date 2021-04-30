@@ -5,25 +5,13 @@ namespace App\controllers;
 class SellerController extends \App\core\Controller {
 
     function index() {
-        if (isset($_POST["action"])) {
-            $keyword = $_POST["keyword"];
-            $products = new \App\models\Product();
-            $products = $products->searchProducts($keyword);
-            if ($keyword == "") {
-                echo "INVALID: Please input a first, middle or last name.<br><br>";
-                echo "<a href='" . BASE . "/Seller/index/'>&#8592 Go back</a>";
-            } else {
-                $this->view('Seller/searchProducts', ['keyword' => $keyword, 'products' => $products]);
-            }
-        } else {
-            $products = new \App\models\Product();
-            $products = $products->getAllProducts();
+        $products = new \App\models\Product();
+        $products = $products->getAllProducts();
 
-            $seller = new \App\models\Seller();
-            $seller = $seller->findUserId($_SESSION['user_id']);
+        $seller = new \App\models\Seller();
+        $seller = $seller->findUserId($_SESSION['user_id']);
 
-            $this->view('Seller/sellerMainPage', ['products' => $products, 'seller' => $seller]);
-        }
+        $this->view('Seller/sellerMainPage', ['products' => $products, 'seller' => $seller]);
     }
 
     function createProfile() {
@@ -57,6 +45,7 @@ class SellerController extends \App\core\Controller {
             $this->view('Seller/editSeller', $seller);
         }
     }
+
 }
 
 ?>

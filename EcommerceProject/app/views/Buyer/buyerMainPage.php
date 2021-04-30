@@ -14,10 +14,12 @@
         echo "<h2>Welcome to the Market, " . $data['buyer']->first_name .
         " " . $data['buyer']->last_name . "! </h2>$tabRepeat";
 
-        echo "<a href='" . BASE . "/Default/logout' style='display:inline; float:right;'> Logout</a>";
+        echo "<a href='" . BASE . "/Default/logout' style='display:inline; float:right;'> &#124; Logout</a>";
         echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
         echo "<b>Wallet:</b> " . "$" . $data['buyer']->budget;
-        echo "<br><a href='" . BASE . "/Buyer/updateBudget' style='font-size: 13px;'>[EDIT WALLET] </a>";
+        echo " <a href='" . BASE . "/Buyer/updateBudget' style='font-size: 13px;'>[EDIT WALLET] </a>";
+        echo " <a href='" . BASE . "/Buyer/viewOrders' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
+        echo " <a href='" . BASE . "/Cart/index' style='font-size: 20px; display:inline; float:right;'>View Your Cart &#124;</a><br>";
         echo "<br><br>";
 
         echo "<form method='post' action=''>";
@@ -30,10 +32,10 @@
         foreach ($data['products'] as $product) {
             foreach ($data['sellers'] as $sellers) {
                 if ($product->seller_id == $product->seller_id) {
-                    echo "<label><b>$sellers->brand_name</b></label> ";
                     echo "<img src='" . BASE . "/uploads/$product->filename' width='250' height='200'/><br><br>";
+                    echo "<label><b><i>Sold by: </b>$sellers->brand_name</i></label><br><br>";
                     echo "<label><b>$product->caption</b></label> ";
-                    echo "<label>(<i>$product->description</i>)</label><br>";
+                    echo "<label>($product->description)</label><br>";
                     echo "<label>$$product->price CAD</label><br>";
                     echo "<label>[STOCK: $product->quantity]</label><br>";
                     echo "<a href='" . BASE . "/Cart/addToCart/$product->product_id'>ADD TO CART</a><br><br><br><br>";

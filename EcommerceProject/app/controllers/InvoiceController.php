@@ -60,11 +60,11 @@ class InvoiceController extends \App\core\Controller {
             $invoice->date_of_arrival = dateHelper();
 
             $invoice->insert();
-            // header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
-        } else {
-            $invoice = new \App\models\Invoice();
-            $invoice = $invoice->findUserId($_SESSION['user_id']);
-            $this->view('Buyer/createBuyerProfile', $buyer);
+            // } else {
+            //     $invoice = new \App\models\Invoice();
+            //     $invoice = $invoice->findUserId($_SESSION['user_id']);
+            //     $this->view('Buyer/createBuyerProfile', $buyer);
+            // }
         }
     }
 
