@@ -18,29 +18,26 @@ class CartController extends \App\core\Controller {
         $cart = $cart->getAllCartProducts($buyer->buyer_id);
         $products = $products->getAllProducts();
 
-        $this->view('Cart/showCart', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+        $this->view('Cart/showCart', ['cart' => $cart, 'buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
     }
 
     function addToCart($product_id) {
         $product = new \App\models\Product();
         $product = $product->find($product_id);
+
+        $products = new \App\models\Product();
+        $products = $products->getAllProducts();
+        
+        $buyer = new \App\models\Buyer();
+        $buyer = $buyer->findUserId($_SESSION['user_id']);
+
+        $sellers = new \App\models\Seller();
+        $sellers = $sellers->getAllSellers();
+
+        $cart = new \App\models\Cart();
+        $cart->product_id = $product_id;
+        $cart->buyer_id = $buyer->buyer_id;
         if ($product->quantity > 0) {
-            $buyer = new \App\models\Buyer();
-            $buyer = $buyer->findUserId($_SESSION['user_id']);
-
-            $products = new \App\models\Product();
-            $products = $products->getAllProducts();
-
-            $product = new \App\models\Product();
-            $product = $product->find($product_id);
-
-            $sellers = new \App\models\Seller();
-            $sellers = $sellers->getAllSellers();
-
-            $cart = new \App\models\Cart();
-            $cart->product_id = $product_id;
-            $cart->buyer_id = $buyer->buyer_id;
-
             $product->quantity -= 1;
 
             $product->update();
@@ -53,30 +50,37 @@ class CartController extends \App\core\Controller {
     }
 
     function removeFromCart($product_id) {
-//        if (isset($_POST["action"])) {
-
-
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->findUserId($_SESSION['user_id']);
 
         $product = new \App\models\Product();
-        $product = $product->find($product->product_id);
-        var_dump($product);
+        $product = $product->find($product_id);
+
         $product->quantity += 1;
 
         $cart = new \App\models\Cart();
-        $cart = $cart->find($buyer->buyer_id, $product->product_id);
+        $carts  = new \App\models\Cart();
+        
+        $carts = $cart->getAllCartProducts($buyer->$buyer_id);
+
+        $total = 0;
+        
+        foreach ($carts as $cartProducts) {
+            if ($cartProducts->product_id == $product_id) {
+                $total++;
+            }
+        }
+        
+        $product->quantity += $total;
+        
+        
+        $cart = $cart->find($buyer->buyer_id, $product_id);
+
 
         $product->update();
         $cart->delete();
-        header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
-//        } else {
-//            $cart = new \App\models\Cart();
-//            $buyer = new \App\models\Buyer();
-//            $buyer = $buyer->findUserId($_SESSION['user_id']);
-//            $cart = $cart->find($buyer->buyer_id, $product->product_id);
-//            $this->view('Buyer/buyerMainPage', $buyer);
-//        }
+        header("location:" . BASE . "/Buyer/index");
+
     }
 
     function checkout($buyer_id) {

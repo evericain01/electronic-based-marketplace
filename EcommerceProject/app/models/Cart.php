@@ -25,8 +25,8 @@ class Cart extends \App\core\Model {
     }
 
     public function delete() {
-        $stmt = self::$connection->prepare("DELETE from cart WHERE product_id=:product_id");
-        $stmt->execute(['product_id' => $this->product_id]);
+        $stmt = self::$connection->prepare("DELETE from cart WHERE product_id=:product_id AND buyer_id=:buyer_id");
+        $stmt->execute(['product_id' => $this->product_id, 'buyer_id' => $this->buyer_id]);
     }
 
     public function find($buyer_id, $product_id) {
