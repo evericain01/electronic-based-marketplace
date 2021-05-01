@@ -3,6 +3,7 @@
 namespace App\controllers;
 
 use DateTime;
+use DateTimeZone;
 use DateInterval;
 
 class CartController extends \App\core\Controller {
@@ -113,13 +114,13 @@ class CartController extends \App\core\Controller {
         header("location:" . BASE . "/Cart/index");
     }
 
-    function dateHelper() {
-        $date = new DateTime($datetime, new DateTimezone("UTC"));
-        $time_zone = date_default_timezone_set('America/Toronto');
-        $diff1Week = new DateInterval('P1W');
+    function dateHelper($datetime) {
+        $date = new DateTime($datetime, new DateTimeZone("UTC"));
+        $time_zone = new DateTimeZone(date_default_timezone_get());
+        $diff1Week = new DateInterval('P2Y4DT6H8M');
         // $current = new DateTime('d-m-y');
         $date->setTimeZone($time_zone);
-        $date_of_arrival = $date . add($diff1Week);
+        $date_of_arrival = $date->add($diff1Week);
         return $date_of_arrival;
     }
 
@@ -162,7 +163,7 @@ class CartController extends \App\core\Controller {
                         $invoice->buyer_id = $buyer->buyer_id;
                         $invoice->seller_id = $seller->seller_id;
                         $invoice->product_id = $currentProduct->product_id;
-                        $invoice->date_of_arrival = $this->dateHelper();
+                        $invoice->date_of_arrival = $this->dateHelper($invoice->date_of_arrival);
 
                         $invoice->insert();
                     }
