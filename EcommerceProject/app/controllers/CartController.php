@@ -26,7 +26,8 @@ class CartController extends \App\core\Controller {
         foreach ($cart as $carts) {
             foreach ($products as $product) {
                 if ($carts->product_id == $product->product_id) {
-                    $total += $product->price;
+                    $item_quantity = $carts->product_quantity;
+                    $total += $product->price * $item_quantity;
                     break;
                 }
             }
@@ -138,7 +139,8 @@ class CartController extends \App\core\Controller {
         foreach ($cart as $carts) {
             foreach ($product as $products) {
                 if ($carts->product_id == $products->product_id) {
-                    $total += $products->price;
+                    $item_quantity = $carts->product_quantity;
+                    $total += $products->price * $item_quantity;
                     break;
                 }
             }
@@ -169,10 +171,10 @@ class CartController extends \App\core\Controller {
             $buyer->update();
             $cart->checkout();
 
-            $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
+            $this->view('Invoice/listAll', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers, 'total' => $total, 'cart' => $cart]);
         } else {
-            $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
-            echo "Money on account is not enough";
+            echo '<span style="color:#E90E0A;text-align:center;"><b>Not enough money in account!</b></span>';
+            $this->view('Cart/showCart', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers, 'total' => $total, 'cart' => $cart]);  
         }
     }
 

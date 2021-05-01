@@ -4,18 +4,18 @@
     </head>
     <body>
         <style>
-            h2, h3{ 
+            h1, h2, h3{ 
                 display: inline;
             }
         </style>
 
         <?php
-        echo "<h2>Welcome to the Market, " . $data['buyer']->first_name .
-        " " . $data['buyer']->last_name . "! </h2>";
+        echo "<h1>Welcome to the Market, " . $data['buyer']->first_name .
+        " " . $data['buyer']->last_name . "! </h1>";
 
         echo "<a href='" . BASE . "/Default/logout' style='display:inline; float:right;'> &#124; Logout</a>";
-        echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";
-        echo "<b>Wallet:</b> " . "$" . $data['buyer']->budget;
+        echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br><br>";
+        echo "<h3><u>Wallet: " . "<b>$" . $data['buyer']->budget . "</b></u></h3>";
         echo " <a href='" . BASE . "/Buyer/updateBudget' style='font-size: 13px;'>[EDIT WALLET] </a>";
         echo " <a href='" . BASE . "/Invoice/index' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
         echo " <a href='" . BASE . "/Cart/index' style='font-size: 20px; display:inline; float:right;'>View Your Cart &#124;</a><br>";

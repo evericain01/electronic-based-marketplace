@@ -6,7 +6,7 @@
         <?php
         echo '<b>Results for search, "<i>' . $data['keyword'] . '</i>":</b><br><br><br>';
         foreach ($data['products'] as $products) {
-                echo "<img src='" . BASE . "/uploads/$products->filename' width='250' height='200'/><br><br>";
+                echo "<img src='" . BASE . "/uploads/$products->filename' width='120' height='90'/><br><br>";
                 echo "<b>$products->caption</b> ";
                 echo "(<i>$products->description</i>)<br>";
                 echo "$$products->price CAD<br>";
@@ -17,7 +17,7 @@
         if (empty($products)) {
             echo 'No products contains the value, "' . $data['keyword'] . '". (Please input a valid product caption (name),)';
         }
-        echo "<br><br><br>";
+        echo "<br>";
         ?>
 
         <a href="<?= BASE ?>/Buyer/index">&#8592 Go Back to Home Page</a>
