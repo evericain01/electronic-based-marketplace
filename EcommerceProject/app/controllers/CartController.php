@@ -22,26 +22,31 @@ class CartController extends \App\core\Controller {
     }
 
     function addToCart($product_id) {
-        $buyer = new \App\models\Buyer();
-        $buyer = $buyer->findUserId($_SESSION['user_id']);
-
-        $products = new \App\models\Product();
-        $products = $products->getAllProducts();
-
-        $sellers = new \App\models\Seller();
-        $sellers = $sellers->getAllSellers();
-
-        $cart = new \App\models\Cart();
-        $cart->product_id = $product_id;
-        $cart->buyer_id = $buyer->buyer_id;
-
         $product = new \App\models\Product();
         $product = $product->find($product_id);
-        $product->quantity -= 1;
+        if ($product->quantity > 0) {
+            $buyer = new \App\models\Buyer();
+            $buyer = $buyer->findUserId($_SESSION['user_id']);
 
-        $product->update();
+            $products = new \App\models\Product();
+            $products = $products->getAllProducts();
 
-        $cart->insert();
+            $sellers = new \App\models\Seller();
+            $sellers = $sellers->getAllSellers();
+
+            $cart = new \App\models\Cart();
+            $cart->product_id = $product_id;
+            $cart->buyer_id = $buyer->buyer_id;
+
+            $product->quantity -= 1;
+
+            $product->update();
+            $cart->insert();
+        }
+        else {
+            $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+            echo "No more stock of this product";
+        }
         $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
     }
 
