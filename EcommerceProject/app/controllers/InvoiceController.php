@@ -12,35 +12,20 @@ class InvoiceController extends \App\core\Controller {
     }
 
     function index() {
-        function index() {
-            // if (isset($_POST["action"])) {
-                // $keyword = $_POST["keyword"];
-                // $profiles = new \App\models\Profile();
-                // $profiles = $profiles->searchForUser($keyword);
-                // if ($keyword == "") {
-                //     echo "INVALID: Please input a first, middle or last name.<br><br>";
-                //     echo "<a href='" . BASE . "/Profile/index/'>&#8592 Go back</a>";
-                // } else {
-                //     $this->view('Profile/listOfProfiles', ['keyword' => $keyword, 'profiles' => $profiles]);
-                // }
-            // } else {
-                $buyer = new \App\models\Buyer();
-                $buyer = $buyer->findUserId($_SESSION['user_id']);
+        $buyer = new \App\models\Buyer();
+        $buyer = $buyer->findUserId($_SESSION['user_id']);
 
-                $invoices = new \App\models\Invoice();
-                $invoices = $invoices->getAllInvoiceOfBuyer($buyer->buyer_id);
+        $invoices = new \App\models\Invoice();
+        $invoices = $invoices->getAllInvoiceOfBuyer($buyer->buyer_id);
 
-                $sellers = new \App\models\Seller();
-                $sellers = $sellers->getAllSellers();
+        $sellers = new \App\models\Seller();
+        $sellers = $sellers->getAllSellers();
 
-                $products = new \App\models\Product();
-                $products = $products->getAllProducts();
+        $products = new \App\models\Product();
+        $products = $products->getAllProducts();
     
-                $this->view('Buyer/buyerMainPage', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
-                'invoices' => $invoices]);
-            // }
-        }
-    
+        $this->view('Invoice/listAll', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
+        'invoices' => $invoices]);
     }
 
     function add($product_id) {
