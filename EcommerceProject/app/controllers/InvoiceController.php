@@ -29,7 +29,7 @@ class InvoiceController extends \App\core\Controller {
     }
 
     function add($product_id) {
-        if (isset($_POST["action"])) {
+//        if (isset($_POST["action"])) {
             $invoice = new \App\models\Invoice();
             $buyer = new \App\models\Buyer();
             $product = new \App\models\Product();
@@ -50,7 +50,7 @@ class InvoiceController extends \App\core\Controller {
             //     $invoice = $invoice->findUserId($_SESSION['user_id']);
             //     $this->view('Buyer/createBuyerProfile', $buyer);
             // }
-        }
+//        }
     }
 
     function checkStatus($invoice_id) {
