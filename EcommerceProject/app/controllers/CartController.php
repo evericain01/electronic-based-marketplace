@@ -114,10 +114,12 @@ class CartController extends \App\core\Controller {
     }
 
     function dateHelper() {
-        date_default_timezone_set('America/Toronto');
+        $date = new DateTime($datetime, new DateTimezone("UTC"));
+        $time_zone = date_default_timezone_set('America/Toronto');
         $diff1Week = new DateInterval('P1W');
-        $current = new DateTime('d-m-y h:i:s');
-        $date_of_arrival = $current . add($diff1Week);
+        // $current = new DateTime('d-m-y');
+        $date->setTimeZone($time_zone);
+        $date_of_arrival = $date . add($diff1Week);
         return $date_of_arrival;
     }
 
