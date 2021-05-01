@@ -24,14 +24,23 @@ class CartController extends \App\core\Controller {
     function addToCart($product_id) {
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->findUserId($_SESSION['user_id']);
+
         $products = new \App\models\Product();
         $products = $products->getAllProducts();
+
         $sellers = new \App\models\Seller();
         $sellers = $sellers->getAllSellers();
 
         $cart = new \App\models\Cart();
         $cart->product_id = $product_id;
         $cart->buyer_id = $buyer->buyer_id;
+
+        $product = new \App\models\Product();
+        $product = $product->find($product_id);
+        $product->quantity -= 1;
+
+        $product->update();
+
         $cart->insert();
         $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
     }
@@ -43,8 +52,9 @@ class CartController extends \App\core\Controller {
 
             $product = new \App\models\Product();
             $product = $product->find($product->product_id);
-            $product->quanity += 1;
+            $product->quantity += 1;
 
+            $product->update();
             $cart->delete();
             header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
         } else {
@@ -57,7 +67,6 @@ class CartController extends \App\core\Controller {
     }
 
     function checkout($buyer_id) {
-//        if (isset($_POST["action"])) {
             $cart = new \App\models\Cart();
             $cart = $cart->getAllCartProducts($buyer_id);
             
@@ -76,11 +85,8 @@ class CartController extends \App\core\Controller {
                 foreach ($product as $products) {
                     if ($carts->product_id == $products->product_id) {
                         $total += $products->price;
-                        $products->quantity -= 1;
                         break;
                     }
-//                var_dump($products->product_id);
-                
                 }
             }
 
@@ -101,18 +107,6 @@ class CartController extends \App\core\Controller {
                 $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
                 echo "Money on account is not enough";
             }
-//        } else {
-//            $buyer = new \App\models\Buyer();
-//            $buyer = $buyer->findUserId($_SESSION['user_id']);
-//            
-//            $products = new \App\models\Product();
-//            $products = $products->getAllProducts();
-//            
-//            $sellers = new \App\models\Seller();
-//            $sellers = $sellers->getAllSellers();
-//            
-//            $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
-//        }
     }
 
 }
