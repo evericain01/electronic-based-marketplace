@@ -18,7 +18,7 @@
                                 echo "<label><b>$product->caption</b></label> ";
                                 echo "<label>($product->description)</label><br>";
                                 echo "<label>$$product->price CAD</label><br>";
-                                echo "<label>[STOCK: $product->quantity]</label><br>";
+                                echo "<label>[QUANTITY: $cart->product_quantity]</label><br>";
                                 echo "<a href='" . BASE . "/Cart/removeFromCart/$product->product_id'>REMOVE</a><br>";
                             }
                         }

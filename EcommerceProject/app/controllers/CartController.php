@@ -35,17 +35,36 @@ class CartController extends \App\core\Controller {
         $sellers = $sellers->getAllSellers();
 
         $cart = new \App\models\Cart();
-        $cart->product_id = $product_id;
-        $cart->buyer_id = $buyer->buyer_id;
-        if ($product->quantity > 0) {
-            $product->quantity -= 1;
 
-            $product->update();
-            $cart->insert();
+        $cart = $cart->find($buyer->buyer_id, $product_id);
+
+        if ($cart === false) {
+            if ($product->quantity > 0) {
+                $cart->product_id = $product_id;
+                $cart->buyer_id = $buyer->buyer_id;
+
+                $product->quantity -= 1;
+                $product->update();
+
+                $cart->product_quantity = 1;
+                $cart->insert();
+            } else {
+                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+                echo "No more stock of this product";
+            }
         } else {
-            $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
-            echo "No more stock of this product";
+            if ($product->quantity > 0) {
+                $product->quantity -= 1;
+                $cart->product_quantity += 1;
+                
+                $product->update();
+                $cart->update();
+            } else {
+                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+                echo "No more stock of this product";
+            }
         }
+
         $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
     }
 
@@ -59,23 +78,31 @@ class CartController extends \App\core\Controller {
         $product->quantity += 1;
 
         $cart = new \App\models\Cart();
-        $carts = new \App\models\Cart();
-
-        $carts = $carts->getAllCartProducts($buyer->buyer_id);
-
-        $total = -1;
-
-        foreach ($carts as $cartProducts) {
-            if ($cartProducts->product_id == $product_id) {
-                $total++;
-            }
-        }
-
-        $product->quantity += $total;
+//        $carts = new \App\models\Cart();
+//        $carts = $carts->getAllCartProducts($buyer->buyer_id);
+//        $total = -1;
+//        foreach ($carts as $cartProducts) {
+//            if ($cartProducts->product_id == $product_id) {
+//                $total++;
+//            }
+//        }
+//        $product->quantity += $total;
 
         $cart = $cart->find($buyer->buyer_id, $product_id);
-        $product->update();
-        $cart->delete();
+
+        if ($cart->product_quantity > 1) {
+           
+            $cart->product_quantity -= 1;
+            $product->quantity += 1;
+            
+            $cart->update();
+            $product->update();
+        } else {
+            $product->quantity += 1;
+            $cart->delete();
+            $product->update();
+        }
+
         header("location:" . BASE . "/Buyer/index");
     }
 
