@@ -21,7 +21,7 @@ class Cart extends \App\core\Model {
     public function insert() {
         $stmt = self::$connection->prepare("INSERT INTO cart(buyer_id, product_id) 
         VALUES (:buyer_id, :product_id)");
-        $stmt->execute(['buyer_id' => $this->buyer_id, 'product_id' =>$this->product_id]);
+        $stmt->execute(['buyer_id' => $this->buyer_id, 'product_id' => $this->product_id]);
     }
 
     public function delete() {
@@ -29,7 +29,14 @@ class Cart extends \App\core\Model {
         $stmt->execute(['product_id' => $this->product_id]);
     }
 
-   public function checkout($buyer_id) {
+    public function find($buyer_id, $product_id) {
+        $stmt = self::$connection->prepare("SELECT * FROM cart WHERE buyer_id = :buyer_id AND product_id = :product_id ");
+        $stmt->execute(['buyer_id' => $buyer_id, 'product_id' => $product_id]);
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
+        return $stmt->fetch();
+    }
+
+    public function checkout($buyer_id) {
         $stmt = self::$connection->prepare("DELETE from cart WHERE buyer_id = :buyer_id");
         $stmt->execute(['buyer_id' => $this->buyer_id]);
     }

@@ -31,6 +31,9 @@ class CartController extends \App\core\Controller {
             $products = new \App\models\Product();
             $products = $products->getAllProducts();
 
+            $product = new \App\models\Product();
+            $product = $product->find($product_id);
+
             $sellers = new \App\models\Seller();
             $sellers = $sellers->getAllSellers();
 
@@ -42,8 +45,7 @@ class CartController extends \App\core\Controller {
 
             $product->update();
             $cart->insert();
-        }
-        else {
+        } else {
             $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
             echo "No more stock of this product";
         }
@@ -51,69 +53,78 @@ class CartController extends \App\core\Controller {
     }
 
     function removeFromCart($product_id) {
-        if (isset($_POST["action"])) {
-            $cart = new \App\models\Cart();
-            $cart = $cart->find($product_id);
+//        if (isset($_POST["action"])) {
 
-            $product = new \App\models\Product();
-            $product = $product->find($product->product_id);
-            $product->quantity += 1;
 
-            $product->update();
-            $cart->delete();
-            header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
-        } else {
-            $cart = new \App\models\Cart();
-            $buyer = new \App\models\Buyer();
-            $buyer = $buyer->findUserId($_SESSION['user_id']);
-            $cart = $cart->findCart($buyer->buyer_id);
-            $this->view('Buyer/buyerMainPage', $buyer);
-        }
+        $buyer = new \App\models\Buyer();
+        $buyer = $buyer->findUserId($_SESSION['user_id']);
+
+        $product = new \App\models\Product();
+        $product = $product->find($product->product_id);
+        var_dump($product);
+        $product->quantity += 1;
+
+        $cart = new \App\models\Cart();
+        $cart = $cart->find($buyer->buyer_id, $product->product_id);
+
+        $product->update();
+        $cart->delete();
+        header("location:" . BASE . "/Buyer/index/$buyer->buyer_id");
+//        } else {
+//            $cart = new \App\models\Cart();
+//            $buyer = new \App\models\Buyer();
+//            $buyer = $buyer->findUserId($_SESSION['user_id']);
+//            $cart = $cart->find($buyer->buyer_id, $product->product_id);
+//            $this->view('Buyer/buyerMainPage', $buyer);
+//        }
     }
 
     function checkout($buyer_id) {
-            $cart = new \App\models\Cart();
-            $cart = $cart->getAllCartProducts($buyer_id);
-            
-            $buyer = new \App\models\Buyer();
-            $buyer = $buyer->findUserId($_SESSION['user_id']);
-            
-            $product = new \App\models\Product();
-            $product = $product->getAllProducts();
+        $cart = new \App\models\Cart();
+        $cart = $cart->getAllCartProducts($buyer_id);
 
-            $sellers = new \App\models\Seller();
-            $sellers = $sellers->getAllSellers();
-            
-            $total = 0;
+        $buyer = new \App\models\Buyer();
+        $buyer = $buyer->findUserId($_SESSION['user_id']);
 
+        $product = new \App\models\Product();
+        $product = $product->getAllProducts();
+
+        $sellers = new \App\models\Seller();
+        $sellers = $sellers->getAllSellers();
+
+        $total = 0;
+
+        foreach ($cart as $carts) {
+            foreach ($product as $products) {
+                if ($carts->product_id == $products->product_id) {
+                    $total += $products->price;
+                    break;
+                }
+            }
+        }
+
+        var_dump($buyer->budget);
+        var_dump($total);
+
+        if ($buyer->budget >= $total) {
             foreach ($cart as $carts) {
                 foreach ($product as $products) {
                     if ($carts->product_id == $products->product_id) {
-                        $total += $products->price;
-                        break;
+                        $invoice = new \App\models\Invoice();
+                        $invoice->add($products->product_id);
                     }
                 }
             }
+            $buyer->budget -= $total;
 
-            if ($buyer->budget >= $total) {
-                foreach ($cart as $carts) {
-                    foreach ($product as $products) {
-                        if ($carts->product_id == $products->product_id) {
-                            $invoice = new \App\models\Invoice();
-                            $invoice->add($products->product_id);
-                        }
-                    }
-                }
-                $buyer->budget -= $total;
+            $buyer->update();
+            $cart->checkout();
 
-                $buyer->update();
-                $cart->checkout();
-                
-                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
-            } else {
-                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
-                echo "Money on account is not enough";
-            }
+            $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
+        } else {
+            $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
+            echo "Money on account is not enough";
+        }
     }
 
 }
