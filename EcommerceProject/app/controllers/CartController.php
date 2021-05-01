@@ -2,6 +2,9 @@
 
 namespace App\controllers;
 
+use DateTime;
+use DateInterval;
+
 class CartController extends \App\core\Controller {
 
     function index() {
@@ -17,9 +20,20 @@ class CartController extends \App\core\Controller {
         $buyer = $buyer->find($buyer->buyer_id);
         $cart = $cart->getAllCartProducts($buyer->buyer_id);
         $products = $products->getAllProducts();
+        
+        $total = 0;
+
+        foreach ($cart as $carts) {
+            foreach ($products as $product) {
+                if ($carts->product_id == $product->product_id) {
+                    $total += $product->price;
+                    break;
+                }
+            }
+        }
 
         $this->view('Cart/showCart', ['cart' => $cart, 'buyer' => $buyer, 'products'
-            => $products, 'sellers' => $sellers]);
+            => $products, 'sellers' => $sellers, 'total' => $total]);
     }
 
     function addToCart($product_id) {
@@ -99,7 +113,7 @@ class CartController extends \App\core\Controller {
     }
 
     function dateHelper() {
-        date_default_timezone_set('Montreal/Canada');
+        date_default_timezone_set('America/Toronto');
         $diff1Week = new DateInterval('P1W');
         $current = new DateTime('d-m-y h:i:s');
         $date_of_arrival = $current . add($diff1Week);
