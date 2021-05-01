@@ -18,7 +18,8 @@ class CartController extends \App\core\Controller {
         $cart = $cart->getAllCartProducts($buyer->buyer_id);
         $products = $products->getAllProducts();
 
-        $this->view('Cart/showCart', ['cart' => $cart, 'buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+        $this->view('Cart/showCart', ['cart' => $cart, 'buyer' => $buyer, 'products'
+            => $products, 'sellers' => $sellers]);
     }
 
     function addToCart($product_id) {
@@ -35,21 +36,24 @@ class CartController extends \App\core\Controller {
         $sellers = $sellers->getAllSellers();
 
         $cart = new \App\models\Cart();
-
         $cart = $cart->find($buyer->buyer_id, $product_id);
 
         if ($cart === false) {
+            var_dump($product_id);
             if ($product->quantity > 0) {
-                $cart->product_id = $product_id;
-                $cart->buyer_id = $buyer->buyer_id;
+                $newCart = new \App\models\Cart();
+                
+                $newCart->product_id = $product_id;
+                $newCart->buyer_id = $buyer->buyer_id;
 
                 $product->quantity -= 1;
                 $product->update();
 
-                $cart->product_quantity = 1;
-                $cart->insert();
+                $newCart->product_quantity = 1;
+                $newCart->insert();
             } else {
-                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products'
+                    => $products, 'sellers' => $sellers]);
                 echo "No more stock of this product";
             }
         } else {
@@ -60,12 +64,12 @@ class CartController extends \App\core\Controller {
                 $product->update();
                 $cart->update();
             } else {
-                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+                $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products'
+                    => $products, 'sellers' => $sellers]);
                 echo "No more stock of this product";
             }
         }
-
-        $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $products, 'sellers' => $sellers]);
+        header("location:" . BASE . "/Buyer/index");
     }
 
     function removeFromCart($product_id) {
@@ -75,23 +79,11 @@ class CartController extends \App\core\Controller {
         $product = new \App\models\Product();
         $product = $product->find($product_id);
 
-        $product->quantity += 1;
-
         $cart = new \App\models\Cart();
-//        $carts = new \App\models\Cart();
-//        $carts = $carts->getAllCartProducts($buyer->buyer_id);
-//        $total = -1;
-//        foreach ($carts as $cartProducts) {
-//            if ($cartProducts->product_id == $product_id) {
-//                $total++;
-//            }
-//        }
-//        $product->quantity += $total;
 
         $cart = $cart->find($buyer->buyer_id, $product_id);
 
         if ($cart->product_quantity > 1) {
-           
             $cart->product_quantity -= 1;
             $product->quantity += 1;
             
@@ -103,7 +95,7 @@ class CartController extends \App\core\Controller {
             $product->update();
         }
 
-        header("location:" . BASE . "/Buyer/index");
+        header("location:" . BASE . "/Cart/index");
     }
 
     function dateHelper() {
@@ -137,22 +129,17 @@ class CartController extends \App\core\Controller {
                 }
             }
         }
-
-        var_dump($buyer->budget);
-        var_dump($total);
-
+        
         if ($buyer->budget >= $total) {
             foreach ($cart as $carts) {
                 foreach ($product as $products) {
                     if ($carts->product_id == $products->product_id) {
                         $invoice = new \App\models\Invoice();
-//                        $buyer = new \App\models\Buyer();
                         $currentProduct = new \App\models\Product();
                         $seller = new \App\models\Seller();
 
                         $currentProduct = $currentProduct->find($products->product_id);
                         $seller = $seller->find($products->product_id);
-//                        $buyer = $buyer->findUserId($_SESSION['user_id']);
 
                         $invoice->buyer_id = $buyer->buyer_id;
                         $invoice->seller_id = $seller->seller_id;
@@ -164,7 +151,7 @@ class CartController extends \App\core\Controller {
                 }
             }
             $buyer->budget -= $total;
-
+            
             $buyer->update();
             $cart->checkout();
 

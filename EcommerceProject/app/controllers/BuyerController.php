@@ -4,6 +4,7 @@ namespace App\controllers;
 
 class BuyerController extends \App\core\Controller {
 
+//    #[\App\core\RoleFilter]
     function index() {
         if (isset($_POST["action"])) {
             $keyword = $_POST["keyword"];

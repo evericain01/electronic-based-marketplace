@@ -3,7 +3,8 @@
 namespace App\controllers;
 
 class SellerController extends \App\core\Controller {
-
+    
+//    #[\App\core\RoleFilter]
     function index() {
         $products = new \App\models\Product();
         $products = $products->getAllProducts();

@@ -12,7 +12,12 @@
             <label>Username: <input type="text" name="username" /></label><br />
             <label>Password: <input type="password" name="password" /></label><br />
             <label>Password confirmation: <input type="password" name="password_confirm" /></label><br />
-            <input type='checkbox' name='twofasetup'/> Set up my 2-factor authentication!<br>
+            <label>Password: <input type="password" name="password" /></label><br />
+            
+            <select name="user_role">
+                <option value="seller"> Seller </option>
+                <option value="buyer"> Buyer </option>
+            </select>
 
             <input type="submit" name="action" value="Register" />
 

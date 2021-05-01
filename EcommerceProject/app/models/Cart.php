@@ -39,7 +39,7 @@ class Cart extends \App\core\Model {
 
     public function update() {
         $stmt = self::$connection->prepare("UPDATE cart SET product_quantity=:product_quantity WHERE product_id=:product_id AND buyer_id=:buyer_id");
-        $stmt->execute(['product_quantity' => $this->product_quantity]);
+        $stmt->execute(['product_quantity' => $this->product_quantity, 'product_id' => $this->product_id , 'buyer_id' => $this->buyer_id]);
     }
 
     public function checkout($buyer_id) {

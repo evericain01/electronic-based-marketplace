@@ -15,12 +15,15 @@ class DefaultController extends \App\core\Controller {
                 $user = new \App\models\User();
                 $user->username = $_POST['username'];
                 $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $user->user_role = $_POST['user_role'];
+
                 $result = $user->insert(); //handle the true/false as needed here...
                 if ($result == false) {
                     header('location:' . BASE . '/Default/register?error=Passwords do not match!'); //reload
                     return;
                 }
                 //log in automatically after registration
+                $_SESSION['user_role'] = $user->user_role;
                 $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['username'] = $user->username;
 
@@ -33,29 +36,6 @@ class DefaultController extends \App\core\Controller {
                 header('location:' . BASE . '/Default/register?error=Passwords do not match!'); //reload
         } else {
             $this->view('Login/Register');
-        }
-    }
-
-//done after user has logged in
-    #[\App\core\LoginFilter]
-    function twofasetup() {
-        if (isset($_POST['action'])) {
-            //if the passwords match
-            $currentcode = $_POST['currentCode'];
-            if (\App\core\TokenAuth::verify($_SESSION['secretkey'], $currentcode)) {
-                //the user has verified their proper 2-factor authentication setup
-                $user = new \App\models\User();
-                $user->user_id = $_SESSION['user_id'];
-                $user->secret_key = $_SESSION['secretkey'];
-                $user->update2fa();
-                header('location:' . BASE . '/Profile/createProfile');
-            } else
-                header('location:' . BASE . '/Default/twofasetup?error=token not verified!'); //reload
-        } else {
-            $secretkey = \App\core\TokenAuth::generateRandomClue();
-            $_SESSION['secretkey'] = $secretkey;
-            $url = \App\core\TokenAuth::getLocalCodeUrl($_SESSION['username'], 'thedomain.com', $secretkey, 'TheNameOfYourApplication');
-            $this->view('Login/twofasetup', $url);
         }
     }
 
@@ -118,30 +98,23 @@ class DefaultController extends \App\core\Controller {
             $this->view('Seller/changeSellerPassword');
         }
     }
-
-    // Use: /Default/makeQRCode?data=protocol://address
-    function makeQRCode() {
-        $data = $_GET['data'];
-        \QRcode::png($data);
-    }
-
+    
     function login() {
         if (isset($_POST['action'])) {
             $user = new \App\models\User();
-            $user = $user->find(
-            $_POST['username']);
+            $user = $user->find($_POST['username']);
 
             if ($user != null && password_verify($_POST['password'], $user->password_hash)) {
                 if ($user->secret_key == null) {
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['username'] = $user->username;
+                    $_SESSION['user_role'] = $user->user_role;
                     $this->view('Default/chooseLogin');
 //                    header('location:' . BASE . '/Default/chooseLogin');
                 } else {
                     $_SESSION['temp_user_id'] = $user->user_id;
                     $_SESSION['temp_username'] = $user->username;
-                    $_SESSION['temp_secret_key'] = $user->secret_key
-                    ;
+                    $_SESSION['temp_secret_key'] = $user->secret_key;
                     header('location:' . BASE . '/Default/validateLogin');
                 }
             } else
