@@ -105,8 +105,10 @@ class CartController extends \App\core\Controller {
                     }
                 }
                 $buyer->budget -= $total;
+
                 $buyer->update();
                 $cart->checkout();
+                
                 $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
             } else {
                 $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers]);
