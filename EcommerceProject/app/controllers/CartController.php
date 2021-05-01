@@ -27,7 +27,7 @@ class CartController extends \App\core\Controller {
 
         $products = new \App\models\Product();
         $products = $products->getAllProducts();
-        
+
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->findUserId($_SESSION['user_id']);
 
@@ -59,26 +59,32 @@ class CartController extends \App\core\Controller {
         $product->quantity += 1;
 
         $cart = new \App\models\Cart();
-        $carts  = new \App\models\Cart();
-        
-        $carts = $cart->getAllCartProducts($buyer->$buyer_id);
+        $carts = new \App\models\Cart();
 
-        $total = 0;
-        
+        $carts = $carts->getAllCartProducts($buyer->buyer_id);
+
+        $total = -1;
+
         foreach ($carts as $cartProducts) {
             if ($cartProducts->product_id == $product_id) {
                 $total++;
             }
         }
-        
-        $product->quantity += $total;
-        
-        $cart = $cart->find($buyer->buyer_id, $product_id);
 
+        $product->quantity += $total;
+
+        $cart = $cart->find($buyer->buyer_id, $product_id);
         $product->update();
         $cart->delete();
         header("location:" . BASE . "/Buyer/index");
+    }
 
+    function dateHelper() {
+        date_default_timezone_set('Montreal/Canada');
+        $diff1Week = new DateInterval('P1W');
+        $current = new DateTime('d-m-y h:i:s');
+        $date_of_arrival = $current . add($diff1Week);
+        return $date_of_arrival;
     }
 
     function checkout($buyer_id) {
@@ -113,7 +119,20 @@ class CartController extends \App\core\Controller {
                 foreach ($product as $products) {
                     if ($carts->product_id == $products->product_id) {
                         $invoice = new \App\models\Invoice();
-                        $invoice->add($products->product_id);
+//                        $buyer = new \App\models\Buyer();
+                        $currentProduct = new \App\models\Product();
+                        $seller = new \App\models\Seller();
+
+                        $currentProduct = $currentProduct->find($products->product_id);
+                        $seller = $seller->find($products->product_id);
+//                        $buyer = $buyer->findUserId($_SESSION['user_id']);
+
+                        $invoice->buyer_id = $buyer->buyer_id;
+                        $invoice->seller_id = $seller->seller_id;
+                        $invoice->product_id = $currentProduct->product_id;
+                        $invoice->date_of_arrival = $this->dateHelper();
+
+                        $invoice->insert();
                     }
                 }
             }
