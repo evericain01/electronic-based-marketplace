@@ -38,6 +38,16 @@ class CartController extends \App\core\Controller {
             => $products, 'sellers' => $sellers, 'total' => $total]);
     }
 
+    function goToConfrimationPage() {
+        $buyer = new \App\models\Buyer();
+        
+        $buyer = $buyer->findUserId($_SESSION['user_id']);
+        
+        $buyer = $buyer->find($buyer->buyer_id);
+
+        $this->view('Cart/checkoutPage', ['buyer' => $buyer]);
+    }
+
     function addToCart($product_id) {
         $product = new \App\models\Product();
         $product = $product->find($product_id);

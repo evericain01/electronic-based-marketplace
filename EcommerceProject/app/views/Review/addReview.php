@@ -1,9 +1,9 @@
 <html>
-    <head><title>Add Product</title>
+    <head><title>Add Review</title>
     </head>
     <body>
-        <h4>Add Product(s)</h4>
-                <style>
+        <h2>Adding a Review</h2>
+        <style>
             textarea {
                 width: 238px;
                 height: 80px;
@@ -12,19 +12,20 @@
         <form action="" method="post" enctype="multipart/form-data">
 
             <label>Rate:</label>
-                <select name="rate" value=>
-                    <option value="1">Volvo</option>
-                    <option value="2">Saab</option>
-                    <option value="3">Mercedes</option>
-                    <option value="4">Mercedes</option>
-                    <option value="5">Audi</option>
-                </select>
+            <select name="rate" value= "">
+                <option value="1">1/5</option>
+                <option value="2">2/5</option>
+                <option value="3">3/5</option>
+                <option value="4">4/5</option>
+                <option value="5">5/5</option>
+            </select> <br><br>
 
-            <label>Comments: <br>
-                <textarea name="text_review"></textarea>
+            <label>Write a Review: <br>
+                <textarea name="text_review" value = ""></textarea>
             </label><br><br>
+            
+            <input type="submit" name="action" />
         </form>
-        <a href="<?= BASE ?>/Seller/index">Cancel</a>
+        <a href="<?= BASE ?>/Buyer/index">Cancel</a>
     </body>
 </html>
-

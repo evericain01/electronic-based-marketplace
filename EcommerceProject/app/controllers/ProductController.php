@@ -69,21 +69,11 @@ class ProductController extends \App\core\Controller {
         $product = new \App\models\Product();
         $product = $product->find($product_id);
 
-        $path = getcwd() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $picture->filename;
+        $path = getcwd() . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $product->filename;
         unlink($path);
         $product->delete();
 
         header("location:" . BASE . "/Seller/index");
-    }
-
-    function show($product_id) {
-        $product = new \App\models\Product();
-        $product = $product->find($product_id);
-
-        $review = new \App\models\Review();
-        $review = $review->find($product_id);
-
-        $this->view('Product/reviewAndRate', ['product' => $product, 'review' => $review]);
     }
 }
 

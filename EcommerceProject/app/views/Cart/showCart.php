@@ -36,8 +36,9 @@
             }
             
             if (!$data['total'] == 0) {
-                $buyer_id = $data['buyer']->buyer_id;
-                echo "<br><br><b><a href='" . BASE . "/Cart/checkout/$buyer_id'>CONFIRM PAYMENT</a></b>";
+//                $buyer_id = $data['buyer']->buyer_id;
+                echo "<br><br><b><a href='" . BASE . "/Cart/goToConfrimationPage'>CHECKOUT</a></b>";
+//                echo "<br><br><b><a href='" . BASE . "/Cart/checkout/$buyer_id'>CONFIRM PAYMENT</a></b>";
             }else {
                 
             }

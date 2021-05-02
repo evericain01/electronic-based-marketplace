@@ -18,7 +18,7 @@
         echo "<h3><u>Wallet:</u> " . "<b><span style='color:#189200;text-align:center;'>$" . $data['buyer']->budget . "</b></h3></span>";
         echo " &mdash;";
         echo " <a href='" . BASE . "/Buyer/updateBudget' style='font-size: 15px;'>[EDIT WALLET] </a>";
-        echo " <a href='" . BASE . "/Invoice/viewOrders' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
+        echo " <a href='" . BASE . "/Invoice/index' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
         echo " <a href='" . BASE . "/Cart/index' style='font-size: 20px; display:inline; float:right;'>View Your Cart &#124;</a><br>";
         echo "<br><br>";
 
@@ -40,7 +40,8 @@
                     echo "<label>($product->description)</label><br>";
                     echo "<label>$$product->price CAD</label><br>";
                     echo "<label>[STOCK: $product->quantity]</label><br>";
-                    echo "<a href='" . BASE . "/Cart/addToCart/$product->product_id'>ADD TO CART</a><br><br>";
+                    echo "<a href='" . BASE . "/Review/index/$product->product_id'>View Reviews</a><br>";
+                    echo "<a href='" . BASE . "/Cart/addToCart/$product->product_id'>ADD TO CART</a><br><br>";                    
                     echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
                 }
             }

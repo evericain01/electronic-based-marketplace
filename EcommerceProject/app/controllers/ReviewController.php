@@ -4,6 +4,20 @@ namespace App\controllers;
 
 class ReviewController extends \App\core\Controller {
 
+    function index($product_id) {
+        $buyer = new \App\models\Buyer();
+        $buyer = $buyer->findUserId($_SESSION['user_id']);
+        $buyer = $buyer->find($buyer->buyer_id);
+        
+        $product = new \App\models\Product();
+        $product = $product->find($product_id);
+
+        $review = new \App\models\Review();
+        $review = $review->getReviewsOfProduct($product_id);
+
+        $this->view('Review/viewReviews', ['product' => $product, 'reviews' => $review, 'buyer' => $buyer]);
+    }
+
     function add($product_id) {
         if (isset($_POST["action"])) {
             $review = new \App\models\Review();
@@ -13,8 +27,8 @@ class ReviewController extends \App\core\Controller {
 
             $review->buyer_id = $buyer->buyer_id;
             $review->product_id = $product_id;
-            $review->budget = $_POST["text_review"];
-            $review->last_name = $_POST["rate"];
+            $review->rate = $_POST["rate"];
+            $review->text_review = $_POST["text_review"];
             $review->insert();
 
             $sellers = new \App\models\Seller();
@@ -30,7 +44,7 @@ class ReviewController extends \App\core\Controller {
         } else {
             $buyer = new \App\models\Buyer();
             $buyer = $buyer->findUserId($_SESSION['user_id']);
-            $this->view('Buyer/index');
+            $this->view('Review/addReview');
         }
     }
 
@@ -43,8 +57,8 @@ class ReviewController extends \App\core\Controller {
 
             $review->buyer_id = $buyer->buyer_id;
             $review->product_id = $product_id;
-            $review->budget = $_POST["text_review"];
-            $review->last_name = $_POST["rate"];
+            $review->rate = $_POST["rate"];
+            $review->text_review = $_POST["text_review"];
             $review->update();
 
             $sellers = new \App\models\Seller();
@@ -56,7 +70,7 @@ class ReviewController extends \App\core\Controller {
             $invoice = new \App\models\Invoice();
             $invoice = $invoice->getAllInvoiceOfBuyer($buyer->buyer_id);
 
-            $this->view('Invoice/listAllOrders', ['products' => $product, 'sellers' => $sellers, 'invoice' => $invoice]);
+            $this->view('Invoice/listAllOrders', ['products' => $products, 'sellers' => $sellers, 'invoice' => $invoice]);
         } else {
             $review = new \App\models\Review();
             $review = $review->find($review_id);

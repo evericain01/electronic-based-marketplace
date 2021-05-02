@@ -23,15 +23,6 @@ class Invoice extends \App\core\Model {
         return $stmt->fetch();
     }
 
-    // public function searchForSeller($keyword) {
-    //     $stmt = self::$connection->prepare("SELECT * FROM profile WHERE first_name LIKE :first_name "
-    //             . "OR last_name LIKE :last_name OR middle_name LIKE :middle_name");
-    //     $keyword = "%$keyword%";
-    //     $stmt->execute(['first_name' => $keyword, 'last_name' => $keyword, 'middle_name' => $keyword]);
-    //     $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Profile");
-    //     return $stmt->fetchAll();
-    // }
-
     public function findInvoiceId($invoice_id) {
         $stmt = self::$connection->prepare("SELECT * FROM invoice WHERE invoice_id = :invoice_id");
         $stmt->execute(['invoice_id' => $invoice_id]);
@@ -56,11 +47,4 @@ class Invoice extends \App\core\Model {
         $stmt = self::$connection->prepare("DELETE from invoice WHERE invoice_id=:invoice_id");
         $stmt->execute(['invoice_id' => $this->invoice_id]);
     }
-
-    // public function update() {
-    //     $stmt = self::$connection->prepare("UPDATE profile SET first_name=:first_name, last_name=:last_name,
-    //     budget=:budget WHERE buyer_id=:buyer_id");
-    //     $stmt->execute(['first_name' => $this->first_name, 'last_name' => $this->last_name,
-    //         'budget' => $this->budget, 'buyer_id' => $this->buyer_id]);
-    // }
 }
