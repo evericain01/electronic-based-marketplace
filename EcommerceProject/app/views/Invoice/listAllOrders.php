@@ -32,10 +32,10 @@
             echo "EXPECTED DELIVERY DATE: $invoice->date_of_arrival<br><br>";
 
             if ($invoice->timestamp >= $invoice->date_of_arrival) {
-                echo "STATUS: <span style='color:#37B300;text-align:center;'> Delivered </span> &mdash; $invoice->date_of_arrival";
+                echo "STATUS: <span style='color:#398C0C;text-align:center;'> Delivered </span> &mdash; $invoice->date_of_arrival";
                 echo "<br><a href='" . BASE . "/Review/add/$invoice->product_id'>Leave a Review?</a><br><br><br>";
             } else {
-                echo "STATUS: <span style='color:#D99A0C;text-align:center;'> In Transit </span>";
+                echo "STATUS: <span style='color:#C77800;text-align:center;'> In Transit </span>";
             }
             echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
         }

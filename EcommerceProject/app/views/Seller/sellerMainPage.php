@@ -28,6 +28,7 @@
                 echo "<label>($product->description)</label><br>";
                 echo "<label>$$product->price CAD</label><br>";
                 echo "<label>[STOCK: $product->quantity]</label><br>";
+                echo "<a href='" . BASE . "/Review/index/$product->product_id'>View Reviews</a><br>";
                 echo "<a href='" . BASE . "/Product/edit/$product->product_id'>EDIT</a> &#124 ";
                 echo "<a href='" . BASE . "/Product/delete/$product->product_id'>REMOVE</a><br><br>";
                 echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";

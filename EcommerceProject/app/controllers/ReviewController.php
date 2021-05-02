@@ -7,7 +7,7 @@ class ReviewController extends \App\core\Controller {
     function index($product_id) {
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->findUserId($_SESSION['user_id']);
-        $buyer = $buyer->find($buyer->buyer_id);
+        $buyer = $buyer->find($buyer->buyer_id); 
         
         $product = new \App\models\Product();
         $product = $product->find($product_id);

@@ -78,9 +78,10 @@ class CartController extends \App\core\Controller {
                 $newCart->product_quantity = 1;
                 $newCart->insert();
             } else {
+                 echo "No more stock of this product";
                 $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products'
                     => $products, 'sellers' => $sellers]);
-                echo "No more stock of this product";
+               
             }
         } else {
             if ($product->quantity > 0) {
@@ -90,9 +91,10 @@ class CartController extends \App\core\Controller {
                 $product->update();
                 $cart->update();
             } else {
+                echo "No more stock of this product";
                 $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products'
                     => $products, 'sellers' => $sellers]);
-                echo "No more stock of this product";
+                
             }
         }
         header("location:" . BASE . "/Buyer/index");
