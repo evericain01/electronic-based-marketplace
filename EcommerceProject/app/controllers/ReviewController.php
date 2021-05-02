@@ -4,7 +4,7 @@ namespace App\controllers;
 
 class ReviewController extends \App\core\Controller {
 
-    function addReview($product_id) {
+    function add($product_id) {
         if (isset($_POST["action"])) {
             $review = new \App\models\Review();
             $buyer = new \App\models\Buyer();
@@ -34,7 +34,7 @@ class ReviewController extends \App\core\Controller {
         }
     }
 
-    function changeReview($review_id) {
+    function edit($review_id) {
         if (isset($_POST["action"])) {
             $review = new \App\models\Review();
             $buyer = new \App\models\Buyer();

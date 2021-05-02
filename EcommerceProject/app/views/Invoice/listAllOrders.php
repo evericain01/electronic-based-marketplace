@@ -8,7 +8,7 @@
         echo "<br><a href='" . BASE . "/Buyer/index'>&#8592 Go Back to Main Page</a><br><br><br>";
 
 
-        if (empty($invoice)) {
+        if (empty($data["invoice"])) {
             echo "<i>You have no orders.</i>";
         }
 
@@ -32,7 +32,8 @@
             echo "EXPECTED DELIVERY DATE: $invoice->date_of_arrival<br><br>";
 
             if ($invoice->timestamp >= $invoice->date_of_arrival) {
-                echo "STATUS: <span style='color:#37B300;text-align:center;'> Delivered </span> - $invoice->date_of_arrival";
+                echo "STATUS: <span style='color:#37B300;text-align:center;'> Delivered </span> &mdash; $invoice->date_of_arrival";
+                echo "<br><a href='" . BASE . "/Review/add/$invoice->product_id'>Leave a Review?</a><br><br><br>";
             } else {
                 echo "STATUS: <span style='color:#D99A0C;text-align:center;'> In Transit </span>";
             }
