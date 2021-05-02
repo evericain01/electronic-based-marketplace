@@ -21,7 +21,7 @@ class CartController extends \App\core\Controller {
         $buyer = $buyer->find($buyer->buyer_id);
         $cart = $cart->getAllCartProducts($buyer->buyer_id);
         $products = $products->getAllProducts();
-        
+
         $total = 0;
 
         foreach ($cart as $carts) {
@@ -58,7 +58,7 @@ class CartController extends \App\core\Controller {
             var_dump($product_id);
             if ($product->quantity > 0) {
                 $newCart = new \App\models\Cart();
-                
+
                 $newCart->product_id = $product_id;
                 $newCart->buyer_id = $buyer->buyer_id;
 
@@ -76,7 +76,7 @@ class CartController extends \App\core\Controller {
             if ($product->quantity > 0) {
                 $product->quantity -= 1;
                 $cart->product_quantity += 1;
-                
+
                 $product->update();
                 $cart->update();
             } else {
@@ -102,7 +102,7 @@ class CartController extends \App\core\Controller {
         if ($cart->product_quantity > 1) {
             $cart->product_quantity -= 1;
             $product->quantity += 1;
-            
+
             $cart->update();
             $product->update();
         } else {
@@ -115,10 +115,9 @@ class CartController extends \App\core\Controller {
     }
 
     function dateHelper($datetime) {
-        $date = new DateTime($datetime, new DateTimeZone("UTC"));
-        $time_zone = new DateTimeZone(date_default_timezone_get());
-        $diff1Week = new DateInterval('P2Y4DT6H8M');
-        // $current = new DateTime('d-m-y');
+        $date = new DateTime($datetime, new DateTimeZone("America/Toronto"));
+        $time_zone = new DateTimeZone("America/Toronto");
+        $diff1Week = new DateInterval('P7D');
         $date->setTimeZone($time_zone);
         $date_of_arrival = $date->add($diff1Week);
         return $date_of_arrival;
@@ -148,7 +147,7 @@ class CartController extends \App\core\Controller {
                 }
             }
         }
-        
+
         if ($buyer->budget >= $total) {
             foreach ($cart as $carts) {
                 foreach ($product as $products) {
@@ -158,26 +157,34 @@ class CartController extends \App\core\Controller {
                         $seller = new \App\models\Seller();
 
                         $currentProduct = $currentProduct->find($products->product_id);
-                        $seller = $seller->find($products->product_id);
+
+                        $seller = $seller->find($currentProduct->seller_id);
 
                         $invoice->buyer_id = $buyer->buyer_id;
                         $invoice->seller_id = $seller->seller_id;
                         $invoice->product_id = $currentProduct->product_id;
                         $invoice->date_of_arrival = $this->dateHelper($invoice->date_of_arrival);
+                        $invoice->total = ltrim($carts->product_quantity * $currentProduct->price, 0);
 
                         $invoice->insert();
                     }
                 }
             }
             $buyer->budget -= $total;
-            
             $buyer->update();
-            $cart->checkout();
 
-            $this->view('Invoice/listAll', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers, 'total' => $total, 'cart' => $cart]);
+            $emptyCart = new \App\models\Cart();
+            $emptyCart->checkout($buyer_id);
+
+            $invoice = new \App\models\Invoice();
+            $invoice = $invoice->getAllInvoiceOfBuyer($buyer_id);
+
+            $this->view('Invoice/listInvoice', ['products' => $product,
+                'sellers' => $sellers, 'invoice' => $invoice]);
         } else {
             echo '<span style="color:#E90E0A;text-align:center;"><b>Not enough money in account!</b></span>';
-            $this->view('Cart/showCart', ['buyer' => $buyer, 'products' => $product, 'sellers' => $sellers, 'total' => $total, 'cart' => $cart]);  
+            $this->view('Cart/showCart', ['buyer' => $buyer, 'products' => $product,
+                'sellers' => $sellers, 'total' => $total, 'cart' => $cart]);
         }
     }
 

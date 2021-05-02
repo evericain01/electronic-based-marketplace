@@ -26,7 +26,12 @@ class BuyerController extends \App\core\Controller {
             $buyer = new \App\models\Buyer();
             $buyer = $buyer->findUserId($_SESSION['user_id']);
 
-            $this->view('Buyer/buyerMainPage', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers]);
+            $invoice = new \App\models\Invoice();
+            $invoice = $invoice->getAllInvoiceOfBuyer($buyer->buyer_id);
+            
+//            var_dump($invoice);
+
+            $this->view('Buyer/buyerMainPage', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers, 'invoice' => $invoice]);
         }
     }
 

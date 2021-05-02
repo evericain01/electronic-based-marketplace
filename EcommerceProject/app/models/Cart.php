@@ -32,7 +32,7 @@ class Cart extends \App\core\Model {
 
     public function find($buyer_id, $product_id) {
         $stmt = self::$connection->prepare("SELECT * FROM cart WHERE buyer_id = :buyer_id AND product_id = :product_id ");
-        $stmt->execute(['buyer_id' => $buyer_id, 'product_id' => $product_id]);
+        $stmt->execute(['buyer_id' => $buyer_id, 'product_id' => $product_id]);                                     
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Cart");
         return $stmt->fetch();
     }
@@ -44,7 +44,7 @@ class Cart extends \App\core\Model {
 
     public function checkout($buyer_id) {
         $stmt = self::$connection->prepare("DELETE from cart WHERE buyer_id = :buyer_id");
-        $stmt->execute(['buyer_id' => $this->buyer_id]);
+        $stmt->execute(['buyer_id' => $buyer_id]);
     }
 
 }

@@ -47,9 +47,9 @@ class Invoice extends \App\core\Model {
     }
 
     public function insert() {
-        $stmt = self::$connection->prepare("INSERT INTO invoice(buyer_id, seller_id, product_id, timestamp, date_of_arrival) 
-        VALUES (:buyer_id, :seller_id, :product_id, UTC_TIMESTAMP, UTC_TIMESTAMP)");
-        $stmt->execute(['buyer_id' => $this->buyer_id, 'seller_id' => $this->seller_id, 'product_id' => $this->product_id]);
+        $stmt = self::$connection->prepare("INSERT INTO invoice(buyer_id, seller_id, product_id, date_of_arrival, total) 
+        VALUES (:buyer_id, :seller_id, :product_id, UTC_TIMESTAMP, :total)");
+        $stmt->execute(['buyer_id' => $this->buyer_id, 'seller_id' => $this->seller_id, 'product_id' => $this->product_id, 'total' => $this->total]);
     }
 
     public function delete() {

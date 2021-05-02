@@ -3,14 +3,7 @@
 namespace App\controllers;
 
 class InvoiceController extends \App\core\Controller {
-    function dateHelper() {
-        date_default_timezone_set('Montreal/Canada');
-        $diff1Week = new DateInterval('P1W');
-        $current = new DateTime('d-m-y h:i:s');
-        $date_of_arrival = $current.add($diff1Week);
-        return $date_of_arrival;
-    }
-
+    
     function index() {
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->findUserId($_SESSION['user_id']);
@@ -25,7 +18,24 @@ class InvoiceController extends \App\core\Controller {
         $products = $products->getAllProducts();
     
         $this->view('Invoice/listAll', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
-        'invoices' => $invoices]);
+        'invoice' => $invoices]);
+    }
+    
+    function viewOrders() {
+        $buyer = new \App\models\Buyer();
+        $buyer = $buyer->findUserId($_SESSION['user_id']);
+
+        $invoices = new \App\models\Invoice();
+        $invoices = $invoices->getAllInvoiceOfBuyer($buyer->buyer_id);
+
+        $sellers = new \App\models\Seller();
+        $sellers = $sellers->getAllSellers();
+
+        $products = new \App\models\Product();
+        $products = $products->getAllProducts();
+    
+        $this->view('Invoice/listAllOrders', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
+        'invoice' => $invoices]);
     }
 
     function add($product_id) {

@@ -6,15 +6,16 @@
         <form method="post" action="">
             <?php
             echo "<h2>Your Cart:</h2><br>";
-            
-            echo "<h3>TOTAL COST: <u>$" . $data['total'] . " CAD</u></h3><br>";
-            
-            $buyer_id = $data['buyer']->buyer_id;
-            echo "<b><a href='" . BASE . "/Cart/checkout/$buyer_id'>CHECKOUT YOUR ITEMS</a></b><br><br><br>";
 
+            echo "<a href='" . BASE . "/Buyer/index'>&#8592 Go Back to Main Page</a><br><br>";
             
-            echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
-            
+            if (!$data['total'] == 0) {
+                echo "<h3>TOTAL COST: <u>$" . $data['total'] . " CAD</u></h3><br>";
+                echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
+            } else {
+                echo "<i>Your cart is empty.</i>";
+            }
+
             foreach ($data['cart'] as $cart) {
                 foreach ($data['products'] as $product) {
                     if ($cart->product_id == $product->product_id) {
@@ -33,7 +34,13 @@
                     }
                 }
             }
-            echo "<br><br><a href='" . BASE . "/Buyer/index/$buyer_id'>&#8592 Go Back to Main Page</a><br><br><br><br>";
+            
+            if (!$data['total'] == 0) {
+                $buyer_id = $data['buyer']->buyer_id;
+                echo "<br><br><b><a href='" . BASE . "/Cart/checkout/$buyer_id'>CONFIRM PAYMENT</a></b>";
+            }else {
+                
+            }
             ?>
     </body>
 </html>

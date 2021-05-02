@@ -15,9 +15,10 @@
 
         echo "<a href='" . BASE . "/Default/logout' style='display:inline; float:right;'> &#124; Logout</a>";
         echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br><br>";
-        echo "<h3><u>Wallet: " . "<b>$" . $data['buyer']->budget . "</b></u></h3>";
-        echo " <a href='" . BASE . "/Buyer/updateBudget' style='font-size: 13px;'>[EDIT WALLET] </a>";
-        echo " <a href='" . BASE . "/Invoice/index' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
+        echo "<h3><u>Wallet:</u> " . "<b><span style='color:#189200;text-align:center;'>$" . $data['buyer']->budget . "</b></h3></span>";
+        echo " &mdash;";
+        echo " <a href='" . BASE . "/Buyer/updateBudget' style='font-size: 15px;'>[EDIT WALLET] </a>";
+        echo " <a href='" . BASE . "/Invoice/viewOrders' style='font-size: 20px; display:inline; float:right;'> &#124; View All Orders</a>";
         echo " <a href='" . BASE . "/Cart/index' style='font-size: 20px; display:inline; float:right;'>View Your Cart &#124;</a><br>";
         echo "<br><br>";
 
