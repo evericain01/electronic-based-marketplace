@@ -27,6 +27,13 @@ class Review extends \App\core\Model {
         return $stmt->fetchAll();
     }
 
+    public function getReviewsOfProduct($product_id) {
+        $stmt = self::$connection->prepare("SELECT * FROM review WHERE product_id = :product_id");
+        $stmt->execute(['product_id' => $product_id]);
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Review");
+        return $stmt->fetchAll();
+    }
+
     public function insert() {
         $stmt = self::$connection->prepare("INSERT INTO review(product_id, buyer_id, rate, text_review) 
         VALUES (:product_id, :buyer_id, :rate, :text_review)");

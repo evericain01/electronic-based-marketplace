@@ -75,6 +75,16 @@ class ProductController extends \App\core\Controller {
 
         header("location:" . BASE . "/Seller/index");
     }
+
+    function show($product_id) {
+        $product = new \App\models\Product();
+        $product = $product->find($product_id);
+
+        $review = new \App\models\Review();
+        $review = $review->find($product_id);
+
+        $this->view('Product/reviewAndRate', ['product' => $product, 'review' => $review]);
+    }
 }
 
 ?>
