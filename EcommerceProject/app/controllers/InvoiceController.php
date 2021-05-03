@@ -2,11 +2,9 @@
 
 namespace App\controllers;
 
-class InvoiceController extends \App\core\Controller
-{
+class InvoiceController extends \App\core\Controller {
 
-    function index()
-    {
+    function index() {
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->findUserId($_SESSION['user_id']);
 
@@ -27,23 +25,15 @@ class InvoiceController extends \App\core\Controller
             'invoice' => $invoices, 'reviews' => $review
         ]);
     }
-
-    function add($product_id)
-    {
+    
+    
+    function updateStatus($invoice_id) {
         $invoice = new \App\models\Invoice();
-        $buyer = new \App\models\Buyer();
-        $product = new \App\models\Product();
-        $seller = new \App\models\Seller();
+        $invoice = $invoice->findInvoiceId($invoice_id);
+        
+        $invoice->status = "Delivered";
+        $invoice->update();
 
-        $product = $product->find($product_id);
-        $seller = $seller->find($product->product_id);
-        $buyer = $buyer->findUserId($_SESSION['user_id']);
-
-        $invoice->buyer_id = $buyer->buyer_id;
-        $invoice->seller_id = $seller->seller_id;
-        $invoice->product_id = $product->product_id;
-        $invoice->date_of_arrival = dateHelper();
-
-        $invoice->insert();
+        header("location:" . BASE . "/Invoice/index");
     }
 }

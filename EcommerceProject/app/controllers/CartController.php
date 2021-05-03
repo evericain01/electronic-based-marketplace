@@ -176,7 +176,8 @@ class CartController extends \App\core\Controller {
                         $invoice->seller_id = $seller->seller_id;
                         $invoice->product_id = $currentProduct->product_id;
                         $invoice->date_of_arrival = $this->dateHelper($invoice->date_of_arrival);
-                        $invoice->total = ltrim($carts->product_quantity * $currentProduct->price, 0);
+                        $invoice->total = $carts->product_quantity * $currentProduct->price;
+                        $invoice->status = "In Transit";
 
                         $invoice->insert();
                     }

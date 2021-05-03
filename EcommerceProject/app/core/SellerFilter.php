@@ -4,13 +4,13 @@ namespace App\core;
 
 #[\Attribute]
 
-class RoleFilter {
+class SellerFilter {
 
     function execute() {
-        if ($_SESSION['user_role'] != 'buyer') {
-            header('location:' . BASE . '/Seller/index');
-        } else {
+        
+        if ($_SESSION['user_role'] != 'seller') {
             header('location:' . BASE . '/Buyer/index');
         }
     }
+
 }

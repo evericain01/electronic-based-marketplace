@@ -115,8 +115,8 @@ class DefaultController extends \App\core\Controller
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['username'] = $user->username;
                     $_SESSION['user_role'] = $user->user_role;
-                    $this->view('Default/chooseLogin');
-                    //                    header('location:' . BASE . '/Default/chooseLogin');
+                    $this->view('Default/chooseLanguage');
+//                    header('location:' . BASE . '/Default/chooseLogin');
                 } else {
                     $_SESSION['temp_user_id'] = $user->user_id;
                     $_SESSION['temp_username'] = $user->username;

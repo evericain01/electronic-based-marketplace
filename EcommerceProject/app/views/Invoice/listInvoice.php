@@ -22,6 +22,8 @@
                 if ($invoice->product_id == $product->product_id && $invoice->timestamp == $date) {
                     echo "<b><u>Item Name:</u></b> $product->caption<br>";
                     echo "<b><u>Item Description:</u></b> $product->description<br>";
+                    $quantity = $invoice->total / $product->price;
+                    echo "<b><u>Quantity: </u>$quantity<b><br>";
                     echo "<b><u>Cost Per Item:</u></b> $product->price CAD<br>";
                     echo "<b><u>Total:</u></b> $invoice->total CAD<br>";
                     foreach ($data["sellers"] as $seller) {
