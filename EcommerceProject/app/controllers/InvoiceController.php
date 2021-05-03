@@ -16,9 +16,12 @@ class InvoiceController extends \App\core\Controller {
 
         $products = new \App\models\Product();
         $products = $products->getAllProducts();
+        
+        $review = new \App\models\Review();
+        $review = $review->getAllReviewsOfBuyer($buyer->buyer_id);
 
         $this->view('Invoice/listAllOrders', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
-            'invoice' => $invoices]);
+            'invoice' => $invoices, 'reviews' => $review]);
     }
 
     function add($product_id) {

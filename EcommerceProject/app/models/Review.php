@@ -20,9 +20,16 @@ class Review extends \App\core\Model {
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Review");
         return $stmt->fetch();
     }
-    
+
     public function getAllReviews() {
         $stmt = self::$connection->query("SELECT * FROM review");
+        $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Review");
+        return $stmt->fetchAll();
+    }
+
+    public function getAllReviewsOfBuyer($buyer_id) {
+        $stmt = self::$connection->prepare("SELECT * FROM review WHERE buyer_id = :buyer_id");
+        $stmt->execute(['buyer_id' => $buyer_id]);
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Review");
         return $stmt->fetchAll();
     }
@@ -47,9 +54,10 @@ class Review extends \App\core\Model {
     }
 
     public function update() {
-        $stmt = self::$connection->prepare("UPDATE review SET product_id=:product_id, buyer_id=:buyer_id, rate=:rate, text_review=:text_review");
-        $stmt->execute(['product_id' => $this->product_id, 'buyer_id' => $this->buyer_id, 
-            'rate' => $this->rate, 'text_review' => $this->text_review]);
+        $stmt = self::$connection->prepare("UPDATE review SET product_id=:product_id,"
+                . " buyer_id=:buyer_id, rate=:rate, text_review=:text_review WHERE review_id=:review_id");
+        $stmt->execute(['product_id' => $this->product_id, 'buyer_id' => $this->buyer_id,
+            'rate' => $this->rate, 'text_review' => $this->text_review , 'review_id' =>$this->review_id]);
     }
 
 }

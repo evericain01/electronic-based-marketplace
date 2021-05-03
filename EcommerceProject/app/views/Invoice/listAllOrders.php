@@ -32,8 +32,24 @@
             echo "EXPECTED DELIVERY DATE: $invoice->date_of_arrival<br><br>";
 
             if ($invoice->timestamp >= $invoice->date_of_arrival) {
+                $exist = false;
+                $currentProductReviewID = null;
+                
+                foreach ($data["reviews"] as $review) {
+                    if ($review->buyer_id == $data['buyer']->buyer_id) {
+                        $exist = true;
+                        $currentProductReviewID = $review->review_id;
+                        break;
+                    }
+                }
+                
                 echo "STATUS: <span style='color:#398C0C;text-align:center;'> Delivered </span> &mdash; $invoice->date_of_arrival";
-                echo "<br><a href='" . BASE . "/Review/add/$invoice->product_id'>Leave a Review?</a><br><br><br>";
+                if ($exist == true) {
+                    echo "<br><a href='" . BASE . "/Review/edit/$currentProductReviewID'>Edit Review</a><br><br><br>";
+                }else {
+                    echo "<br><a href='" . BASE . "/Review/add/$invoice->product_id'>Leave a Review?</a><br><br><br>";
+                }
+                
             } else {
                 echo "STATUS: <span style='color:#C77800;text-align:center;'> In Transit </span>";
             }
