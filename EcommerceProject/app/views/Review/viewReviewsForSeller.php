@@ -4,6 +4,7 @@
     <body>
         <h2>Viewing all Reviews:</h2> <br />
         <?php
+
             foreach ($data['reviews'] as $review) {
                 foreach ($data['buyer'] as $buyer) {
                 echo "Review By: <b>$buyer->first_name $buyer->last_name</b><br><br>";

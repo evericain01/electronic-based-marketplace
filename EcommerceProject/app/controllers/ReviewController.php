@@ -32,7 +32,8 @@ class ReviewController extends \App\core\Controller {
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->getAllBuyers();
 
-        $this->view('Review/viewReviews', ['product' => $product, 'reviews' => $review, 'seller' => $seller, 'buyer' -> $buyer]);
+        $this->view('Review/viewReviewsForSeller', ['product' => $product, 
+            'reviews' => $review, 'seller' => $seller, 'buyer' => $buyer]);
     }
 
     function add($product_id) {
