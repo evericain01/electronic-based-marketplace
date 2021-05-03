@@ -14,8 +14,6 @@
 //        $date = new DateTime(null, new DateTimeZone("UTC"));
 //        $time_zone = new DateTimeZone("UTC");
 //        $date->setTimeZone($time_zone);
-        
-        
 
         foreach ($data["invoice"] as $invoice) {
             foreach ($data["products"] as $product) {

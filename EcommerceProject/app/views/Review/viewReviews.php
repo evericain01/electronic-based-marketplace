@@ -7,11 +7,15 @@
         foreach ($data['reviews'] as $review) {
             $buyer_first_name = $data['buyer']->first_name;
             $buyer_last_name = $data['buyer']->last_name;
-            
+
             echo "Review By: <b>$buyer_first_name, $buyer_last_name</b><br><br>";
             echo "Rating: $review->rate<br><br>";
             echo "Review: $review->text_review</b><br>";
             echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
+        }
+
+        if (empty($data['reviews'])) {
+            echo "There are no reviews for this item.";
         }
 
         echo "<br><br><br>";

@@ -11,7 +11,7 @@
         <?php
         
         echo "<h1>Welcome, " . $data['seller']->first_name .
-        " " . $data['seller']->last_name . "! <h3>(<i><u>Company Name: " . $data['seller']->brand_name . "</u></i></h3>)</h1>";
+        " " . $data['seller']->last_name . "! <h3>(<i><u>Company Name: " . $data['seller']->brand_name . "</u></i>)</h3></h1>";
 
         echo "<a href='" . BASE . "/Default/logout'style='display:inline; float:right;'> &#124; Logout</a>";
         echo "<a href='" . BASE . "/Default/editSellerPassword' style='display:inline; float:right;'>Change Password &#124;</a><br><br>";

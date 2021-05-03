@@ -4,14 +4,17 @@
     <body>
         <h2>Viewing all Reviews:</h2> <br />
         <?php
-
-            foreach ($data['reviews'] as $review) {
-                foreach ($data['buyer'] as $buyer) {
+        foreach ($data['reviews'] as $review) {
+            foreach ($data['buyer'] as $buyer) {
                 echo "Review By: <b>$buyer->first_name $buyer->last_name</b><br><br>";
                 echo "Rating: $review->rate<br><br>";
                 echo "Review: $review->text_review</b><br>";
                 echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
             }
+        }
+
+        if (empty($data['reviews'])) {
+            echo "There are no reviews for this item.";
         }
 
         echo "<br><br><br>";
