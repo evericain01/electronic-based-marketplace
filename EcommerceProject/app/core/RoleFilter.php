@@ -13,7 +13,4 @@ class RoleFilter {
             header('location:' . BASE . '/Buyer/index');
         }
     }
-
 }
-
-?>

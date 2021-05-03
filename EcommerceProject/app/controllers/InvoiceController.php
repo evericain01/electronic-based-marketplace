@@ -2,9 +2,11 @@
 
 namespace App\controllers;
 
-class InvoiceController extends \App\core\Controller {
+class InvoiceController extends \App\core\Controller
+{
 
-    function index() {
+    function index()
+    {
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->findUserId($_SESSION['user_id']);
 
@@ -16,15 +18,18 @@ class InvoiceController extends \App\core\Controller {
 
         $products = new \App\models\Product();
         $products = $products->getAllProducts();
-        
+
         $review = new \App\models\Review();
         $review = $review->getAllReviewsOfBuyer($buyer->buyer_id);
 
-        $this->view('Invoice/listAllOrders', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
-            'invoice' => $invoices, 'reviews' => $review]);
+        $this->view('Invoice/listAllOrders', [
+            'products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
+            'invoice' => $invoices, 'reviews' => $review
+        ]);
     }
 
-    function add($product_id) {
+    function add($product_id)
+    {
         $invoice = new \App\models\Invoice();
         $buyer = new \App\models\Buyer();
         $product = new \App\models\Product();
@@ -41,7 +46,4 @@ class InvoiceController extends \App\core\Controller {
 
         $invoice->insert();
     }
-
 }
-
-?>
