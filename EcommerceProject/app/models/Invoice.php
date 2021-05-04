@@ -31,7 +31,7 @@ class Invoice extends \App\core\Model {
     }
 
     public function getAllInvoiceOfBuyer($buyer_id) {
-        $stmt = self::$connection->prepare("SELECT * FROM invoice WHERE buyer_id = :buyer_id");
+        $stmt = self::$connection->prepare("SELECT * FROM invoice WHERE buyer_id = :buyer_id ORDER BY DESC");
         $stmt->execute(['buyer_id' => $buyer_id]);
         $stmt->setFetchMode(\PDO::FETCH_GROUP | \PDO::FETCH_CLASS, "App\\models\\Invoice");
         return $stmt->fetchAll();
