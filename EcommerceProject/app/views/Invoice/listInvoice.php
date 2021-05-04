@@ -8,16 +8,9 @@
         <?php
         echo "<br><a href='" . BASE . "/Buyer/index'>&#8592 Go Back to Main Page</a><br><br><br>";
 
-
-//        date_default_timezone_set("America/Toronto");
-//
-//        $date = new DateTime(null, new DateTimeZone("UTC"));
-//        $time_zone = new DateTimeZone("UTC");
-//        $date->setTimeZone($time_zone);
-
         foreach ($data["invoice"] as $invoice) {
             foreach ($data["products"] as $product) {
-                if ($invoice->product_id == $product->product_id && $invoice->timestamp == $date) {
+                if ($invoice->product_id == $product->product_id) {
                     echo "<b><u>Item Name:</u></b> $product->caption<br>";
                     echo "<b><u>Item Description:</u></b> $product->description<br>";
                     $quantity = $invoice->total / $product->price;

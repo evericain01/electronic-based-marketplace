@@ -1,6 +1,6 @@
 <html>
-    <head>
-        <title>Buyer Main Page</title>
+    <head><?= _(" ")?>
+        <title><?= _("Buyer Main Page")?></title>
     </head>
     <body>
         <style>
@@ -10,7 +10,7 @@
         </style>
 
         <?php
-        echo "<h1>Welcome to the Market, " . $data['buyer']->first_name .
+        echo "<h1><?= _('Welcome to the Market')?>, " . $data['buyer']->first_name .
         " " . $data['buyer']->last_name . "! </h1>";
 
         echo "<a href='" . BASE . "/Default/logout' style='display:inline; float:right;'> &#124; Logout</a>";
