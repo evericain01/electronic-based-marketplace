@@ -190,7 +190,9 @@ class CartController extends \App\core\Controller {
             $emptyCart->checkout($buyer_id);
 
             $invoice = new \App\models\Invoice();
-            $invoice = $invoice->findCheckout($buyer_id);
+            $invoice = $invoice->getAllInvoiceOfBuyer($buyer_id);
+            
+//            var_dump($invoice);
 
             $this->view('Invoice/listInvoice', ['products' => $product,
                 'sellers' => $sellers, 'invoice' => $invoice]);
