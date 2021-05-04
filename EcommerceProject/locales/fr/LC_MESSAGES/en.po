@@ -1,0 +1,492 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-05-04 16:45-0400\n"
+"PO-Revision-Date: 2021-05-04 16:51-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ../../../app/views\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Buyer/buyerMainPage.php:3
+msgid "Buyer Main Page"
+msgstr "Buyer Main Page"
+
+#: Buyer/buyerMainPage.php:13
+msgid "Welcome to the Market"
+msgstr "Welcome to the Market"
+
+#: Buyer/buyerMainPage.php:16 Seller/sellerMainPage.php:16
+msgid "Logout"
+msgstr "Logout"
+
+#: Buyer/buyerMainPage.php:17 Seller/sellerMainPage.php:17
+msgid "Change Password"
+msgstr "Change Password"
+
+#: Buyer/buyerMainPage.php:18 Buyer/modifyBudget.php:8
+msgid "Wallet"
+msgstr "Wallet"
+
+#: Buyer/buyerMainPage.php:20
+msgid "EDIT WALLET"
+msgstr "EDIT WALLET"
+
+#: Buyer/buyerMainPage.php:21
+msgid "View All Orders"
+msgstr "View All Orders"
+
+#: Buyer/buyerMainPage.php:22
+msgid "View Your Cart"
+msgstr "View Your Cart"
+
+#: Buyer/buyerMainPage.php:26
+msgid "Search for a product"
+msgstr "Search for a product"
+
+#: Buyer/buyerMainPage.php:30
+msgid "Viewing all products available"
+msgstr "Viewing all products available"
+
+#: Buyer/buyerMainPage.php:39 Buyer/buyerMainPage.php:49 Cart/showCart.php:26
+msgid "Sold by"
+msgstr "Sold by"
+
+#: Buyer/buyerMainPage.php:43 Buyer/buyerSearch.php:14
+#: Seller/sellerMainPage.php:31
+msgid "STOCK"
+msgstr "STOCK"
+
+#: Buyer/buyerMainPage.php:44 Buyer/buyerMainPage.php:54
+#: Seller/sellerMainPage.php:32
+msgid "View Reviews"
+msgstr "View Reviews"
+
+#: Buyer/buyerMainPage.php:45 Buyer/buyerSearch.php:15
+msgid "ADD TO CART"
+msgstr "ADD TO CART"
+
+#: Buyer/buyerMainPage.php:53
+msgid "No more stock of this product"
+msgstr "No more stock of this product"
+
+#: Buyer/buyerSearch.php:4
+msgid "Search Results"
+msgstr "Search Results"
+
+#: Buyer/buyerSearch.php:19
+msgid "No products contains the value"
+msgstr "No products contains the value"
+
+#: Buyer/buyerSearch.php:19
+msgid "(Please input a valid product caption (name),)"
+msgstr "(Please input a valid product caption (name),)"
+
+#: Buyer/buyerSearch.php:24 Review/viewReviews.php:24
+#: Review/viewReviewsForSeller.php:22
+msgid "Go Back to Home Page"
+msgstr "Go Back to Home Page"
+
+#: Buyer/changeBuyerPassword.php:3 Seller/changeSellerPassword.php:5
+#: Seller/changeSellerPassword.php:8
+msgid "Changing Password"
+msgstr "Changing Password"
+
+#: Buyer/changeBuyerPassword.php:8 Seller/changeSellerPassword.php:10
+msgid "Old Password"
+msgstr "Old Password"
+
+#: Buyer/changeBuyerPassword.php:9 Seller/changeSellerPassword.php:11
+msgid "New Password"
+msgstr "New Password"
+
+#: Buyer/changeBuyerPassword.php:10 Seller/changeSellerPassword.php:12
+msgid "ReType Password"
+msgstr "ReType Password"
+
+#: Buyer/changeBuyerPassword.php:13 Buyer/modifyBudget.php:13
+#: Product/addProduct.php:22 Product/editProduct.php:23 Review/addReview.php:29
+#: Review/editReview.php:31 Seller/changeSellerPassword.php:15
+msgid "Cancel"
+msgstr "Cancel"
+
+#: Buyer/createBuyerProfile.php:3
+msgid "Create Buyer Profile"
+msgstr "Create Buyer Profile"
+
+#: Buyer/createBuyerProfile.php:6
+msgid "Create Your Buyer Profile"
+msgstr "Create Your Buyer Profile"
+
+#: Buyer/createBuyerProfile.php:9 Seller/createSellerProfile.php:10
+#: Seller/editSeller.php:10
+msgid "First Name"
+msgstr "First Name"
+
+#: Buyer/createBuyerProfile.php:10 Seller/createSellerProfile.php:11
+#: Seller/editSeller.php:12
+msgid "Last Name"
+msgstr "Last Name"
+
+#: Buyer/createBuyerProfile.php:11
+msgid "Budget"
+msgstr "Budget"
+
+#: Buyer/modifyBudget.php:3
+msgid "Update Wallet"
+msgstr "Update Wallet"
+
+#: Buyer/modifyBudget.php:6
+msgid "Update Your Wallet"
+msgstr "Update Your Wallet"
+
+#: Cart/checkoutPage.php:6
+msgid "Confirm Payment"
+msgstr "Confirm Payment"
+
+#: Cart/checkoutPage.php:10
+msgid "YES"
+msgstr "YES"
+
+#: Cart/checkoutPage.php:11
+msgid "NO"
+msgstr "NO"
+
+#: Cart/showCart.php:4
+msgid "Cart"
+msgstr "Cart"
+
+#: Cart/showCart.php:9
+msgid "Your Cart"
+msgstr "Your Cart"
+
+#: Cart/showCart.php:11 Invoice/listAllOrders.php:9 Invoice/listInvoice.php:9
+msgid "Go Back to Main Page"
+msgstr "Go Back to Main Page"
+
+#: Cart/showCart.php:14
+msgid "TOTAL COST"
+msgstr "TOTAL COST"
+
+#: Cart/showCart.php:17
+msgid "Your cart is empty"
+msgstr "Your cart is empty"
+
+#: Cart/showCart.php:30
+msgid "QUANTITY"
+msgstr "QUANTITY"
+
+#: Cart/showCart.php:31 Seller/sellerMainPage.php:34
+msgid "REMOVE"
+msgstr "REMOVE"
+
+#: Cart/showCart.php:40
+msgid "CHECKOUT"
+msgstr "CHECKOUT"
+
+#: Default/chooseLanguage.php:3
+msgid "Choose Language"
+msgstr "Choose Language"
+
+#: Default/chooseLanguage.php:6
+msgid "Thank you for coming back. What language would you prefer"
+msgstr "Thank you for coming back. What language would you prefer"
+
+#: Default/chooseLanguage.php:8
+msgid "Proceed"
+msgstr "Proceed"
+
+#: Default/chooseLanguage.php:9
+msgid "English"
+msgstr "English"
+
+#: Default/chooseLanguage.php:10
+msgid "French"
+msgstr "French"
+
+#: Default/chooseProfile.php:3
+msgid "Choosing the type of profile"
+msgstr "Choosing the type of profile"
+
+#: Default/chooseProfile.php:6
+msgid "Create Profile Type"
+msgstr "Create Profile Type"
+
+#: Default/chooseProfile.php:8
+msgid "Create a buyer profile"
+msgstr "Create a buyer profile"
+
+#: Default/chooseProfile.php:9
+msgid "Become a Buyer"
+msgstr "Become a Buyer"
+
+#: Default/chooseProfile.php:10
+msgid "Create a seller profile"
+msgstr "Create a seller profile"
+
+#: Default/chooseProfile.php:11
+msgid "Become a Seller"
+msgstr "Become a Seller"
+
+#: Invoice/listAllOrders.php:4
+msgid "Orders"
+msgstr "Orders"
+
+#: Invoice/listAllOrders.php:7
+msgid "All Orders"
+msgstr "All Orders"
+
+#: Invoice/listAllOrders.php:13
+msgid "You have no orders"
+msgstr "You have no orders"
+
+#: Invoice/listAllOrders.php:21 Invoice/listInvoice.php:18
+msgid "Item Name"
+msgstr "Item Name"
+
+#: Invoice/listAllOrders.php:22 Invoice/listInvoice.php:19
+msgid "Item Description"
+msgstr "Item Description"
+
+#: Invoice/listAllOrders.php:24 Invoice/listInvoice.php:21
+msgid "Quantity"
+msgstr "Quantity"
+
+#: Invoice/listAllOrders.php:25 Invoice/listInvoice.php:22
+msgid "Cost Per Item"
+msgstr "Cost Per Item"
+
+#: Invoice/listAllOrders.php:26 Invoice/listInvoice.php:23
+msgid "Total"
+msgstr "Total"
+
+#: Invoice/listAllOrders.php:29 Invoice/listInvoice.php:26
+msgid "Seller Name"
+msgstr "Seller Name"
+
+#: Invoice/listAllOrders.php:31 Invoice/listInvoice.php:28
+msgid "Seller Company"
+msgstr "Seller Company"
+
+#: Invoice/listAllOrders.php:36 Invoice/listInvoice.php:31
+msgid "DATE PURCHASED"
+msgstr "DATE PURCHASED"
+
+#: Invoice/listAllOrders.php:37 Invoice/listInvoice.php:33
+msgid "EXPECTED DELIVERY DATE"
+msgstr "EXPECTED DELIVERY DATE"
+
+#: Invoice/listAllOrders.php:51 Invoice/listAllOrders.php:58
+msgid "STATUS"
+msgstr "STATUS"
+
+#: Invoice/listAllOrders.php:53 Review/editReview.php:4
+msgid "Edit Review"
+msgstr "Edit Review"
+
+#: Invoice/listAllOrders.php:55
+msgid "Leave a Review"
+msgstr "Leave a Review"
+
+#: Invoice/listAllOrders.php:58
+msgid "In Transit"
+msgstr "In Transit"
+
+#: Invoice/listAllOrders.php:59
+msgid "Recieved"
+msgstr "Recieved"
+
+#: Invoice/listInvoice.php:3 Invoice/listInvoice.php:6
+msgid "Invoice"
+msgstr "Invoice"
+
+#: Login/login.php:4
+msgid "Log into an account"
+msgstr "Log into an account"
+
+#: Login/login.php:12 Login/register.php:12
+msgid "Username"
+msgstr "Username"
+
+#: Login/login.php:13 Login/register.php:13 Login/register.php:15
+msgid "Password"
+msgstr "Password"
+
+#: Login/login.php:18
+msgid "Register Here"
+msgstr "Register Here"
+
+#: Login/register.php:3
+msgid "Register an account"
+msgstr "Register an account"
+
+#: Login/register.php:14
+msgid "Password confirmation"
+msgstr "Password confirmation"
+
+#: Login/register.php:19
+msgid "Seller"
+msgstr "Seller"
+
+#: Login/register.php:20
+msgid "Buyer"
+msgstr "Buyer"
+
+#: Login/register.php:23
+msgid "Register"
+msgstr "Register"
+
+#: Login/register.php:26
+msgid "Already have an account"
+msgstr "Already have an account"
+
+#: Login/register.php:26
+msgid "Login"
+msgstr "Login"
+
+#: Product/addProduct.php:2 Product/addProduct.php:5
+msgid "Add Product"
+msgstr "Add Product"
+
+#: Product/addProduct.php:13 Product/editProduct.php:15
+msgid "Name"
+msgstr "Name"
+
+#: Product/addProduct.php:14 Product/editProduct.php:16
+msgid "Description"
+msgstr "Description"
+
+#: Product/addProduct.php:17 Product/editProduct.php:19
+msgid "Stock"
+msgstr "Stock"
+
+#: Product/addProduct.php:18 Product/editProduct.php:20
+msgid "Price"
+msgstr "Price"
+
+#: Product/addProduct.php:19
+msgid "Select the product's image"
+msgstr "Select the product's image"
+
+#: Product/addProduct.php:20
+msgid "submit"
+msgstr "submit"
+
+#: Product/editProduct.php:3
+msgid "Edit Product"
+msgstr "Edit Product"
+
+#: Product/editProduct.php:6
+msgid "Editing this Product"
+msgstr "Editing this Product"
+
+#: Review/addReview.php:2
+msgid "Add Review"
+msgstr "Add Review"
+
+#: Review/addReview.php:5
+msgid "Adding a Review"
+msgstr "Adding a Review"
+
+#: Review/addReview.php:14
+msgid "Rate"
+msgstr "Rate"
+
+#: Review/addReview.php:23
+msgid "Write a Review"
+msgstr "Write a Review"
+
+#: Review/editReview.php:7
+msgid "Editing Review"
+msgstr "Editing Review"
+
+#: Review/editReview.php:16
+msgid "Change Rating"
+msgstr "Change Rating"
+
+#: Review/editReview.php:25
+msgid "Change Review"
+msgstr "Change Review"
+
+#: Review/viewReviews.php:3 Review/viewReviewsForSeller.php:2
+msgid "View Review"
+msgstr "View Review"
+
+#: Review/viewReviews.php:6 Review/viewReviewsForSeller.php:5
+msgid "Viewing all Reviews"
+msgstr "Viewing all Reviews"
+
+#: Review/viewReviews.php:12 Review/viewReviewsForSeller.php:9
+msgid "Review By"
+msgstr "Review By"
+
+#: Review/viewReviews.php:13 Review/viewReviewsForSeller.php:10
+msgid "Rating"
+msgstr "Rating"
+
+#: Review/viewReviews.php:14 Review/viewReviewsForSeller.php:11
+msgid "Review"
+msgstr "Review"
+
+#: Review/viewReviewsForSeller.php:17
+msgid "There are no reviews for this item."
+msgstr "There are no reviews for this item."
+
+#: Seller/changeSellerPassword.php:2
+msgid "   "
+msgstr ""
+
+#: Seller/changeSellerPassword.php:13 Seller/createSellerProfile.php:14
+#: Seller/editSeller.php:14
+msgid "Submit changes"
+msgstr ""
+
+#: Seller/createSellerProfile.php:4
+msgid "Create Seller Profile"
+msgstr "Create Seller Profile"
+
+#: Seller/createSellerProfile.php:7
+msgid "Create Your Seller Profile"
+msgstr "Create Your Seller Profile"
+
+#: Seller/createSellerProfile.php:12
+msgid "Company/Brand Name"
+msgstr "Company/Brand Name"
+
+#: Seller/editSeller.php:4
+msgid "Create Profile"
+msgstr "Create Profile"
+
+#: Seller/editSeller.php:7
+msgid "Create Your Profile"
+msgstr "Create Your Profile"
+
+#: Seller/editSeller.php:11
+msgid "Middle Name"
+msgstr "Middle Name"
+
+#: Seller/sellerMainPage.php:3
+msgid "Seller Main Page"
+msgstr "Seller Main Page"
+
+#: Seller/sellerMainPage.php:13
+msgid "Welcome"
+msgstr "Welcome"
+
+#: Seller/sellerMainPage.php:20
+msgid "ADD A PRODUCT"
+msgstr "ADD A PRODUCT"
+
+#: Seller/sellerMainPage.php:22
+msgid "Here are your prodcuts on sale"
+msgstr "Here are your prodcuts on sale"
+
+#: Seller/sellerMainPage.php:33
+msgid "EDIT"
+msgstr "EDIT"
