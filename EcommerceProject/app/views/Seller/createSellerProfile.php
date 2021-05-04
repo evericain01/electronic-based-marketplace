@@ -1,16 +1,17 @@
 <html>
+
     <head>
-        <title>Create Seller Profile</title>
+        <title><?= _("Create Seller Profile")?></title>
     </head>
     <body>
-        <h4>Create Your Seller Profile:</h4>
+        <h4><?= _("Create Your Seller Profile")?>:</h4>
  
         <form method="post" action="">
-            <label>First Name: <input type="text" name="first_name" /></label><br />
-            <label>Last Name: <input type="text" name="last_name" /></label><br />
-            <label>Company/Brand Name: <input type="text" name="brand_name" /></label><br />
+            <label><?= _("First Name")?>: <input type="text" name="first_name" /></label><br />
+            <label><?= _("Last Name")?>: <input type="text" name="last_name" /></label><br />
+            <label><?= _("Company/Brand Name")?>: <input type="text" name="brand_name" /></label><br />
 
-            <input type="submit" name="action" value="Submit changes" />
+            <input type="submit" name="action" value="<?= _("Submit changes")?>" />
 
         </form>
 

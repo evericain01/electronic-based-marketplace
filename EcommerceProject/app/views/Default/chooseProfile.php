@@ -1,14 +1,14 @@
 <html>
     <head>
-        <title>Choosing the type of profile</title>
+        <title><?= _("Choosing the type of profile")?></title>
     </head>
     <body>
-        <label>Create Profile Type:</label><br /> <br />
+        <label><?= _("Create Profile Type")?>:</label><br /> <br />
 
-        Create a buyer profile:
-        <a href="<?= BASE ?>/Buyer/createProfile">Become a Buyer</a> <br />
-        Create a seller profile:
-        <a href="<?= BASE ?>/Seller/createProfile">Become a Seller</a>
+        <?= _("Create a buyer profile")?>:
+        <a href="<?= BASE ?>/Buyer/createProfile"><?= _("Become a Buyer")?></a> <br />
+        <?= _("Create a seller profile")?>:
+        <a href="<?= BASE ?>/Seller/createProfile"><?= _("Become a Seller")?></a>
 
     </body>
 </html>

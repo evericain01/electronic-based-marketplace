@@ -1,9 +1,10 @@
 
 <html>
-    <head><title>Edit Review</title>
+
+    <head><title><?= _("Edit Review")?></title>
     </head>
     <body>
-        <h2>Editing Review</h2>
+        <h2><?= _("Editing Review")?></h2>
         <style>
             textarea {
                 width: 238px;
@@ -12,7 +13,7 @@
         </style>
         <form action="" method="post" enctype="multipart/form-data">
 
-            <label>Change Rating:</label>
+            <label><?= _("Change Rating")?>:</label>
             <select name="rate" value=<?= $data->rate ?>>
                 <option value="1">1/5</option>
                 <option value="2">2/5</option>
@@ -21,13 +22,13 @@
                 <option value="5">5/5</option>
             </select> <br><br>
 
-            <label>Change Review: <br>
+            <label><?= _("Change Review")?>: <br>
                 <textarea name="text_review" value = <?= $data->text_review ?>></textarea>
             </label><br><br>
             
             <input type="submit" name="action" />
         </form>
-        <a href="<?= BASE ?>/Buyer/index">Cancel</a>
+        <a href="<?= BASE ?>/Buyer/index"><?= _("Cancel")?></a>
     </body>
 </html>
 

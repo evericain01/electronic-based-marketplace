@@ -1,8 +1,8 @@
 <html>
-    <head><title>Add Product</title>
+    <head><title><?= _("Add Product")?></title>
     </head>
     <body>
-        <h4>Add Product(s)</h4>
+        <h4><?= _("Add Product")?>(s)</h4>
                 <style>
             textarea {
                 width: 238px;
@@ -10,15 +10,15 @@
             }
         </style>
         <form action="" method="post" enctype="multipart/form-data">
-            <label>Name: <input type="text" name="caption" /></label><br />
-            <label>Description: <br>
+            <label><?= _("Name")?>: <input type="text" name="caption" /></label><br />
+            <label><?= _("Description")?>: <br>
                 <textarea name="description"><?= $data['product']->description ?></textarea>
             </label><br><br>
-            <label>Stock: <input type="number" name="quantity" /></label><br />
-            <label>Price: <input type="number" step=".01" name="price" /></label><br />
-            <label>Select the product's image: <input type= "file" name="myImage" /></label><br> <br>
-            <input type="submit" name="action" />
+            <label><?= _("Stock")?>: <input type="number" name="quantity" /></label><br />
+            <label><?= _("Price")?>: <input type="number" step=".01" name="price" /></label><br />
+            <label><?= _("Select the product's image")?>: <input type= "file" name="myImage" /></label><br> <br>
+            <input type="<?= _("submit")?>" name="action" />
         </form>
-        <a href="<?= BASE ?>/Seller/index">Cancel</a>
+        <a href="<?= BASE ?>/Seller/index"><?= _("Cancel")?></a>
     </body>
 </html>
