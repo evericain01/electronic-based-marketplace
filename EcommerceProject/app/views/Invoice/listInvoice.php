@@ -8,9 +8,13 @@
         <?php
         echo "<br><a href='" . BASE . "/Buyer/index'>&#8592 Go Back to Main Page</a><br><br><br>";
 
+        $date = new DateTime(null, new DateTimeZone("America/Toronto"));
+        $result = $date->format('Y-m-d H:i:s');
+        
         foreach ($data["invoice"] as $invoice) {
             foreach ($data["products"] as $product) {
-                if ($invoice->product_id == $product->product_id) {
+                if ($invoice->product_id == $product->product_id && $invoice->timestamp == $result) {
+                   
                     echo "<b><u>Item Name:</u></b> $product->caption<br>";
                     echo "<b><u>Item Description:</u></b> $product->description<br>";
                     $quantity = $invoice->total / $product->price;
@@ -25,11 +29,12 @@
                         }
                     }
                     echo "DATE PURCHASED: $invoice->timestamp<br>";
-                  
+
                     echo "EXPECTED DELIVERY DATE: $invoice->date_of_arrival<br><br>";
+                    echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
                 }
             }
-            echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
+            
         }
         ?>
     </body>
