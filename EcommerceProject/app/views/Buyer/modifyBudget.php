@@ -1,21 +1,14 @@
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Update Wallet") ?></title>
     </head>
     <body>        
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-            body {
-                text-align: center;
-                background-color: #BFBFBF;
-                font-family: 'Roboto', sans-serif;
-            }
-        </style>
-
-        <h3><?= _("Update Your Wallet") ?>:</h3><br>
+        <h2><?= _("Update Your Wallet") ?>:</h2><br>
         <form method="post" action="">
-            <label><?= _("Wallet") ?>:<br><input type="number" step="0.01" name="budget" 
-                                              value="<?= $data->budget ?>"/></label><br /><br>
+            <label><?= _("Wallet") ?>:<br><input type="number" step="1" min="0" name="budget" 
+                                                 value="<?= $data->budget ?>"/></label><br /><br>
             <input type="submit" name="action" value="Submit changes" />
 
         </form>

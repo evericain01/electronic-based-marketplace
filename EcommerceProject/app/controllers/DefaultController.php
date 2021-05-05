@@ -18,28 +18,27 @@ class DefaultController extends \App\core\Controller {
                 $user->user_role = $_POST['user_role'];
 
                 $result = $user->insert();
-                if ($result == false) {
-                    header('location:' . BASE . '/Default/register?error=Passwords do not match!'); //reload
-                    return;
-                }
-                $_SESSION['user_role'] = $user->user_role;
+
                 $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['username'] = $user->username;
-                
+                $_SESSION['user_role'] = $user->user_role;
+                if ($result == false) {
+                    header('location:' . BASE . '/Default/register?error=Passwords do not match!');
+                    return;
+                }
+
                 if ($_SESSION['user_role'] == 'buyer') {
                     header('location:' . BASE . '/Buyer/createProfile');
-                }else {
+                } else {
                     header('location:' . BASE . '/Seller/createProfile');
                 }
-                
             } else
-                header('location:' . BASE . '/Default/register?error=Passwords do not match!'); //reload
+                header('location:' . BASE . '/Default/register?error=Passwords do not match!');
         } else {
             $this->view('Login/Register');
         }
     }
-    
-   
+
     function editBuyerPassword() {
         $user = new \App\models\User();
         $user = $user->find($_SESSION['username']);
@@ -114,7 +113,13 @@ class DefaultController extends \App\core\Controller {
                     $_SESSION['user_id'] = $user->user_id;
                     $_SESSION['username'] = $user->username;
                     $_SESSION['user_role'] = $user->user_role;
-                    header('location:' . BASE . '/Default/goToChooseLanguage');
+
+                    if ($_SESSION['user_role'] == 'buyer') {
+                        header('location:' . BASE . '/Buyer/buyerMainPage');
+                    } else {
+                        header('location:' . BASE . '/Seller/sellerMainPage');
+                    }
+                    
                 } else {
                     $_SESSION['temp_user_id'] = $user->user_id;
                     $_SESSION['temp_username'] = $user->username;
@@ -123,7 +128,7 @@ class DefaultController extends \App\core\Controller {
                     header('location:' . BASE . '/Default/validateLogin');
                 }
             } else
-                header('location:' . BASE . '/Default/login?error=Username/password mismatch!');
+                header('location:' . BASE . '/Default/login?error=Wrong username or password.');
         } else {
             $this->view('Login/login');
         }
@@ -141,7 +146,7 @@ class DefaultController extends \App\core\Controller {
                 header('location:' . BASE . '/Default/chooseLogin');
             } else {
                 session_destroy();
-                header('location:' . BASE . '/Default/login?error=Username/password mismatch!');
+                header('location:' . BASE . '/Default/login?error=Wrong username or password.');
             }
         } else {
             $this->view('Login/validateLogin');

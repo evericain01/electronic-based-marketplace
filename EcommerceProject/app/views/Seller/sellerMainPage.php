@@ -1,32 +1,20 @@
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Seller Main Page") ?></title>
 
     </head>
+
     <body>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-            body {
-                text-align: center;
-                background-color: #BFBFBF;
-                font-family: 'Roboto', sans-serif;
-            }
-
-            .column {
-                float: left;
-                width: 21%;
-                padding: 35px;
-            }
-
-            .row {
-                clear: both;
-                display: table;
-            }
-        </style>
-
         <?php
-        echo "<h1>" . _("Welcome") . ", " . $data['seller']->first_name .
-        " " . $data['seller']->last_name . "! </h1>";
+        
+        echo "<div class='homePageTitle'>" . _("Welcome") . ", " . $data['seller']->first_name .
+        " " . $data['seller']->last_name . "!</div>";
+        
+        echo "<div class='language'><a href='?lang=en'>" . _("English") . "</a> &#124; ";
+        echo "<a href='?lang=fr'>" . _("French") . "</a></div><br><br>";
+
 
         echo "<a href='" . BASE . "/Default/logout'style='float:right;'> &#124; " . _("Logout") . "</a>";
         echo "<a href='" . BASE . "/Default/editSellerPassword' style='float:right;'>" . _("Change Password") . " &#124;</a>";
@@ -34,9 +22,9 @@
         $seller_id = $data['seller']->seller_id;
         echo "<a href='" . BASE . "/Product/add/$seller_id' style='display:inline; float:left;'>" . _("ADD A PRODUCT") . "</a><br><br>";
 
-        echo "<h3><i><u>Company Name: " . $data['seller']->brand_name . "</u></i></h3>";
+        echo "<h3><i>Company Name: " . $data['seller']->brand_name . "</i></h3>";
 
-        echo "<br><h2>" . _("Your products on sale") . ":</h2><br>";
+        echo "<br><h1>" . _("Your products on sale") . ":</h1><br>";
         echo "<hr style='width:100%;text-align:left;margin-left:0'>";
 
 

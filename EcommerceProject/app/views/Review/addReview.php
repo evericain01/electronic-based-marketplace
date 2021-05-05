@@ -1,21 +1,11 @@
 <html>
-    <head><title><?= _("Add Review") ?></title>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
+        <title><?= _("Add Review") ?></title>
     </head>
     <body>
         <h2><?= _("Adding a Review") ?></h2>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-            body {
-                text-align: center;
-                background-color: #BFBFBF;
-                font-family: 'Roboto', sans-serif;
-            }
-            
-            textarea {
-                width: 238px;
-                height: 80px;
-            }
-        </style>
         <form action="" method="post" enctype="multipart/form-data">
 
             <label><?= _("Rate") ?>:</label>

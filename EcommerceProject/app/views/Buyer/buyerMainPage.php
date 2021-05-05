@@ -1,59 +1,35 @@
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Buyer Main Page") ?></title>
     </head>
     <body>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-            body {
-                text-align: center;
-                background-color: #BFBFBF;
-                font-family: 'Roboto', sans-serif;
-            }
-
-            .column {
-                float: left;
-                width: 20%;
-                padding: 35px;
-            }
-
-            .row {
-                clear: both;
-                display: table;
-            }
-
-            form {
-                float:left;
-            }
-
-            u {
-                float:left;
-                font-size: 20px;
-            }
-
-        </style>
 
         <?php
-        echo "<h1>" . _("Welcome to the Market") . ", " . $data['buyer']->first_name .
-        " " . $data['buyer']->last_name . "! </h1>";
+        echo "<div class='homePageTitle'>" . _("Welcome to the Market") . ", " . $data['buyer']->first_name .
+        " " . $data['buyer']->last_name . "! </div>";
+
+        echo "<div class='language'><a href='?lang=en'>" . _("English") . "</a> &#124; ";
+        echo "<a href='?lang=fr'>" . _("French") . "</a></div><br><br>";
 
         echo "<a href='" . BASE . "/Default/logout' style='display:inline; float:right;'> &#124; " . _("Logout") . "</a>";
         echo "<a href='" . BASE . "/Default/editBuyerPassword' style='display:inline; float:right;'>" . _("Change Password") . " &#124;</a><br><br><br>";
 
-        echo "<form method='post' action=''>";
+        echo "<div class='search'> <form method='post' action=''>";
         echo "<label>" . _("Search for a product") . ": <input type='text' name='keyword'/> </label>";
         echo "<input type='submit' name='action' value='Search!'/>";
-        echo "</form>";
-        
+        echo "</form></div>";
+
         echo " <a href='" . BASE . "/Invoice/index' style='font-size: 20px; display:inline; float:right;'> &#124; " . _("View All Orders") . "</a>";
         echo " <a href='" . BASE . "/Cart/index' style='font-size: 20px; display:inline; float:right;'>" . _("View Your Cart") . " &#124;</a><br><br><br>";
 
-        echo "<u>" . _("Wallet") . ":</u>" . "<b><span style='color:#189200; font-size:20px; float:left;'>&nbsp;$" . $data['buyer']->budget . "</b></span><br>";
+        echo "<u><span style='font-size:30px; float:left;'>" . _("Wallet") . ":</span></u>" . "<b><span style='color:#189200; font-size:30px; float:left;'>&nbsp;$" . $data['buyer']->budget . "</b></span><br>";
         echo "<br><a href='" . BASE . "/Buyer/updateBudget' style='display:inline; float:left;'>[" . _("EDIT WALLET") . "] </a>";
 
         echo "<br><br>";
 
-        echo "<h2>" . _("Electronics Catalog") . ":</h2><br><br>";
+        echo "<h1>" . _("Electronics Catalog") . ":</h1><br><br>";
         echo "<hr style='width:100%;text-align:left;margin-left:0'>";
 
         echo "<div class='row'>";
@@ -84,7 +60,8 @@
                     }
                 }
             }
-        } echo "</div>";
+        } 
+        echo "</div>";
         echo "<hr style='width:100%;text-align:left;margin-left:0'><br>";
         ?>
     </body>

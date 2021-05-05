@@ -1,23 +1,10 @@
 <html>
     <head>
-
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Search Results") ?></title>
     </head>
     <body>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-            body {
-                text-align: center;
-                background-color: #BFBFBF;
-                font-family: 'Roboto', sans-serif;
-            }
-
-            .search {
-                text-align: left;
-            }
-        </style>
-
-
         <?php
         echo "<h2><b>" . _("Results for search") . ", <i>" . $data['keyword'] . "</i>:</b></h2><br><br><br>";
         foreach ($data['products'] as $products) {

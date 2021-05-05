@@ -1,16 +1,11 @@
 <html>
-    <head><title><?= _("View Review") ?></title>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
+        <title><?= _("View Review") ?></title>
     </head>
     <body>
         <h2><?= _("Viewing all Reviews") ?>:</h2> <br />
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-            body {
-                text-align: center;
-                background-color: #BFBFBF;
-                font-family: 'Roboto', sans-serif;
-            }
-        </style>
         <?php
         foreach ($data['reviews'] as $review) {
             foreach ($data['buyer'] as $buyer) {

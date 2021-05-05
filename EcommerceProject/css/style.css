@@ -1,12 +1,69 @@
-button {
-                color: black;
-                background-color: green;
-                border-radius: 3px;
-                width: 60px;
-                height: 30px;
-            }
+body {
+    text-align: center;
+    background-color: #BFBFBF;
+    font-family: 'Roboto', sans-serif;
+}
 
-            body {
-                text-align: center;
-                background-color: grey;
-            }
+button {
+    color: black;
+    background-color: #2ED000;
+    border-radius: 3px;
+    width: 60px;
+    height: 30px;
+}
+
+.column {
+    float: left;
+    width: 35%;
+    padding: 35px;
+}
+
+.row {
+    clear: both;
+    display: table;
+}
+
+u {
+    float:left;
+    font-size: 19px;
+}
+
+.allOrders {
+    text-align: left;
+}
+
+.invoices {
+    text-align: left;
+}
+
+.search {
+    text-align: left;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+textarea {
+    width: 238px;
+    height: 80px;
+}
+
+.review {
+    text-align: left;
+}
+
+.homePageTitle {
+    font-size: 30px;
+}
+
+.language {
+    font-size: 15px;
+}
+
+.homePageLink {
+    text-align: left;
+}
+

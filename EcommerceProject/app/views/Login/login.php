@@ -1,35 +1,28 @@
 <html>
     <head>
         <title><?= _("Log into an account") ?></title>
-<!--        <link rel="stylesheet" href="/css/style.css" type="text/css">-->
+
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
+
     </head>
     <body>
+        <?php
+        if (isset($_GET['error']))
+            echo $_GET['error'];
+        ?>
+
         <h1>Electronics Marketplace</h1>
-        
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-            button {
-                color: black;
-                background-color: #2ED000;
-                border-radius: 3px;
-                width: 60px;
-                height: 30px;
-            }
+        <form method="post" action="">
+            <label><?= _("Username") ?>: <br><input type="text" name="username" placeholder="Username" /></label><br /><br>
+            <label><?= _("Password") ?>: <br><input type="password" name="password" placeholder="Password" /></label><br /><br>
 
-            body {
-                text-align: center;
-                background-color: #BFBFBF;
-                font-family: 'Roboto', sans-serif;
-            }
-            
-        </style>
-            <form method="post" action="">
-                <label><?= _("Username") ?>: <br><input type="text" name="username" placeholder="Username" /></label><br /><br>
-                <label><?= _("Password") ?>: <br><input type="password" name="password" placeholder="Password" /></label><br /><br>
+            <button type="submit" name="action" value="Login">Login</button><br><br>
 
-                <button type="submit" name="action" value="Login">Login</button>
+            <a href='?lang=en'><?= _("English") ?></a> &#124;
+            <a href='?lang=fr'><?= _("French") ?></a> <br /><br>
 
-            </form>
-            <a href="<?= BASE ?>/Default/register"><?= _("Register Here") ?>!</a>
+        </form>
+        <a href="<?= BASE ?>/Default/register"><?= _("Register Here") ?>!</a>
     </body>
 </html>
