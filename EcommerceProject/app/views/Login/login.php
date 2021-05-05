@@ -1,20 +1,35 @@
 <html>
     <head>
-    
-        <title><?= _("Log into an account")?></title>
+        <title><?= _("Log into an account") ?></title>
+<!--        <link rel="stylesheet" href="/css/style.css" type="text/css">-->
     </head>
     <body>
-        <?php
-        if (isset($_GET['error']))
-            echo $_GET['error'];
-        ?>
-        <form method="post" action="">
-            <label><?= _("Username")?>: <input type="text" name="username" /></label><br />
-            <label><?= _("Password")?>: <input type="password" name="password" /></label><br />
+        <h1>Electronics Marketplace</h1>
+        
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+            button {
+                color: black;
+                background-color: #2ED000;
+                border-radius: 3px;
+                width: 60px;
+                height: 30px;
+            }
 
-            <input type="submit" name="action" value="Login" />
+            body {
+                text-align: center;
+                background-color: #BFBFBF;
+                font-family: 'Roboto', sans-serif;
+            }
+            
+        </style>
+            <form method="post" action="">
+                <label><?= _("Username") ?>: <br><input type="text" name="username" placeholder="Username" /></label><br /><br>
+                <label><?= _("Password") ?>: <br><input type="password" name="password" placeholder="Password" /></label><br /><br>
 
-        </form>
-        <a href="<?= BASE ?>/Default/register"><?= _("Register Here")?>!</a>
+                <button type="submit" name="action" value="Login">Login</button>
+
+            </form>
+            <a href="<?= BASE ?>/Default/register"><?= _("Register Here") ?>!</a>
     </body>
 </html>

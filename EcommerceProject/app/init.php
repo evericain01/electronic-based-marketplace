@@ -5,6 +5,7 @@ session_start();
 require "autoload.php";
 require "core/i18n.php";
 
+
 $path = getcwd();
 $path = preg_replace('/^.+\\\\htdocs\\\\/', '/', $path);
 $path = str_replace('\\', '/', $path);

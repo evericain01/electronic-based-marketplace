@@ -1,17 +1,26 @@
 <html>
-
     <head>
-        <title><?= _("Create Seller Profile")?></title>
+        <title><?= _("Create Seller Profile") ?></title>
     </head>
     <body>
-        <h4><?= _("Create Your Seller Profile")?>:</h4>
- 
-        <form method="post" action="">
-            <label><?= _("First Name")?>: <input type="text" name="first_name" /></label><br />
-            <label><?= _("Last Name")?>: <input type="text" name="last_name" /></label><br />
-            <label><?= _("Company/Brand Name")?>: <input type="text" name="brand_name" /></label><br />
 
-            <input type="submit" name="action" value="<?= _("Submit changes")?>" />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+            body {
+                text-align: center;
+                background-color: #BFBFBF;
+                font-family: 'Roboto', sans-serif;
+            }
+        </style>
+
+        <h3><?= _("Create Your Seller Profile") ?>:</h3>
+
+        <form method="post" action="">
+            <label><?= _("First Name") ?>:<br> <input type="text" name="first_name" placeholder="First Name" /></label><br /> <br>
+            <label><?= _("Last Name") ?>:<br> <input type="text" name="last_name" placeholder="Last Name"/></label><br /> <br>
+            <label><?= _("Company/Brand Name") ?>:<br> <input type="text" name="brand_name" placeholder="Company/Brand Name"/></label><br /> <br>
+
+            <input type="submit" name="action" value="<?= _("Submit changes") ?>" />
 
         </form>
 

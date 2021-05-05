@@ -1,17 +1,25 @@
 <html>
-<?= _("   ")?>
-    ". _("     ")."
     <head>
-        <title><?= _("Changing Password")?></title>
+        <title><?= _("Changing Password") ?></title>
     </head>
     <body>
-        <h4><?= _("Changing Password")?>:</h4>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+            body {
+                text-align: center;
+                background-color: #BFBFBF;
+                font-family: 'Roboto', sans-serif;
+            }
+        </style>
+
+        <h3><?= _("Changing Password") ?>:</h3>
+        <br>
         <form method="post" action="">
-            <label><?= _("Old Password")?>: <input type="password" name="oldPassword"/></label><br>
-            <label><?= _("New Password")?>: <input type="password" name="newPassword"/></label><br>
-            <label><?= _("ReType Password")?>: <input type="password" name="reTypePassword"/></label><br><br><br>
-            <input type="submit" name="action" value="<?= _("Submit changes")?>" />
+            <label><?= _("Old Password") ?>:<br> <input type="password" name="oldPassword"/></label><br><br>
+            <label><?= _("New Password") ?>:<br> <input type="password" name="newPassword"/></label><br><br>
+            <label><?= _("ReType Password") ?>:<br> <input type="password" name="reTypePassword"/></label><br><br><br>
+            <input type="submit" name="action" value="<?= _("Submit changes") ?>" />
         </form>
-        <a href="<?= BASE ?>/Seller/index"><?= _("Cancel")?></a>
+        <a href="<?= BASE ?>/Seller/index"><?= _("Cancel") ?></a>
     </body>
 </html>

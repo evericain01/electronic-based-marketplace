@@ -1,0 +1,12 @@
+button {
+                color: black;
+                background-color: green;
+                border-radius: 3px;
+                width: 60px;
+                height: 30px;
+            }
+
+            body {
+                text-align: center;
+                background-color: grey;
+            }

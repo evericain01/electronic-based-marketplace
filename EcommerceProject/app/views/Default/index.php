@@ -3,7 +3,7 @@
         <title>Default location for my application</title>
     </head>
     <body>
-        This is the default location for my web application.
+        Welcome to a marketplace that sells electronics.
         <p><a href='<?= BASE ?>/Default/login'>Login</a></p>
     </body>
 </html>

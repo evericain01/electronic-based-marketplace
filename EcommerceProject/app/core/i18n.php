@@ -1,5 +1,5 @@
 <?php
-$locale = 'en';//this locale matches the wanted language
+$locale = 'fr';//this locale matches the wanted language
 
 function valid($locale) {//always best to validate
    return in_array($locale, ['en', 'fr']);
