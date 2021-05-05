@@ -19,7 +19,7 @@
             foreach ($data["products"] as $product) {
                 if ($invoice->product_id == $product->product_id) {
                     echo "<table style='width:90%'>";
-                    echo "<tr><th>Image</th><th>Name</th><th>Description</th><th>Quantity Bought</th><th>Price</th><th>Total Price</th><th>Seller Name</th><th>Seller Company</th><th>Date Purchased</th><th>Expected Delivery Date</th></tr>";
+                    echo "<tr><th>Image</th><th>Name</th><th>" . _("Description") . "</th><th>" . _("Quantity Bought") . "</th><th>" . _("Price") . "</th><th>" . _("Total Price") . "</th><th>" . _("Seller Name") . "</th><th>" . _("Seller Company") . "</th><th>" . _("Date Purchased") . "</th><th>" . _("Expected Delivery Date") . "</th></tr>";
                     echo "<tr><td><img src='" . BASE . "/uploads/$product->filename' width='80' height='80'/><br><br></td>"; 
                     echo "<td>$product->caption<br></td>";
                     echo "<td>$product->description<br></td>";
@@ -53,7 +53,7 @@
                     }
                 }
 
-                echo "<b>" . _("STATUS") . ": <span style='color:#398C0C;text-align:center;'> Delivered </span></b>";
+                echo "<b>" . _("STATUS") . ": <span style='color:#398C0C;text-align:center;'> " . _("Delivered") . " </span></b>";
                 if ($exist == true) {
                     echo "<br><b><a href='" . BASE . "/Review/edit/$currentProductReviewID'>" . _("Edit Review") . "</a></b><br><br>";
                 } else {

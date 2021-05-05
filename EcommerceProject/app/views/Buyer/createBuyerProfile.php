@@ -13,7 +13,7 @@
             <label><?= _("Last Name") ?>:<br> <input type="text" name="last_name" placeholder="Last Name"/></label><br /> <br>
             <label><?= _("Budget") ?>:<br> <input type="number" step="1" name="budget" min="0" placeholder="Budget"/></label><br /> <br>
 
-            <input type="submit" name="action" value="Submit changes" />
+            <input type="submit" name="action" value="<?= _("Submit changes") ?>" />
 
         </form>
 

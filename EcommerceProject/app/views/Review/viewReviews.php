@@ -20,7 +20,7 @@
         }
 
         if (empty($data['reviews'])) {
-            echo "There are no reviews for this item.";
+            echo _("There are no reviews for this item.");
         }
 
         echo "<br><br><br>";

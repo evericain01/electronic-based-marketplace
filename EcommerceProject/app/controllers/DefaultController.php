@@ -50,19 +50,19 @@ class DefaultController extends \App\core\Controller {
                     if ($_POST['newPassword'] == $_POST['reTypePassword']) {
                         $user->password_hash = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
                         $user->update($_SESSION['username']);
-                        echo "Password Successfully Changed!<br><br>";
-                        echo "<a href = '" . BASE . "/Buyer/index' >&#8592 Go Back to Home Page</a>";
+                        echo _("Password Successfully Changed") . "!<br><br>";
+                        echo "<a href = '" . BASE . "/Buyer/index' >&#8592 " . _("Go Back to Home Page") . "</a>";
                     } else {
-                        echo "Password does not match.<br><br>";
-                        echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 Go Back to Change Password</a>";
+                        echo _("Password does not match.") . "<br><br>";
+                        echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                     }
                 } else {
-                    echo "Invalid old password.<br><br>";
-                    echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 Go Back to Change Password</a>";
+                    echo _("Invalid old password.")."<br><br>";
+                    echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                 }
             } else {
-                echo "Input a new password.<br><br>";
-                echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 Go Back to Change Password</a>";
+                echo _("Input a new password.")."<br><br>";
+                echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
             }
         } else {
             $this->view('Buyer/changeBuyerPassword');
@@ -80,19 +80,19 @@ class DefaultController extends \App\core\Controller {
                     if ($_POST['newPassword'] == $_POST['reTypePassword']) {
                         $user->password_hash = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
                         $user->update($_SESSION['username']);
-                        echo "Password Successfully Changed!<br><br>";
+                        echo _("Password Successfully Changed") . "!<br><br>";
                         echo "<a href = '" . BASE . "/Seller/index' >&#8592 Go Back to Home Page</a>";
                     } else {
-                        echo "Password does not match.<br><br>";
-                        echo "<a href = '" . BASE . "/Default/editSellerPassword' >&#8592 Go Back to Change Password</a>";
+                        echo _("Password does not match.") . "<br><br>";
+                        echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                     }
                 } else {
-                    echo "Invalid old password.<br><br>";
-                    echo "<a href = '" . BASE . "/Default/editSellerPassword' >&#8592 Go Back to Change Password</a>";
+                    echo _("Invalid old password.")."<br><br>";
+                    echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                 }
             } else {
-                echo "Input a new password.<br><br>";
-                echo "<a href = '" . BASE . "/Default/editSellerPassword' >&#8592 Go Back to Change Password</a>";
+                echo _("Input a new password.")."<br><br>";
+                echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
             }
         } else {
             $this->view('Seller/changeSellerPassword');
