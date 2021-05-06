@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Invoice") ?></title>
     </head>
@@ -26,9 +26,7 @@
                     echo "<b>" . _("Cost Per Item") . ":</b> $product->price CAD<br>";
                     echo "<b>" . _("Total") . ":</b> $invoice->total CAD<br>";
                     foreach ($data["sellers"] as $seller) {
-                        if ($invoice->seller_id == $product->seller_id) {
-                            echo "<b>" . _("Seller Name") . ": </b>$seller->first_name ";
-                            echo "$seller->last_name<br>";
+                        if ($invoice->seller_id == $seller->seller_id) {
                             echo "<b>" . _("Seller Company") . ": </b>$seller->brand_name<br><br>";
                         }
                     }
