@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-05-05 16:40-0400\n"
-"PO-Revision-Date: 2021-05-05 16:48-0400\n"
+"POT-Creation-Date: 2021-05-05 21:36-0400\n"
+"PO-Revision-Date: 2021-05-05 21:36-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -91,7 +91,7 @@ msgstr "EDIT WALLET"
 msgid "Electronics Catalog"
 msgstr "Electronics Catalog"
 
-#: views/Buyer/buyerMainPage.php:42
+#: views/Buyer/buyerMainPage.php:42 views/Cart/showCart.php:14
 msgid "Sold By"
 msgstr "Sold By"
 
@@ -221,6 +221,28 @@ msgstr "Your Cart"
 msgid "TOTAL COST"
 msgstr "TOTAL COST"
 
+#: views/Cart/showCart.php:14 views/Invoice/listAllOrders.php:22
+msgid "Image"
+msgstr "Image"
+
+#: views/Cart/showCart.php:14
+msgid "Product Name"
+msgstr "Product Name"
+
+#: views/Cart/showCart.php:14 views/Invoice/listAllOrders.php:22
+#: views/Product/addProduct.php:13 views/Product/editProduct.php:12
+msgid "Description"
+msgstr "Description"
+
+#: views/Cart/showCart.php:14 views/Invoice/listAllOrders.php:22
+#: views/Product/addProduct.php:17 views/Product/editProduct.php:16
+msgid "Price"
+msgstr "Price"
+
+#: views/Cart/showCart.php:14 views/Invoice/listInvoice.php:25
+msgid "Quantity"
+msgstr "Quantity"
+
 #: views/Cart/showCart.php:16
 msgid "Your cart is empty"
 msgstr "Your cart is empty"
@@ -250,19 +272,14 @@ msgstr "All Orders"
 msgid "You have no orders"
 msgstr "You have no orders"
 
-#: views/Invoice/listAllOrders.php:22 views/Product/addProduct.php:13
-#: views/Product/editProduct.php:12
-msgid "Description"
-msgstr "Description"
+#: views/Invoice/listAllOrders.php:22 views/Product/addProduct.php:12
+#: views/Product/editProduct.php:11
+msgid "Name"
+msgstr "Name"
 
 #: views/Invoice/listAllOrders.php:22
 msgid "Quantity Bought"
 msgstr "Quantity Bought"
-
-#: views/Invoice/listAllOrders.php:22 views/Product/addProduct.php:17
-#: views/Product/editProduct.php:16
-msgid "Price"
-msgstr "Price"
 
 #: views/Invoice/listAllOrders.php:22
 msgid "Total Price"
@@ -319,10 +336,6 @@ msgstr "Item Name"
 #: views/Invoice/listInvoice.php:23
 msgid "Item Description"
 msgstr "Item Description"
-
-#: views/Invoice/listInvoice.php:25
-msgid "Quantity"
-msgstr "Quantity"
 
 #: views/Invoice/listInvoice.php:26
 msgid "Cost Per Item"
@@ -387,10 +400,6 @@ msgstr "Login"
 #: views/Product/addProduct.php:5 views/Product/addProduct.php:8
 msgid "Add Product"
 msgstr "Add Product"
-
-#: views/Product/addProduct.php:12 views/Product/editProduct.php:11
-msgid "Name"
-msgstr "Name"
 
 #: views/Product/addProduct.php:16 views/Product/editProduct.php:15
 msgid "Stock"
