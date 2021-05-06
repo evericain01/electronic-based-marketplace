@@ -54,7 +54,7 @@
                         echo "<div class='card'>";
                         echo "<div class='card-body'>";
                         echo "<img src='" . BASE . "/uploads/$product->filename' width='130' height='90'/><br><br>";
-                        echo "<label><b><i>" . _("Sold by") . ": </b>$sellers->brand_name</i></label><br><br>";
+                        echo "<label><b><i>" . _("Sold By") . ": </b>$sellers->brand_name</i></label><br><br>";
                         echo "<label><b>$product->caption</b></label><br> ";
                         echo "<label>($product->description)</label><br><br>";
                         echo "<label>$$product->price CAD</label><br>";

@@ -40,9 +40,9 @@ class CartController extends \App\core\Controller {
 
     function goToConfrimationPage() {
         $buyer = new \App\models\Buyer();
-        
+
         $buyer = $buyer->findUserId($_SESSION['user_id']);
-        
+
         $buyer = $buyer->find($buyer->buyer_id);
 
         $this->view('Cart/checkoutPage', ['buyer' => $buyer]);
@@ -65,7 +65,6 @@ class CartController extends \App\core\Controller {
         $cart = $cart->find($buyer->buyer_id, $product_id);
 
         if ($cart === false) {
-            var_dump($product_id);
             if ($product->quantity > 0) {
                 $newCart = new \App\models\Cart();
 
@@ -75,10 +74,9 @@ class CartController extends \App\core\Controller {
                 $newCart->product_quantity = 1;
                 $newCart->insert();
             } else {
-                 echo "No more stock of this product";
+                echo "No more stock of this product";
                 $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products'
                     => $products, 'sellers' => $sellers]);
-               
             }
         } else {
             if ($product->quantity > 0) {
@@ -89,7 +87,6 @@ class CartController extends \App\core\Controller {
                 echo "No more stock of this product";
                 $this->view('Buyer/buyerMainPage', ['buyer' => $buyer, 'products'
                     => $products, 'sellers' => $sellers]);
-                
             }
         }
         header("location:" . BASE . "/Buyer/index");
@@ -103,7 +100,6 @@ class CartController extends \App\core\Controller {
         $product = $product->find($product_id);
 
         $cart = new \App\models\Cart();
-
         $cart = $cart->find($buyer->buyer_id, $product_id);
 
         if ($cart->product_quantity > 1) {
@@ -160,7 +156,8 @@ class CartController extends \App\core\Controller {
                         $seller = new \App\models\Seller();
                         $currentProduct = $currentProduct->find($products->product_id);
                         $currentProduct->quantity -= $carts->product_quantity;
-                        
+                        $currentProduct->update();
+
                         $seller = $seller->find($currentProduct->seller_id);
 
                         $invoice->buyer_id = $buyer->buyer_id;
@@ -174,22 +171,15 @@ class CartController extends \App\core\Controller {
 
                         $buyer->budget -= $total;
                         $buyer->update();
-            
+
                         $emptyCart = new \App\models\Cart();
                         $emptyCart->checkout($buyer_id);
-                    } else {
-                        $carts->delete();
-                        $products->quantity += $carts->product_quantity;
-                        $products->update();
                     }
                 }
             }
 
-
             $invoice = new \App\models\Invoice();
             $invoice = $invoice->getAllInvoiceOfBuyer($buyer_id);
-            
-//            var_dump($invoice);
 
             $this->view('Invoice/listInvoice', ['products' => $product,
                 'sellers' => $sellers, 'invoice' => $invoice]);

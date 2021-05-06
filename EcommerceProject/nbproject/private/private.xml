@@ -3,23 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/models/Review.php</file>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/editReview.php</file>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Buyer/changeBuyerPassword.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/controllers/CartController.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Login/login.php</file>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/controllers/ReviewController.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/models/Product.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/viewReviewsForSeller.php</file>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Product/editProduct.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/controllers/InvoiceController.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Invoice/listInvoice.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Product/addProduct.php</file>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Cart/showCart.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/controllers/DefaultController.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Seller/createSellerProfile.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/viewReviews.php</file>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Login/register.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Invoice/listAllOrders.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Buyer/createBuyerProfile.php</file>
-            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/addReview.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Seller/changeSellerPassword.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/models/Review.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/editReview.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/models/Buyer.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Buyer/changeBuyerPassword.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/controllers/ReviewController.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Buyer/modifyBudget.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Product/editProduct.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Login/validateLogin.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Cart/showCart.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Login/register.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/addReview.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Buyer/buyerMainPage.php</file>
         </group>
     </open-files>
