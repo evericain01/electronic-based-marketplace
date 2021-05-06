@@ -11,7 +11,7 @@
         echo "<h3>" . _("TOTAL COST") . ": $" . $data['total'] . " CAD</h3><br>";
         echo "<hr style='width:100%;text-align:left;margin-left:0'><br>";
         echo "<table style='width:75%'>";
-        echo "<tr><th>Image</th><th>Sold By</th><th>Product Name</th><th>Description</th><th>Price</th><th>Quantity</th><th></th></tr>";
+        echo "<tr><th>" . _("Image") . "</th><th>" . _("Sold By") . "</th><th>" . _("Product Name") . "</th><th>" . _("Description") . "</th><th>" . _("Price") . "</th><th>" . _("Quantity") . "</th><th></th></tr>";
     } else {
         echo "<i>" . _("Your cart is empty") . ".</i>";
     }

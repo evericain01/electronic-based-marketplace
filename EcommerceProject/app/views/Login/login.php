@@ -14,8 +14,8 @@
 
         <h1>Electronics Marketplace</h1>
         <form method="post" action="">
-            <label><?= _("Username") ?>: <br><input type="text" name="username" placeholder="Username" /></label><br /><br>
-            <label><?= _("Password") ?>: <br><input type="password" name="password" placeholder="Password" /></label><br /><br>
+            <label><?= _("Username") ?>: <br><input type="text" name="username" placeholder="<?= _("Username") ?>" /></label><br /><br>
+            <label><?= _("Password") ?>: <br><input type="password" name="password" placeholder="<?= _("Password") ?>" /></label><br /><br>
 
             <button type="submit" name="action" value="Login">Login</button><br><br>
 
