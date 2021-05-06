@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Search Results") ?></title>
     </head>
@@ -16,7 +16,7 @@
                 echo "(<i>$products->description</i>)<br>";
                 echo "$$products->price CAD<br>";
                 echo "[" . _("STOCK") . ": $products->quantity]<br>";
-                echo "<a href='" . BASE . "/Cart/addToCart/$products->product_id'>" . _("ADD TO CART") . "</a><br><br><br><br>";
+                echo "<a href='" . BASE . "/Cart/addToCart/$products->product_id' class='btn btn-success'>" . _("ADD TO CART") . "</a><br><br><br><br>";
                 echo "</div>";
             } else {
                 echo "<div class='search'>";

@@ -1,5 +1,5 @@
 <html>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
     <head><title>Confirmation Page")?></title>
     </head>
@@ -8,8 +8,8 @@
 
         <?php
         $buyer_id = $data['buyer']->buyer_id;
-        echo "<br><h2><b><a href='" . BASE . "/Cart/checkout/$buyer_id'>" . _("YES") . "!</a></b></h2>";
-        echo "<h2><b><a href='" . BASE . "/Cart/index'>" . _("NO") . ".</a></b></h3>";
+        echo "<br><h2><b><a href='" . BASE . "/Cart/checkout/$buyer_id' class='btn btn-outline-success'>" . _("YES") . "!</a></b></h2>";
+        echo "<h2><b><a href='" . BASE . "/Cart/index' class='btn btn-outline-danger'>" . _("NO") . ".</a></b></h3>";
         ?>
 
     </body>

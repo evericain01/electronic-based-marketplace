@@ -1,11 +1,11 @@
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Register an account") ?></title>
     </head>
     <body>
-        <h1>Register an Account:</h1>
+        <h1>Register an Account:</h1><br><br>
 
         <form method="post" action="">
             <label><?= _("Username") ?>:<br> <input type="text" name="username" placeholder="Username" /></label><br /><br>
@@ -18,10 +18,11 @@
                 <option value="buyer"> <?= _("Buyer") ?> </option>
             </select> <br><br>
 
-            <input type="submit" name="action" value="<?= _("Register") ?>" />
+            <input type="submit" name="action" class="btn btn-success" value="<?= _("Register") ?>" />
+            
 
         </form>
 
-        <a href="<?= BASE ?>/Default/login"><?= _("Already have an account") ?>? <?= _("Login") ?>.</a>
+        <a href="<?= BASE ?>/Default/login" class="btn btn-secondary"><?= _("Already have an account") ?>? <?= _("Login") ?>.</a>
     </body>
 </html>

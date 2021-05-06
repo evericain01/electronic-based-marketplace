@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="<?= BASE ?>/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?= BASE ?>/css/style.css" type="text/css">
         <title><?= _("Cart") ?></title>
     </head>
@@ -10,38 +10,45 @@
     if (!$data['total'] == 0) {
         echo "<h3>" . _("TOTAL COST") . ": $" . $data['total'] . " CAD</h3><br>";
         echo "<hr style='width:100%;text-align:left;margin-left:0'><br>";
-        echo "<table style='width:75%'>";
-        echo "<tr><th>" . _("Image") . "</th><th>" . _("Sold By") . "</th><th>" . _("Product Name") . "</th><th>" . _("Description") . "</th><th>" . _("Price") . "</th><th>" . _("Quantity") . "</th><th></th></tr>";
+        echo "<table class='table' style='width:75%'>";
+        echo "<thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>" . _("Image") . "</th><th scope='col'>" . _("Sold By") . "</th><th scope='col'>" . _("Product Name") . "</th><th scope='col'>" . _("Description") . "</th><th scope='col'>" . _("Price") . "</th><th scope='col'>" . _("Quantity") . "</th><th scope='col'></th></tr></thead>";
     } else {
         echo "<i>" . _("Your cart is empty") . ".</i>";
     }
 
+    $counter = 0;
     foreach ($data['cart'] as $cart) {
 
         foreach ($data['products'] as $product) {
             if ($cart->product_id == $product->product_id) {
                 foreach ($data['sellers'] as $sellers) {
+
                     if ($product->seller_id == $sellers->seller_id) {
-                        echo "<tr><td><img src='" . BASE . "/uploads/$product->filename' width='100' height='70'/><br><br></td>";
+                        $counter++;
+                        echo "<tbody>";
+                        echo "<tr> <th scope='row'>$counter</th>";
+                        echo "<td><img src='" . BASE . "/uploads/$product->filename' width='100' height='70'/><br><br></td>";
                         echo "<td><b><i>$sellers->brand_name</i><br><br></td>";
                         echo "<td><b>$product->caption</b></td> ";
                         echo "<td>($product->description)<br></td>";
                         echo "<td>$$product->price CAD<br></td>";
                         echo "<td>$cart->product_quantity<br></td>";
-                        echo "<td><a href='" . BASE . "/Cart/removeFromCart/$product->product_id'>" . _("REMOVE") . "</a><br><br></td></tr>";
+                        echo "<td><a href='" . BASE . "/Cart/removeFromCart/$product->product_id' class='btn btn-danger'>" . _("REMOVE") . "</a><br><br></td></tr>";
+                        echo "</tbody>";
                     }
                 }
             }
         }
     }
+
+
     echo "</table><br><br>";
 
-    echo "<div class='homepageLink'><h4><a href='" . BASE . "/Buyer/index'>&#8592 " . _("Go Back to Main Page") . "</a></h4></div>";
+    echo "<div class='homepageLink'><h4><a href='" . BASE . "/Buyer/index' class='btn btn-light'>&#8592 " . _("Go Back to Main Page") . "</a></h4></div>";
     if (!$data['total'] == 0) {
-        echo "<h2><b><a href='" . BASE . "/Cart/goToConfrimationPage'>" . _("CHECKOUT") . "</a></b></h2>";
+        echo "<h2><b><a href='" . BASE . "/Cart/goToConfrimationPage' class='btn btn-success'>" . _("CHECKOUT") . "</a></b></h2>";
     }
     ?>
-
 
 </body>
 </html>

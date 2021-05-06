@@ -1,31 +1,40 @@
 body {
     text-align: center;
     background-color: #BFBFBF;
-    font-family: 'Roboto', sans-serif;
-}
-
-button {
-    color: black;
-    background-color: #2ED000;
-    border-radius: 3px;
-    width: 60px;
-    height: 30px;
+font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .column {
     float: left;
-    width: 35%;
-    padding: 35px;
+    width: 25%;
+    padding: 0 10px;
 }
 
-.row {
-    clear: both;
+.row {margin: 0 -5px;}
+
+.row:after {
+    content: "";
     display: table;
+    clear: both;
 }
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 2px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-color: black;
+}
+
+.card:hover {
+    background-color: #92f59f;
+}
+
 
 u {
     float:left;
-    font-size: 19px;
+    font-size: 15px;
 }
 
 .allOrders {
@@ -40,12 +49,6 @@ u {
     text-align: left;
 }
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-}
-
 textarea {
     width: 238px;
     height: 80px;
@@ -53,6 +56,7 @@ textarea {
 
 .review {
     text-align: left;
+    font-size: 15px;
 }
 
 .homePageTitle {
