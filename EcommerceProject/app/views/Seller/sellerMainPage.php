@@ -22,7 +22,7 @@
         $seller_id = $data['seller']->seller_id;
         echo "<a href='" . BASE . "/Product/add/$seller_id' style='display:inline; float:left;'>" . _("ADD A PRODUCT") . "</a><br><br>";
 
-        echo "<h3><i>Company Name: " . $data['seller']->brand_name . "</i></h3>";
+        echo "<h3><i>" . _("Company Name") . ": " . $data['seller']->brand_name . "</i></h3>";
 
         echo "<br><h1>" . _("Your products on sale") . ":</h1><br>";
         echo "<hr style='width:100%;text-align:left;margin-left:0'>";

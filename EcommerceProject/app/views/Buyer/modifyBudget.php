@@ -9,7 +9,7 @@
         <form method="post" action="">
             <label><?= _("Wallet") ?>:<br><input type="number" step="1" min="0" name="budget" 
                                                  value="<?= $data->budget ?>"/></label><br /><br>
-            <input type="submit" name="action" value="Submit changes" />
+            <input type="submit" name="action" value="<?= _("Submit changes") ?>" />
 
         </form>
         <a href="<?= BASE ?>/Buyer/index"><?= _("Cancel") ?></a>

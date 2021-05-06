@@ -17,7 +17,7 @@
             <label><?= _("Username") ?>: <br><input type="text" name="username" placeholder="<?= _("Username") ?>" /></label><br /><br>
             <label><?= _("Password") ?>: <br><input type="password" name="password" placeholder="<?= _("Password") ?>" /></label><br /><br>
 
-            <button type="submit" name="action" value="Login">Login</button><br><br>
+            <button type="submit" name="action" value="Login"><?= _("Login") ?></button><br><br>
 
             <a href='?lang=en'><?= _("English") ?></a> &#124;
             <a href='?lang=fr'><?= _("French") ?></a> <br /><br>

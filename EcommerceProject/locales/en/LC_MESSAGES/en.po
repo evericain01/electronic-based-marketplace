@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-05-05 21:48-0400\n"
-"PO-Revision-Date: 2021-05-05 21:49-0400\n"
+"POT-Creation-Date: 2021-05-05 22:24-0400\n"
+"PO-Revision-Date: 2021-05-05 22:24-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -70,6 +70,10 @@ msgstr "Change Password"
 #: views/Buyer/buyerMainPage.php:20
 msgid "Search for a product"
 msgstr "Search for a product"
+
+#: views/Buyer/buyerMainPage.php:21
+msgid "Search"
+msgstr "Search Results"
 
 #: views/Buyer/buyerMainPage.php:24
 msgid "View All Orders"
@@ -155,7 +159,8 @@ msgid "ReType Password"
 msgstr "ReType Password"
 
 #: views/Buyer/changeBuyerPassword.php:14 views/Buyer/createBuyerProfile.php:16
-#: views/Product/editProduct.php:17 views/Seller/changeSellerPassword.php:14
+#: views/Buyer/modifyBudget.php:12 views/Product/editProduct.php:17
+#: views/Seller/changeSellerPassword.php:14
 #: views/Seller/createSellerProfile.php:15
 msgid "Submit changes"
 msgstr "Submit changes"
@@ -369,6 +374,10 @@ msgstr "Username"
 msgid "Password"
 msgstr "Password"
 
+#: views/Login/login.php:20 views/Login/register.php:25
+msgid "Login"
+msgstr "Login"
+
 #: views/Login/login.php:26
 msgid "Register Here"
 msgstr "Register Here"
@@ -396,10 +405,6 @@ msgstr "Register"
 #: views/Login/register.php:25
 msgid "Already have an account"
 msgstr "Already have an account"
-
-#: views/Login/register.php:25
-msgid "Login"
-msgstr "Login"
 
 #: views/Product/addProduct.php:5 views/Product/addProduct.php:8
 msgid "Add Product"
@@ -500,6 +505,10 @@ msgstr "Welcome"
 #: views/Seller/sellerMainPage.php:23
 msgid "ADD A PRODUCT"
 msgstr "ADD A PRODUCT"
+
+#: views/Seller/sellerMainPage.php:25
+msgid "Company Name"
+msgstr "Company Name"
 
 #: views/Seller/sellerMainPage.php:27
 msgid "Your products on sale"

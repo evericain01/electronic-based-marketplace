@@ -18,7 +18,7 @@
 
         echo "<div class='search'> <form method='post' action=''>";
         echo "<label>" . _("Search for a product") . ": <input type='text' name='keyword'/> </label>";
-        echo "<input type='submit' name='action' value='Search!'/>";
+        echo "<input type='submit' name='action' value='" . _("Search") . "s!'/>";
         echo "</form></div>";
 
         echo " <a href='" . BASE . "/Invoice/index' style='font-size: 20px; display:inline; float:right;'> &#124; " . _("View All Orders") . "</a>";
