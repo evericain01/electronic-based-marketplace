@@ -8,11 +8,15 @@
         <h2><?= _("Viewing all Reviews") ?>:</h2> <br />
         <?php
         foreach ($data['reviews'] as $review) {
-            foreach ($data['buyer'] as $buyer) {
-                echo _("Review By") . ": <b>$buyer->first_name $buyer->last_name</b><br><br>";
-                echo _("Rating") . ": $review->rate<br><br>";
-                echo _("Review") . ": $review->text_review</b><br>";
-                echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
+            foreach ($data['products'] as $product) {
+                foreach ($data['buyer'] as $buyer) {
+                    if ($product->product_id == $review->product_id && $review->buyer_id == $buyer->buyer_id) {
+                        echo _("Review By") . ": <b>$buyer->first_name $buyer->last_name</b><br><br>";
+                        echo _("Rating") . ": $review->rate<br><br>";
+                        echo _("Review") . ": $review->text_review</b><br>";
+                        echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
+                    }
+                }
             }
         }
 

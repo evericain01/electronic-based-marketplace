@@ -7,20 +7,23 @@
     <body>
         <h2><?= _("Viewing all Reviews") ?>:</h2> <br />
         <?php
-        
         echo "<div class='review'>";
         foreach ($data['reviews'] as $review) {
-            $buyer_first_name = $data['buyer']->first_name;
-            $buyer_last_name = $data['buyer']->last_name;
+            foreach ($data['buyers'] as $buyer) {
+                if ($review->buyer_id == $buyer->buyer_id) {
+                    $buyer_first_name = $buyer->first_name;
+                    $buyer_last_name = $buyer->last_name;
 
-            echo "<div class='review'>";
-            echo "<u>" . _("Review By") . "</u>" . ": <b>$buyer_first_name, $buyer_last_name</b><br><br>";
-            echo "<u>" . _("Rating") . "</u>" . ": $review->rate<br><br>";
-            echo "<u>" . _("Review") . "</u>" . ": $review->text_review</b><br>";
-            echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
-            echo "</div>";
+                    echo "<div class='review'>";
+                    echo "<u>" . _("Review By") . "</u>" . ": <b>$buyer_first_name, $buyer_last_name</b><br><br>";
+                    echo "<u>" . _("Rating") . "</u>" . ": $review->rate<br><br>";
+                    echo "<u>" . _("Review") . "</u>" . ": $review->text_review</b><br>";
+                    echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
+                    echo "</div>";
+                }
+            }
         }
-        
+
         echo "</div>";
 
         if (empty($data['reviews'])) {

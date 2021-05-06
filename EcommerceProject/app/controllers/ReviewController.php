@@ -5,17 +5,16 @@ namespace App\controllers;
 class ReviewController extends \App\core\Controller {
 
     function index($product_id) {
-        $buyer = new \App\models\Buyer();
-        $buyer = $buyer->findUserId($_SESSION['user_id']);
-        $buyer = $buyer->find($buyer->buyer_id);
-
+        $buyers = new \App\models\Buyer();
+        $buyers = $buyers->getAllBuyers();
+        
         $product = new \App\models\Product();
         $product = $product->find($product_id);
 
         $review = new \App\models\Review();
         $review = $review->getReviewsOfProduct($product_id);
 
-        $this->view('Review/viewReviews', ['product' => $product, 'reviews' => $review, 'buyer' => $buyer]);
+        $this->view('Review/viewReviews', ['product' => $product, 'reviews' => $review, 'buyers' => $buyers]);
     }
 
     function reviewSellerIndex($product_id) {
@@ -23,8 +22,8 @@ class ReviewController extends \App\core\Controller {
         $seller = $seller->findUserId($_SESSION['user_id']);
         $seller = $seller->find($seller->seller_id);
 
-        $product = new \App\models\Product();
-        $product = $product->find($product_id);
+        $products = new \App\models\Product();
+        $products = $products->getAllProducts();
 
         $review = new \App\models\Review();
         $review = $review->getReviewsOfProduct($product_id);
@@ -32,7 +31,7 @@ class ReviewController extends \App\core\Controller {
         $buyer = new \App\models\Buyer();
         $buyer = $buyer->getAllBuyers();
 
-        $this->view('Review/viewReviewsForSeller', ['product' => $product,
+        $this->view('Review/viewReviewsForSeller', ['products' => $products,
             'reviews' => $review, 'seller' => $seller, 'buyer' => $buyer]);
     }
 
