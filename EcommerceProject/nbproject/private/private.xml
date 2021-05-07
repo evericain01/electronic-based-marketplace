@@ -10,7 +10,9 @@
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Cart/showCart.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/viewReviewsForSeller.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Review/viewReviews.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/views/Buyer/buyerSearch.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/controllers/OrderController.php</file>
+            <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/models/Invoice.php</file>
             <file>file:/C:/xampp/htdocs/eCommerceWebsite/EcommerceProject/app/controllers/SellerController.php</file>
         </group>
     </open-files>

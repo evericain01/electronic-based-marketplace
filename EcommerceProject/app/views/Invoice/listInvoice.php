@@ -8,7 +8,7 @@
         <h2><?= _("Invoice") ?>:</h2>
 
         <?php
-        echo "<div class='homepageLink'><br><h4><a href='" . BASE . "/Buyer/index'>&#8592 " . _("Go Back to Main Page") . "</a></h4></div><br><br><br>";
+        echo "<div class='homepageLink'><h4><a href='" . BASE . "/Buyer/index' class='btn btn-light'>&#8592 " . _("Go Back to Main Page") . "</a></h4></div><br><br>";
 
         $date = new DateTime(null, new DateTimeZone("America/Toronto"));
         $result = $date->format('Y-m-d H:i:s');
