@@ -9,6 +9,7 @@ class Review extends \App\core\Model {
     public $buyer_id;
     public $rate;
     public $text_review;
+    public $date;
 
     public function __construct() {
         parent::__construct();
