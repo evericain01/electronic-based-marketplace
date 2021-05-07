@@ -29,8 +29,6 @@ class BuyerController extends \App\core\Controller {
             $invoice = new \App\models\Invoice();
             $invoice = $invoice->getAllInvoiceOfBuyer($buyer->buyer_id);
             
-//            var_dump($invoice);
-
             $this->view('Buyer/buyerMainPage', ['products' => $products, 'buyer' => $buyer, 'sellers' => $sellers, 'invoice' => $invoice]);
         }
     }

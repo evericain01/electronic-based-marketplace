@@ -2,7 +2,7 @@
 
 namespace App\controllers;
 
-class InvoiceController extends \App\core\Controller {
+class OrderController extends \App\core\Controller {
 
     function index() {
         $buyer = new \App\models\Buyer();
@@ -19,13 +19,12 @@ class InvoiceController extends \App\core\Controller {
 
         $review = new \App\models\Review();
         $review = $review->getAllReviewsOfBuyer($buyer->buyer_id);
-
-        $this->view('Invoice/listAllOrders', [
+        
+        $this->view('Order/listAllOrders', [
             'products' => $products, 'buyer' => $buyer, 'sellers' => $sellers,
             'invoice' => $invoices, 'reviews' => $review
         ]);
     }
-    
     
     function updateStatus($invoice_id) {
         $invoice = new \App\models\Invoice();
@@ -34,6 +33,6 @@ class InvoiceController extends \App\core\Controller {
         $invoice->status = "Delivered";
         $invoice->update();
 
-        header("location:" . BASE . "/Invoice/index");
+        header("location:" . BASE . "/Order/index");
     }
 }

@@ -15,7 +15,7 @@
                     $buyer_last_name = $buyer->last_name;
 
                     echo "<div class='review'>";
-                    echo "<u>" . _("Review By") . "</u>" . ": <b>$buyer_first_name, $buyer_last_name</b><br><br>";
+                    echo "<u>" . _("Review By") . "</u>" . ": <b>$buyer_first_name, $buyer_last_name</b> &mdash; <i>($review->date)</i><br><br>";
                     echo "<u>" . _("Rating") . "</u>" . ": $review->rate<br><br>";
                     echo "<u>" . _("Review") . "</u>" . ": $review->text_review</b><br>";
                     echo "<hr style='width:325px;text-align:left;margin-left:0'><br>";
@@ -31,8 +31,9 @@
         }
 
         echo "<br><br><br>";
+        echo "<div class='homepageLink'><h4><a href='" . BASE . "/Buyer/index' class='btn btn-light'>&#8592 " . _("Go Back to Main Page") . "</a></h4></div>";
         ?>
-        <a href="<?= BASE ?>/Buyer/index" class='btn btn-light'>&#8592 <?= _("Go Back to Home Page") ?></a>
+
     </body>
 </html>
 

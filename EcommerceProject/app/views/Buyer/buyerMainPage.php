@@ -21,7 +21,7 @@
         echo " <input type='submit' name='action' class='btn btn-secondary' value='" . _("Search") . "!'/>";
         echo "</form></div>";
 
-        echo " <a href='" . BASE . "/Invoice/index' class='btn btn-info' style='font-size: 20px; display:inline; float:right;'> " . _("View All Orders") . "</a>";
+        echo " <a href='" . BASE . "/Order/index' class='btn btn-info' style='font-size: 20px; display:inline; float:right;'> " . _("View All Orders") . "</a>";
         echo " <a href='" . BASE . "/Cart/index' class='btn btn-primary' style='font-size: 20px; display:inline; float:right;'>" . _("View Your Cart") . " </a><br><br><br>";
 
         echo "<u><span style='font-size:30px; float:left;'>" . _("Wallet") . ":</span></u>" . "<b><span style='color:#189200; font-size:30px; float:left;'>&nbsp;$" . $data['buyer']->budget . "</b></span><br>";

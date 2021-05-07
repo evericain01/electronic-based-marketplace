@@ -12,7 +12,7 @@
         if (empty($data["invoice"])) {
             echo "<i>" . _("You have no orders") . ".</i>";
         }
-        
+
         echo "<div class='allOrders'>";
 
         $counter = 0;
@@ -23,7 +23,7 @@
                     echo "<table class='table table-striped' style='width:90%'><thead>";
                     echo "<tr><th scope='col'>#</th><th scope='col'>" . _("Image") . "</th><th scope='col'>" . _("Name") . "</th><th scope='col'>" . _("Description") . "</th><th scope='col'>" . _("Quantity Bought") . "</th><th scope='col'>" . _("Price") . "</th><th scope='col'>" . _("Total Price") . "</th><th scope='col'>" . _("Seller Company") . "</th><th scope='col'>" . _("Date Purchased") . "</th><th scope='col'>" . _("Expected Delivery Date") . "</th></tr></thead>";
                     echo "<tbody><tr> <th scope='row'>$counter</th>";
-                    echo "<td><img src='" . BASE . "/uploads/$product->filename' width='80' height='80'/><br><br></td>"; 
+                    echo "<td><img src='" . BASE . "/uploads/$product->filename' width='80' height='80'/><br><br></td>";
                     echo "<td>$product->caption<br></td>";
                     echo "<td>$product->description<br></td>";
                     $quantity = $invoice->total / $product->price;
@@ -33,11 +33,11 @@
                     foreach ($data["sellers"] as $seller) {
                         if ($invoice->seller_id == $seller->seller_id) {
                             echo "<td>$seller->brand_name<br><br></td>";
-                            
                         }
                     }
                 }
             }
+
             echo "<td>$invoice->timestamp<br></td>";
             echo "<td>$invoice->date_of_arrival<br><br></td></tr></tbody>";
 
@@ -56,17 +56,19 @@
 
                 echo "<b>" . _("STATUS") . ": <span style='color:#398C0C;font-size:20px;text-align:center;'> " . _("Delivered") . " </span></b>";
                 if ($exist == true) {
-                    echo "<br><b><a href='" . BASE . "/Review/edit/$currentProductReviewID' class='btn btn-outline-primary'>" . _("Edit Review") . "</a></b><br><br>";
+                    echo "<br><b><a href='" . BASE . "/Review/edit/$currentProductReviewID' class='btn btn-outline-primary'>" . _("Edit Review") . "</a></b>&#124";
+
+                    echo "<a href='" . BASE . "/Review/remove/$review->review_id' class='btn btn-outline-danger'>" . 'DELETE REVIEW' . "</a><br><br></td></tr>";
                 } else {
                     echo "<br><b><a href='" . BASE . "/Review/add/$invoice->product_id' class='btn btn-outline-primary'>" . _("Leave a Review") . "?</a></b><br><br><br>";
                 }
             } else {
                 echo "<b>" . _("STATUS") . ": <span style='color:#C77800;font-size:20px;text-align:center;'> " . _("In Transit") . " </b></span>";
-                echo "<a href='" . BASE . "/Invoice/updateStatus/$invoice->invoice_id' class='btn btn-outline-secondary'>" . _("Recieved") . "?</a><br><br>";
+                echo "<a href='" . BASE . "/Order/updateStatus/$invoice->invoice_id' class='btn btn-outline-secondary'>" . _("Recieved") . "?</a><br><br>";
             }
             echo "<hr style='width:100%;text-align:left;margin-left:0'><br>";
         }
-        
+
         echo "</div>";
         ?>
     </body>

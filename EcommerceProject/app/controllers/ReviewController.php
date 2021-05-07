@@ -7,10 +7,10 @@ class ReviewController extends \App\core\Controller {
     function index($product_id) {
         $buyers = new \App\models\Buyer();
         $buyers = $buyers->getAllBuyers();
-        
+
         $product = new \App\models\Product();
         $product = $product->find($product_id);
-
+        
         $review = new \App\models\Review();
         $review = $review->getReviewsOfProduct($product_id);
 
@@ -28,11 +28,11 @@ class ReviewController extends \App\core\Controller {
         $review = new \App\models\Review();
         $review = $review->getReviewsOfProduct($product_id);
 
-        $buyer = new \App\models\Buyer();
-        $buyer = $buyer->getAllBuyers();
+        $buyers = new \App\models\Buyer();
+        $buyers = $buyers->getAllBuyers();
 
         $this->view('Review/viewReviewsForSeller', ['products' => $products,
-            'reviews' => $review, 'seller' => $seller, 'buyer' => $buyer]);
+            'reviews' => $review, 'seller' => $seller, 'buyers' => $buyers]);
     }
 
     function add($product_id) {
@@ -49,6 +49,11 @@ class ReviewController extends \App\core\Controller {
             $review->product_id = $product_id;
             $review->rate = $_POST["rate"];
             $review->text_review = $_POST["text_review"];
+
+            date_default_timezone_set('America/Toronto');
+            $date = date("Y-m-d");
+            $review->date = $date;
+
             $review->insert();
 
             $sellers = new \App\models\Seller();
@@ -60,17 +65,12 @@ class ReviewController extends \App\core\Controller {
             $invoice = new \App\models\Invoice();
             $invoice = $invoice->getAllInvoiceOfBuyer($buyer->buyer_id);
 
-//            $this->view('Invoice/listAllOrders', ['products' => $products, 'sellers' => $sellers,
-//                'invoice' => $invoice, 'reviews' => $buyerReviews]);
-            
-            header("location:" . BASE . "/Invoice/index");
+            header("location:" . BASE . "/Order/index");
         } else {
             $buyer = new \App\models\Buyer();
             $buyer = $buyer->findUserId($_SESSION['user_id']);
             $this->view('Review/addReview');
         }
-        
-        
     }
 
     function edit($review_id) {
@@ -87,6 +87,11 @@ class ReviewController extends \App\core\Controller {
 
             $review->rate = $_POST["rate"];
             $review->text_review = $_POST["text_review"];
+
+            date_default_timezone_set('America/Toronto');
+            $date = date("Y-m-d");
+            $review->date = $date;
+
             $review->update();
 
             $sellers = new \App\models\Seller();
@@ -98,13 +103,22 @@ class ReviewController extends \App\core\Controller {
             $invoice = new \App\models\Invoice();
             $invoice = $invoice->getAllInvoiceOfBuyer($buyer->buyer_id);
 
-            $this->view('Invoice/listAllOrders', ['products' => $products,
+            $this->view('Order/listAllOrders', ['products' => $products,
                 'sellers' => $sellers, 'invoice' => $invoice, 'buyer' => $buyer, 'reviews' => $buyerReviews]);
         } else {
             $review = new \App\models\Review();
             $review = $review->find($review_id);
             $this->view('Review/editReview', $review);
         }
+    }
+
+    function remove($review_id) {
+        $review = new \App\models\Review();
+        $review = $review->find($review_id);
+
+        $review->delete();
+        
+        header("location:" . BASE . "/Order/index");
     }
 
 }

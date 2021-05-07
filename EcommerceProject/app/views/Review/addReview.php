@@ -23,6 +23,6 @@
 
             <button type="submit" name="action" class="btn btn-success" /><?= _("submit") ?></button>
         </form>
-        <a href="<?= BASE ?>/Buyer/index"><?= _("Cancel") ?></a>
+        <a href="<?= BASE ?>/Order/index"><?= _("Cancel") ?></a>
     </body>
 </html>

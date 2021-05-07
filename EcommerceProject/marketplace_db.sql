@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2021 at 03:22 AM
+-- Generation Time: May 07, 2021 at 08:07 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -43,7 +43,7 @@ CREATE TABLE `buyer` (
 --
 
 INSERT INTO `buyer` (`buyer_id`, `user_id`, `first_name`, `last_name`, `budget`) VALUES
-(6, 47, 'Jon', 'White', 89225.00);
+(6, 47, 'Jon', 'White', 83819.00);
 
 -- --------------------------------------------------------
 
@@ -81,9 +81,8 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`invoice_id`, `seller_id`, `buyer_id`, `product_id`, `timestamp`, `date_of_arrival`, `total`, `status`) VALUES
-(163, 6, 6, 12, '2021-05-06 17:25:17', '2021-05-13 04:00:00', 1040.00, 'In Transit'),
-(164, 6, 6, 13, '2021-05-06 17:27:20', '2021-05-13 04:00:00', 40.00, 'In Transit'),
-(165, 6, 6, 11, '2021-05-06 17:37:08', '2021-05-13 04:00:00', 1400.00, 'Delivered');
+(172, 6, 6, 12, '2021-05-07 19:48:30', '2021-05-14 04:00:00', 260.00, 'Delivered'),
+(173, 6, 6, 11, '2021-05-07 19:55:58', '2021-05-14 04:00:00', 1400.00, 'Delivered');
 
 -- --------------------------------------------------------
 
@@ -107,10 +106,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `seller_id`, `filename`, `caption`, `description`, `quantity`, `price`) VALUES
-(11, 6, '6092bb3913f37.png', 'i9 9700k', 'Coffee Lake 8-Core 3.6 GHz (4.9 GHz Turbo) LGA 1151', 5, 700.00),
-(12, 6, '6092bb8f50d19.png', 'Sennheiser Headphones', 'HD 450BT. 18 Hz - 22,000 Hz; Bluetooth® 5.0.', 0, 260.00),
-(13, 6, '6092bd52523e9.png', 'Gaming Mouse', 'Natec Genesis G66 NMG-0662', 20, 20.00),
-(14, 6, '6092bdc0bb85f.png', 'RT-AC68U', 'AC1900 Dual Band Gigabit WiFi Router', 24, 250.00),
+(11, 6, '6092bb3913f37.png', 'i9 9700k', 'Coffee Lake 8-Core 3.6 GHz (4.9 GHz Turbo) LGA 1151', 120, 700.00),
+(12, 6, '6092bb8f50d19.png', 'Sennheiser Headphones', 'HD 450BT. 18 Hz - 22,000 Hz; Bluetooth® 5.0.', 1, 260.00),
+(13, 6, '6092bd52523e9.png', 'Gaming Mouse', 'Natec Genesis G66 NMG-0662', 0, 20.00),
+(14, 6, '6092bdc0bb85f.png', 'RT-AC68U', 'AC1900 Dual Band Gigabit WiFi Router', 23, 250.00),
 (15, 6, '6092be4d54a35.png', 'USB Key', 'Kingston 32GB DataTraveler Kyson', 92, 15.00),
 (16, 6, '6092bf3d9293d.png', 'Samsung TV', '55\" 2020 TU8000 Smart 4K UHD TV', 14, 1100.00),
 (23, 8, '60936cc78ca5f.png', 'Samsung Galaxy S20', 'FE 5G SM-G781U 128GB Smartphone (Unlocked)\r\n', 37, 1150.00),
@@ -130,15 +129,16 @@ CREATE TABLE `review` (
   `product_id` int(11) NOT NULL,
   `buyer_id` int(11) NOT NULL,
   `rate` enum('1/5','2/5','3/5','4/5','5/5') NOT NULL,
-  `text_review` text NOT NULL
+  `text_review` text NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`review_id`, `product_id`, `buyer_id`, `rate`, `text_review`) VALUES
-(20, 11, 6, '5/5', 'Amazing product. A++');
+INSERT INTO `review` (`review_id`, `product_id`, `buyer_id`, `rate`, `text_review`, `date`) VALUES
+(36, 12, 6, '4/5', 'Pretty Good. A+', '2021-05-07');
 
 -- --------------------------------------------------------
 
@@ -255,19 +255,19 @@ ALTER TABLE `buyer`
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `seller`
