@@ -34,9 +34,8 @@
             echo _("No products contains the value") . ",   $data[keyword]. " . _("(Please input a valid product caption (name),)");
         }
         echo "<br>";
+        echo "<div class='homepageLink'><h4><a href='" . BASE . "/Buyer/index' class='btn btn-light'>&#8592 " . _("Go Back to Main Page") . "</a></h4></div>";
         ?>
-
-        <a href="<?= BASE ?>/Buyer/index">&#8592 <?= _("Go Back to Home Page") ?></a>
     </body>
 </html>
 
