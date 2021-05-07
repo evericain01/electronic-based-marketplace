@@ -5,6 +5,11 @@
         <title><?= _("Register an account") ?></title>
     </head>
     <body>
+        <?php
+        if (isset($_GET['error']))
+            echo $_GET['error'];
+        ?>
+        
         <h1>Register an Account:</h1><br><br>
 
         <form method="post" action="">

@@ -10,7 +10,6 @@ class DefaultController extends \App\core\Controller {
 
     function register() {
         if (isset($_POST['action'])) {
-            //if the passwords match
             if ($_POST['password'] == $_POST['password_confirm']) {
                 $user = new \App\models\User();
                 $user->username = $_POST['username'];
@@ -57,11 +56,11 @@ class DefaultController extends \App\core\Controller {
                         echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                     }
                 } else {
-                    echo _("Invalid old password.")."<br><br>";
+                    echo _("Invalid old password.") . "<br><br>";
                     echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                 }
             } else {
-                echo _("Input a new password.")."<br><br>";
+                echo _("Input a new password.") . "<br><br>";
                 echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
             }
         } else {
@@ -87,11 +86,11 @@ class DefaultController extends \App\core\Controller {
                         echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                     }
                 } else {
-                    echo _("Invalid old password.")."<br><br>";
+                    echo _("Invalid old password.") . "<br><br>";
                     echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
                 }
             } else {
-                echo _("Input a new password.")."<br><br>";
+                echo _("Input a new password.") . "<br><br>";
                 echo "<a href = '" . BASE . "/Default/editBuyerPassword' >&#8592 " . _("Go Back to Change Password") . "</a>";
             }
         } else {
@@ -109,47 +108,19 @@ class DefaultController extends \App\core\Controller {
             $user = $user->find($_POST['username']);
 
             if ($user != null && password_verify($_POST['password'], $user->password_hash)) {
-                if ($user->secret_key == null) {
-                    $_SESSION['user_id'] = $user->user_id;
-                    $_SESSION['username'] = $user->username;
-                    $_SESSION['user_role'] = $user->user_role;
+                $_SESSION['user_id'] = $user->user_id;
+                $_SESSION['username'] = $user->username;
+                $_SESSION['user_role'] = $user->user_role;
 
-                    if ($_SESSION['user_role'] == 'buyer') {
-                        header('location:' . BASE . '/Buyer/buyerMainPage');
-                    } else {
-                        header('location:' . BASE . '/Seller/sellerMainPage');
-                    }
-                    
+                if ($_SESSION['user_role'] == 'buyer') {
+                    header('location:' . BASE . '/Buyer/buyerMainPage');
                 } else {
-                    $_SESSION['temp_user_id'] = $user->user_id;
-                    $_SESSION['temp_username'] = $user->username;
-                    $_SESSION['user_role'] = $user->user_role;
-                    $_SESSION['temp_secret_key'] = $user->secret_key;
-                    header('location:' . BASE . '/Default/validateLogin');
+                    header('location:' . BASE . '/Seller/sellerMainPage');
                 }
             } else
                 header('location:' . BASE . '/Default/login?error=Wrong username or password.');
         } else {
             $this->view('Login/login');
-        }
-    }
-
-    function validateLogin() {
-        if (isset(
-                        $_POST['action']
-                )) {
-            $currentcode = $_POST['currentCode'];
-            if (\App\core\TokenAuth::verify($_SESSION['temp_secret_key'], $currentcode)) {
-                $_SESSION['user_id'] = $_SESSION['temp_user_id'];
-                $_SESSION['username'] = $_SESSION['temp_username'];
-                $_SESSION['temp_secret_key'] = '';
-                header('location:' . BASE . '/Default/chooseLogin');
-            } else {
-                session_destroy();
-                header('location:' . BASE . '/Default/login?error=Wrong username or password.');
-            }
-        } else {
-            $this->view('Login/validateLogin');
         }
     }
 
