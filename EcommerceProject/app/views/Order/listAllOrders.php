@@ -58,7 +58,7 @@
                 if ($exist == true) {
                     echo "<br><b><a href='" . BASE . "/Review/edit/$currentProductReviewID' class='btn btn-outline-primary'>" . _("Edit Review") . "</a></b>&#124";
 
-                    echo "<a href='" . BASE . "/Review/remove/$review->review_id' class='btn btn-outline-danger'>" . 'DELETE REVIEW' . "</a><br><br></td></tr>";
+                    echo "<a href='" . BASE . "/Review/remove/$review->review_id' class='btn btn-outline-danger'>" . _("DELETE REVIEW") . "</a><br><br></td></tr>";
                 } else {
                     echo "<br><b><a href='" . BASE . "/Review/add/$invoice->product_id' class='btn btn-outline-primary'>" . _("Leave a Review") . "?</a></b><br><br><br>";
                 }

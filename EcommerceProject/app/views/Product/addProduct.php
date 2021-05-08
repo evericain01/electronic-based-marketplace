@@ -16,7 +16,7 @@
         <label><?= _("Stock") ?>: <input type="number" step="1" min="0" name="quantity" /></label><br />
         <label><?= _("Price") ?>: <input type="number" step="1" min="0" name="price" /></label><br /><br>
         <label><?= _("Select the product's image") ?>:<br>&emsp;&emsp;&emsp;&emsp;&emsp;<input type= "file" name="myImage" /></label><br> <br>
-        <button type="submit" name="action" class="btn btn-success"> <?= _("submit") ?></button>
+        <button type="submit" name="action" class="btn btn-success"> <?= _("Submit") ?></button>
     </form>
     <a href="<?= BASE ?>/Seller/index"><?= _("Cancel") ?></a>
 </body>

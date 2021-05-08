@@ -22,7 +22,7 @@
                 <textarea name="text_review"> <?= $data->text_review ?> </textarea>
             </label><br><br>
 
-            <button type="submit" name="action" class="btn btn-success" /><?= _("submit") ?></button>
+            <button type="submit" name="action" class="btn btn-success" /><?= _("Submit") ?></button>
         </form>
         <a href="<?= BASE ?>/Order/index"><?= _("Cancel") ?></a>
     </body>
