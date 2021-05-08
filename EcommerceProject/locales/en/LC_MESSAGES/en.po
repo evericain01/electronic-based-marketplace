@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-05-08 12:37-0400\n"
-"PO-Revision-Date: 2021-05-08 12:38-0400\n"
+"POT-Creation-Date: 2021-05-08 15:12-0400\n"
+"PO-Revision-Date: 2021-05-08 15:13-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -15,8 +15,12 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: controllers/BuyerController.php:14
-msgid "INVALID: no products found).<br><br>"
-msgstr ""
+msgid "INVALID: no products found"
+msgstr "INVALID: no products found"
+
+#: controllers/DefaultController.php:25
+msgid "Passwords do not match"
+msgstr "Password does not match."
 
 #: controllers/DefaultController.php:52 controllers/DefaultController.php:82
 msgid "Password Successfully Changed"

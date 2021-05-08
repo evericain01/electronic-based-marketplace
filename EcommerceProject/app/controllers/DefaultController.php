@@ -22,7 +22,7 @@ class DefaultController extends \App\core\Controller {
                 $_SESSION['username'] = $user->username;
                 $_SESSION['user_role'] = $user->user_role;
                 if ($result == false) {
-                    header('location:' . BASE . '/Default/register?error=Passwords do not match!');
+                    header('location:' . BASE . '/Default/register?error='_("Passwords do not match").'!');
                     return;
                 }
 
