@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-05-08 10:32-0400\n"
-"PO-Revision-Date: 2021-05-08 10:33-0400\n"
+"POT-Creation-Date: 2021-05-08 12:37-0400\n"
+"PO-Revision-Date: 2021-05-08 12:38-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -13,6 +13,10 @@ msgstr ""
 "X-Poedit-Basepath: ../../../app\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: controllers/BuyerController.php:14
+msgid "INVALID: no products found).<br><br>"
+msgstr ""
 
 #: controllers/DefaultController.php:52 controllers/DefaultController.php:82
 msgid "Password Successfully Changed"
@@ -320,6 +324,10 @@ msgstr "Register Here"
 msgid "Register an account"
 msgstr "Register an account"
 
+#: views/Login/register.php:13
+msgid "Register an Account"
+msgstr "Register an account"
+
 #: views/Login/register.php:18
 msgid "Password confirmation"
 msgstr "Password confirmation"
@@ -415,8 +423,6 @@ msgstr "Select the product's image"
 
 #: views/Product/addProduct.php:19 views/Review/addReview.php:24
 #: views/Review/editReview.php:25
-#, fuzzy
-#| msgid "submit"
 msgid "Submit"
 msgstr "Submit"
 

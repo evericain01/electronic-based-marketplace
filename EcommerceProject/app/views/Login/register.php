@@ -10,7 +10,7 @@
             echo $_GET['error'];
         ?>
         
-        <h1>Register an Account:</h1><br><br>
+        <h1><?= _("Register an Account") ?>:</h1><br><br>
 
         <form method="post" action="">
             <label><?= _("Username") ?>:<br> <input type="text" name="username" placeholder="Username" /></label><br /><br>
