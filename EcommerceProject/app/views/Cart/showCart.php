@@ -24,7 +24,7 @@
             if ($product->quantity < $cart->product_quantity) {
                 if ($cart->product_id == $product->product_id) {
                     $enoughQuantity = false;
-                    echo "<br><span style='font-size: 20px; color:red;'>NOT ENOUGH STOCK! Please decrease the quantity for the: $product->caption</span><br><br>";
+                    echo "<br><span style='font-size: 20px; color:red;'>". _("NOT ENOUGH STOCK! Please decrease the quantity for the").": $product->caption</span><br><br>";
                     foreach ($data['sellers'] as $sellers) {
                         if ($product->seller_id == $sellers->seller_id) {
                             $counter++;
